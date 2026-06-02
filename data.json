@@ -1,6 +1,6 @@
 {
   "product": "飞天茅台 53%vol 500ml (2026年份)",
-  "last_updated": "2026-06-01T16:45:00+08:00",
+  "last_updated": "2026-06-02T21:30:00+08:00",
   "data_sources": [
     "今日酒价",
     "财联社",
@@ -11,7 +11,7 @@
     "搜狐行情周报",
     "界面新闻"
   ],
-  "note": "信号: 🔴<1539(跌破零售价) 🟡1539~1800 🟢>1800 | ⚠️=推算 | 空=无公开报道",
+  "note": "🔴=低于当期指导价(1499→3/31→1539) | 🟡=指导价~1800 | 🟢=>1800",
   "prices": [
     {
       "date": "2026-01-01",
@@ -19,7 +19,8 @@
       "sanping": 1490,
       "source": "财联社",
       "note": "2026年份首发,2017年来新低",
-      "signal": "🔴"
+      "signal": "🔴",
+      "guide_price": 1499
     },
     {
       "date": "2026-01-04",
@@ -27,7 +28,8 @@
       "sanping": 1490,
       "source": "什么值得买",
       "note": "再度跌破1499指导价",
-      "signal": "🔴"
+      "signal": "🔴",
+      "guide_price": 1499
     },
     {
       "date": "2026-01-05",
@@ -35,7 +37,8 @@
       "sanping": 1500,
       "source": "酱酒界",
       "note": "i茅台限购收紧",
-      "signal": "🔴"
+      "signal": "🟡",
+      "guide_price": 1499
     },
     {
       "date": "2026-01-27",
@@ -43,7 +46,8 @@
       "sanping": 1565,
       "source": "云酒网",
       "note": "春节备货启动",
-      "signal": "🟡"
+      "signal": "🟡",
+      "guide_price": 1499
     },
     {
       "date": "2026-01-29",
@@ -51,7 +55,8 @@
       "sanping": 1570,
       "source": "雪球",
       "note": "全线上涨",
-      "signal": "🟡"
+      "signal": "🟡",
+      "guide_price": 1499
     },
     {
       "date": "2026-01-30",
@@ -59,7 +64,8 @@
       "sanping": 1710,
       "source": "财联社",
       "note": "单日+140,年内最高",
-      "signal": "🟡"
+      "signal": "🟡",
+      "guide_price": 1499
     },
     {
       "date": "2026-02-06",
@@ -67,7 +73,8 @@
       "sanping": "⚠️1610",
       "source": "推算",
       "note": "2/7数据反推",
-      "signal": "🟡"
+      "signal": "🟡",
+      "guide_price": 1499
     },
     {
       "date": "2026-02-07",
@@ -75,7 +82,8 @@
       "sanping": 1630,
       "source": "财联社/腾讯新闻",
       "note": "全线上涨破1700",
-      "signal": "🟡"
+      "signal": "🟡",
+      "guide_price": 1499
     },
     {
       "date": "2026-02-11",
@@ -83,7 +91,8 @@
       "sanping": "⚠️1660",
       "source": "推算",
       "note": "2/12数据反推",
-      "signal": "🟡"
+      "signal": "🟡",
+      "guide_price": 1499
     },
     {
       "date": "2026-02-12",
@@ -91,7 +100,8 @@
       "sanping": 1660,
       "source": "腾讯新闻",
       "note": "",
-      "signal": "🟡"
+      "signal": "🟡",
+      "guide_price": 1499
     },
     {
       "date": "2026-02-20",
@@ -99,7 +109,8 @@
       "sanping": 1650,
       "source": "财联社",
       "note": "春节前高点",
-      "signal": "🟡"
+      "signal": "🟡",
+      "guide_price": 1499
     },
     {
       "date": "2026-02-25",
@@ -107,7 +118,8 @@
       "sanping": "1460~1520",
       "source": "财联社",
       "note": "节后暴跌超200元",
-      "signal": "🔴"
+      "signal": "🔴",
+      "guide_price": 1499
     },
     {
       "date": "2026-03-01",
@@ -115,7 +127,8 @@
       "sanping": "⚠️1675",
       "source": "推算(3/2反推)",
       "note": "⚠️价差0,待验证",
-      "signal": "🟡"
+      "signal": "🟡",
+      "guide_price": 1499
     },
     {
       "date": "2026-03-02",
@@ -123,7 +136,8 @@
       "sanping": 1599,
       "source": "财联社/易茅时价",
       "note": "🔴散瓶>原箱!罕见倒挂",
-      "signal": "🟡"
+      "signal": "🟡",
+      "guide_price": 1499
     },
     {
       "date": "2026-03-04",
@@ -131,7 +145,8 @@
       "sanping": 1570,
       "source": "新浪财经",
       "note": "四天跌130",
-      "signal": "🟡"
+      "signal": "🟡",
+      "guide_price": 1499
     },
     {
       "date": "2026-03-22",
@@ -139,7 +154,8 @@
       "sanping": 1555,
       "source": "搜狐行情周报",
       "note": "",
-      "signal": "🟡"
+      "signal": "🟡",
+      "guide_price": 1499
     },
     {
       "date": "2026-03-23",
@@ -147,7 +163,8 @@
       "sanping": 1550,
       "source": "搜狐行情周报",
       "note": "-5",
-      "signal": "🟡"
+      "signal": "🟡",
+      "guide_price": 1499
     },
     {
       "date": "2026-03-24",
@@ -155,7 +172,8 @@
       "sanping": 1560,
       "source": "搜狐行情周报",
       "note": "+10",
-      "signal": "🟡"
+      "signal": "🟡",
+      "guide_price": 1499
     },
     {
       "date": "2026-03-25",
@@ -163,7 +181,8 @@
       "sanping": 1550,
       "source": "搜狐行情周报",
       "note": "-10",
-      "signal": "🟡"
+      "signal": "🟡",
+      "guide_price": 1499
     },
     {
       "date": "2026-03-26",
@@ -171,7 +190,8 @@
       "sanping": 1560,
       "source": "搜狐行情周报",
       "note": "+10",
-      "signal": "🟡"
+      "signal": "🟡",
+      "guide_price": 1499
     },
     {
       "date": "2026-03-27",
@@ -179,7 +199,8 @@
       "sanping": 1550,
       "source": "搜狐行情周报",
       "note": "-10",
-      "signal": "🟡"
+      "signal": "🟡",
+      "guide_price": 1499
     },
     {
       "date": "2026-03-28",
@@ -187,7 +208,8 @@
       "sanping": 1540,
       "source": "搜狐行情周报",
       "note": "-10",
-      "signal": "🟡"
+      "signal": "🟡",
+      "guide_price": 1499
     },
     {
       "date": "2026-03-29",
@@ -195,7 +217,8 @@
       "sanping": 1540,
       "source": "搜狐行情周报",
       "note": "持平",
-      "signal": "🟡"
+      "signal": "🟡",
+      "guide_price": 1499
     },
     {
       "date": "2026-03-31",
@@ -203,7 +226,8 @@
       "sanping": null,
       "source": "财联社",
       "note": "官方调价日",
-      "signal": null
+      "signal": null,
+      "guide_price": 1539
     },
     {
       "date": "2026-04-02",
@@ -211,7 +235,8 @@
       "sanping": null,
       "source": "界面新闻/易茅时价",
       "note": "强劲反弹",
-      "signal": null
+      "signal": null,
+      "guide_price": 1539
     },
     {
       "date": "2026-04-05",
@@ -219,7 +244,8 @@
       "sanping": 1565,
       "source": "财联社",
       "note": "原箱-10,散瓶-5",
-      "signal": "🟡"
+      "signal": "🟡",
+      "guide_price": 1539
     },
     {
       "date": "2026-04-15",
@@ -227,7 +253,8 @@
       "sanping": 1565,
       "source": "财联社/第一财经",
       "note": "全线涨价,原箱+5,散瓶持平",
-      "signal": "🟡"
+      "signal": "🟡",
+      "guide_price": 1539
     },
     {
       "date": "2026-05-01",
@@ -235,7 +262,8 @@
       "sanping": 1635,
       "source": "今日头条",
       "note": "五一假期拉动",
-      "signal": "🟡"
+      "signal": "🟡",
+      "guide_price": 1539
     },
     {
       "date": "2026-05-09",
@@ -243,7 +271,8 @@
       "sanping": 1640,
       "source": "云酒网",
       "note": "",
-      "signal": "🟡"
+      "signal": "🟡",
+      "guide_price": 1539
     },
     {
       "date": "2026-05-11",
@@ -251,7 +280,8 @@
       "sanping": 1645,
       "source": "今日酒价/搜狐",
       "note": "月内区间1560~1645",
-      "signal": "🟡"
+      "signal": "🟡",
+      "guide_price": 1539
     },
     {
       "date": "2026-05-17",
@@ -259,7 +289,8 @@
       "sanping": 1645,
       "source": "云酒网",
       "note": "零售价上调生效",
-      "signal": "🟡"
+      "signal": "🟡",
+      "guide_price": 1539
     },
     {
       "date": "2026-05-18",
@@ -267,7 +298,8 @@
       "sanping": 1645,
       "source": "云酒网",
       "note": "",
-      "signal": "🟡"
+      "signal": "🟡",
+      "guide_price": 1539
     },
     {
       "date": "2026-05-20",
@@ -275,7 +307,8 @@
       "sanping": 1660,
       "source": "爱企查/百度",
       "note": "月内高点",
-      "signal": "🟡"
+      "signal": "🟡",
+      "guide_price": 1539
     },
     {
       "date": "2026-05-28",
@@ -283,7 +316,8 @@
       "sanping": 1620,
       "source": "金价查询网",
       "note": "",
-      "signal": "🟡"
+      "signal": "🟡",
+      "guide_price": 1539
     },
     {
       "date": "2026-05-29",
@@ -291,7 +325,8 @@
       "sanping": 1635,
       "source": "winesinfo.net",
       "note": "+10",
-      "signal": "🟡"
+      "signal": "🟡",
+      "guide_price": 1539
     },
     {
       "date": "2026-05-30",
@@ -299,7 +334,8 @@
       "sanping": 1645,
       "source": "茅酒顾问",
       "note": "",
-      "signal": "🟡"
+      "signal": "🟡",
+      "guide_price": 1539
     },
     {
       "date": "2026-06-01",
@@ -307,7 +343,8 @@
       "sanping": null,
       "source": "酱酒界",
       "note": "端午前连续下跌,具体价格未报",
-      "signal": null
+      "signal": null,
+      "guide_price": 1539
     }
   ],
   "anomalies": [
@@ -328,5 +365,17 @@
     "yuanxiang_ytd_high": 1730,
     "yuanxiang_ytd_low": 1579,
     "data_points": 42
-  }
+  },
+  "guide_price_history": [
+    {
+      "valid_from": "2026-01-01",
+      "valid_until": "2026-03-30",
+      "price": 1499
+    },
+    {
+      "valid_from": "2026-03-31",
+      "valid_until": null,
+      "price": 1539
+    }
+  ]
 }
