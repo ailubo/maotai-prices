@@ -129,9 +129,3 @@ for p in data['prices']:
 with open(f'{BASE}/2026-原箱vs散瓶对比.md', 'w', encoding='utf-8') as f:
     f.write('\n'.join(lines))
 print('2026-原箱vs散瓶对比.md regenerated')
-
-# 删除旧的 2026-05.md（已被覆盖）
-old = f'{BASE}/2026/2026-05.md'
-if os.path.exists(old):
-    os.remove(old)
-    print(f'  Removed old {old}')
