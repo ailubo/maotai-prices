@@ -91,7 +91,7 @@ for m in sorted(months):
 
 # === 重新生成年度对比表（和月度格式统一） ===
 lines = []
-lines.append('# 2026年飞天茅台 — 散瓶 vs 原箱 批价全表')
+lines.append('# 2026年飞天茅台批价总览')
 lines.append('')
 lines.append('> 🔴=低于当期指导价 | 🟡=指导价~1800 | 🟢=>1800')
 lines.append('> 指导价: ¥1,499 (1/1~3/30) → ¥1,539 (3/31起)')
@@ -110,6 +110,6 @@ for p in data['prices']:
     note = p['note'][:25]
     lines.append(f'| {d} | {sp} | {yx} | ¥{gp_f} | {sig} | {src} | {note} |')
 
-with open(f'{BASE}/2026-原箱vs散瓶对比.md', 'w', encoding='utf-8') as f:
+with open(f'{BASE}/2026总览.md', 'w', encoding='utf-8') as f:
     f.write('\n'.join(lines))
-print('2026-原箱vs散瓶对比.md regenerated')
+print('2026总览.md regenerated')
