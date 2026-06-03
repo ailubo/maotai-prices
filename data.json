@@ -338,12 +338,30 @@
       "guide_price": 1539
     },
     {
+      "date": "2026-05-31",
+      "yuanxiang": 1680,
+      "sanping": 1630,
+      "source": "搜狐/热贵网",
+      "note": "原箱-10",
+      "signal": "🟡",
+      "guide_price": 1539
+    },
+    {
       "date": "2026-06-01",
+      "yuanxiang": 1670,
+      "sanping": 1630,
+      "source": "搜狐/热贵网",
+      "note": "原箱-10,散瓶持平",
+      "signal": "🟡",
+      "guide_price": 1539
+    },
+    {
+      "date": "2026-06-02",
       "yuanxiang": null,
-      "sanping": null,
+      "sanping": 1620,
       "source": "酱酒界",
-      "note": "端午前连续下跌,具体价格未报",
-      "signal": null,
+      "note": "-10,端午前持续下跌",
+      "signal": "🟡",
       "guide_price": 1539
     }
   ],
@@ -364,7 +382,7 @@
     "sanping_ytd_high": 1710,
     "yuanxiang_ytd_high": 1730,
     "yuanxiang_ytd_low": 1579,
-    "data_points": 42
+    "data_points": 44
   },
   "guide_price_history": [
     {
