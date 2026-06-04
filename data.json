@@ -363,6 +363,15 @@
       "note": "-10,端午前持续下跌",
       "signal": "🟡",
       "guide_price": 1539
+    },
+    {
+      "date": "2026-06-03",
+      "yuanxiang": null,
+      "sanping": 1620,
+      "source": "酱酒界",
+      "note": "持平",
+      "signal": "🟡",
+      "guide_price": 1539
     }
   ],
   "anomalies": [
@@ -382,7 +391,7 @@
     "sanping_ytd_high": 1710,
     "yuanxiang_ytd_high": 1730,
     "yuanxiang_ytd_low": 1579,
-    "data_points": 44
+    "data_points": 45
   },
   "guide_price_history": [
     {
