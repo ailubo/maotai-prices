@@ -1,6 +1,6 @@
 {
   "product": "飞天茅台 53%vol 500ml (2026年份)",
-  "last_updated": "2026-06-06T09:36:35+08:00",
+  "last_updated": "2026-06-07T09:54:23+08:00",
   "data_sources": [
     "今日酒价",
     "财联社",
@@ -390,6 +390,15 @@
       "note": "原箱+25,散瓶+15,端午后反弹",
       "signal": "🟡",
       "guide_price": 1539
+    },
+    {
+      "date": "2026-06-06",
+      "yuanxiang": 1680,
+      "sanping": 1640,
+      "source": "酱酒界",
+      "note": "原箱散瓶持平,反弹后企稳",
+      "signal": "🟡",
+      "guide_price": 1539
     }
   ],
   "anomalies": [
@@ -409,7 +418,7 @@
     "sanping_ytd_high": 1710,
     "yuanxiang_ytd_high": 1730,
     "yuanxiang_ytd_low": 1579,
-    "data_points": 41
+    "data_points": 42
   },
   "guide_price_history": [
     {
