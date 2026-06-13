@@ -135,7 +135,7 @@ for p in data['prices']:
     gp_f = str(p['guide_price'])
     sig = p['signal'] or ''
     src = p['source'][:15]
-    note = p['note'][:25]
+    note = p.get('note', '')[:25]
     lines.append(f'| {d} | {sp} | {yx} | ¥{gp_f} | {sig} | {src} | {note} |')
 
 with open(f'{BASE}/2026总览.md', 'w', encoding='utf-8') as f:
