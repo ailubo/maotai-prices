@@ -1,14 +1,23 @@
 // batch_extract_prices.mjs — Light mode: single Chrome session, batch-extract 飞天 prices from 今日酒价 articles
-// Usage: node batch_extract_prices.mjs <links.json> <data.json>
+// Usage: node batch_extract_prices.mjs [--year 2025] <links.json> <data.json>
 // Based on XHS light mode learnings: single browser, append-only, batch+rest, breakpoint-resumable
 
 import puppeteer from 'puppeteer-core';
 import fs from 'fs';
 import path from 'path';
 
-const [,, linksFile, dataFile] = process.argv;
+let YEAR = new Date().getFullYear();
+const args = process.argv.filter(a => a.startsWith('--'));
+for (let i = 0; i < args.length; i++) {
+  if (args[i] === '--year') {
+    const v = process.argv[process.argv.indexOf(args[i]) + 1];
+    if (v && /^\d{4}$/.test(v)) YEAR = parseInt(v, 10);
+  }
+}
+
+const [,, linksFile, dataFile] = process.argv.filter(a => !a.startsWith('--'));
 if (!linksFile || !dataFile) {
-  console.error('Usage: node batch_extract_prices.mjs <links.json> <data.json>');
+  console.error('Usage: node batch_extract_prices.mjs [--year 2025] <links.json> <data.json>');
   console.error('Example: node batch_extract_prices.mjs /tmp/todayjiujia_links.json data.json');
   process.exit(1);
 }
@@ -57,7 +66,7 @@ function extractDate(title) {
   if (!m) return null;
   const month = String(m[1]).padStart(2, '0');
   const day = String(m[2]).padStart(2, '0');
-  return `2026-${month}-${day}`;
+  return `${YEAR}-${month}-${day}`;
 }
 
 // Extract 飞天 prices from article HTML
@@ -123,9 +132,11 @@ function extractPrices(html) {
 
 // Launch Chrome once
 log('Launching Chrome...');
+const CHROME_PATH = process.env.CHROME_PATH || 'C:/Program Files/Google/Chrome/Application/chrome.exe';
+const CHROME_PROFILE = process.env.CHROME_PROFILE_DIR || 'C:/Users/PC/AppData/Roaming/baoyu-skills/chrome-profile';
 const browser = await puppeteer.launch({
-  executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe',
-  userDataDir: 'C:/Users/PC/AppData/Roaming/baoyu-skills/chrome-profile',
+  executablePath: CHROME_PATH,
+  userDataDir: CHROME_PROFILE,
   headless: false,
   args: ['--no-sandbox', '--disable-blink-features=AutomationControlled'],
   ignoreDefaultArgs: ['--enable-automation'],
@@ -243,7 +254,7 @@ try {
       };
       
       // Determine guide price and signal
-      const guidePrice = date >= '2026-03-31' ? 1539 : 1499;
+      const guidePrice = (YEAR === 2026 && date >= '2026-03-31') ? 1539 : 1499;
       if (sanping) {
         entry.guide_price = guidePrice;
         entry.signal = sanping < guidePrice ? '🔴' : sanping <= 1800 ? '🟡' : '🟢';

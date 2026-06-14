@@ -1,5 +1,6 @@
 import json, os, re, sys
 from datetime import date, datetime, timezone, timedelta
+from collections import OrderedDict
 
 # 让 emoji 信号能打印到任意控制台（GBK 控制台下原 print 会 UnicodeEncodeError，且会崩在写 data.json 之前 → 静默失败）
 try:
@@ -11,6 +12,13 @@ except Exception:
 BASE = os.path.dirname(os.path.abspath(__file__))
 with open(f'{BASE}/data.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
+
+# === 日期归一化（统一为 YYYY-MM-DD） ===
+for p in data['prices']:
+    d = p['date']
+    if '-' in d:
+        parts = d.split('-')
+        p['date'] = f"{parts[0]}-{parts[1].zfill(2)}-{parts[2].zfill(2)}"
 
 # 指导价历史（数据驱动；下次指导价再变只加一行，不改下面的计算逻辑）
 GUIDE_PRICE_HISTORY = [
@@ -68,6 +76,8 @@ data['note'] = '🔴=低于当期指导价(1499→3/31→1539) | 🟡=指导价~
 data['last_updated'] = datetime.now(timezone(timedelta(hours=8))).isoformat(timespec='seconds')
 data['guide_price_history'] = GUIDE_PRICE_HISTORY
 
+data['prices'].sort(key=lambda p: p['date'])
+
 # 统计
 signals = [p['signal'] for p in data['prices'] if p['signal']]
 print(f'Signals: {signals.count("🔴")}🔴 {signals.count("🟡")}🟡 {signals.count("🟢")}🟢')
@@ -75,6 +85,32 @@ print(f'Signals: {signals.count("🔴")}🔴 {signals.count("🟡")}🟡 {signal
 with open(f'{BASE}/data.json', 'w', encoding='utf-8') as f:
     json.dump(data, f, ensure_ascii=False, indent=2)
 print('data.json updated')
+
+# === 归一化 all_prices.jsonl 日期格式 ===
+jl_path = f'{BASE}/all_prices.jsonl'
+if os.path.isfile(jl_path):
+    fixed = 0
+    jl_out = f'{BASE}/all_prices.jsonl.tmp'
+    with open(jl_path, 'r', encoding='utf-8') as fin, open(jl_out, 'w', encoding='utf-8') as fout:
+        for line in fin:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                obj = json.loads(line)
+                d = obj.get('date', '')
+                if '-' in d:
+                    parts = d.split('-')
+                    nd = f"{parts[0]}-{parts[1].zfill(2)}-{parts[2].zfill(2)}"
+                    if nd != d:
+                        obj['date'] = nd
+                        fixed += 1
+                fout.write(json.dumps(obj, ensure_ascii=False) + '\n')
+            except json.JSONDecodeError:
+                fout.write(line + '\n')
+    os.replace(jl_out, jl_path)
+    if fixed:
+        print(f'all_prices.jsonl: normalized {fixed} date(s)')
 
 # === 生成各月 MD ===
 def fmt(v):
@@ -103,6 +139,7 @@ for m in sorted(months):
     lines.append('| 日期 | 散瓶 | 原箱 | 指导价 | 信号 | 来源 |')
     lines.append('|------|------|------|--------|:--:|------|')
     
+    months[m].sort(key=lambda p: p['date'])
     for p in months[m]:
         d = p['date'][-5:]
         sp = fmt(p['sanping'])

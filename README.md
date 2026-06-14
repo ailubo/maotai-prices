@@ -41,5 +41,5 @@ node batch_extract_all.mjs <links.json> <data.json>
 
 ```bash
 python regenerate.py
-git add -A && git commit -m "更新: YYYY-MM-DD" && git push origin master:main
+git add -A && git commit -m "更新: YYYY-MM-DD" && git push origin main
 ```

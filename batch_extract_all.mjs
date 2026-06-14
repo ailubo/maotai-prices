@@ -5,9 +5,19 @@
 import puppeteer from 'puppeteer-core';
 import fs from 'fs';
 
-const [,, linksFile, dataJsonFile] = process.argv;
+// Parse --year YYYY from remaining args
+let YEAR = new Date().getFullYear();
+const args = process.argv.filter(a => a.startsWith('--'));
+for (let i = 0; i < args.length; i++) {
+  if (args[i] === '--year') {
+    const v = process.argv[process.argv.indexOf(args[i]) + 1];
+    if (v && /^\d{4}$/.test(v)) YEAR = parseInt(v, 10);
+  }
+}
+
+const [,, linksFile, dataJsonFile] = process.argv.filter(a => !a.startsWith('--'));
 if (!linksFile || !dataJsonFile) {
-  console.error('Usage: node batch_extract_all.mjs <links.json> <data.json>');
+  console.error('Usage: node batch_extract_all.mjs [--year 2025] <links.json> <data.json>');
   process.exit(1);
 }
 
@@ -61,7 +71,7 @@ function saveState() {
 function extractDate(title) {
   const m = title.match(/(\d{1,2})月(\d{1,2})日/);
   if (!m) return null;
-  return `2026-${String(m[1]).padStart(2,'0')}-${String(m[2]).padStart(2,'0')}`;
+  return `${YEAR}-${String(m[1]).padStart(2,'0')}-${String(m[2]).padStart(2,'0')}`;
 }
 
 // Extract ALL product prices from article HTML
@@ -143,9 +153,11 @@ function extractAllPrices(html) {
 
 // Launch Chrome
 log('Launching Chrome...');
+const CHROME_PATH = process.env.CHROME_PATH || 'C:/Program Files/Google/Chrome/Application/chrome.exe';
+const CHROME_PROFILE = process.env.CHROME_PROFILE_DIR || 'C:/Users/PC/AppData/Roaming/baoyu-skills/chrome-profile';
 const browser = await puppeteer.launch({
-  executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe',
-  userDataDir: 'C:/Users/PC/AppData/Roaming/baoyu-skills/chrome-profile',
+  executablePath: CHROME_PATH,
+  userDataDir: CHROME_PROFILE,
   headless: false,
   args: ['--no-sandbox', '--disable-blink-features=AutomationControlled'],
   ignoreDefaultArgs: ['--enable-automation'],
@@ -226,7 +238,7 @@ try {
     }
     
     if ((sanping || yuanxiang) && !existingDates.has(date)) {
-      const guidePrice = date >= '2026-03-31' ? 1539 : 1499;
+      const guidePrice = (YEAR === 2026 && date >= '2026-03-31') ? 1539 : 1499;
       const entry = {
         date,
         source: '今日酒价',
