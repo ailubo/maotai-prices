@@ -6,16 +6,20 @@ import puppeteer from 'puppeteer-core';
 import fs from 'fs';
 import path from 'path';
 
-let YEAR = new Date().getFullYear();
-const args = process.argv.filter(a => a.startsWith('--'));
-for (let i = 0; i < args.length; i++) {
-  if (args[i] === '--year') {
-    const v = process.argv[process.argv.indexOf(args[i]) + 1];
+// Parse arguments: --year YYYY <links.json> <data.json>
+const argv = process.argv.slice(2);
+const positional = [];
+for (let i = 0; i < argv.length; i++) {
+  if (argv[i] === '--year' && i + 1 < argv.length) {
+    const v = argv[i + 1];
     if (v && /^\d{4}$/.test(v)) YEAR = parseInt(v, 10);
+    i++;
+  } else if (!argv[i].startsWith('--')) {
+    positional.push(argv[i]);
   }
 }
-
-const [,, linksFile, dataFile] = process.argv.filter(a => !a.startsWith('--'));
+const linksFile = positional[0];
+const dataFile = positional[1];
 if (!linksFile || !dataFile) {
   console.error('Usage: node batch_extract_prices.mjs [--year 2025] <links.json> <data.json>');
   console.error('Example: node batch_extract_prices.mjs /tmp/todayjiujia_links.json data.json');

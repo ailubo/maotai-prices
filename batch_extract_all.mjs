@@ -5,17 +5,23 @@
 import puppeteer from 'puppeteer-core';
 import fs from 'fs';
 
-// Parse --year YYYY from remaining args
+// Parse arguments: --year YYYY <links.json> <data.json>
+const argv = process.argv.slice(2);
 let YEAR = new Date().getFullYear();
-const args = process.argv.filter(a => a.startsWith('--'));
-for (let i = 0; i < args.length; i++) {
-  if (args[i] === '--year') {
-    const v = process.argv[process.argv.indexOf(args[i]) + 1];
+const positional = [];
+
+for (let i = 0; i < argv.length; i++) {
+  if (argv[i] === '--year' && i + 1 < argv.length) {
+    const v = argv[i + 1];
     if (v && /^\d{4}$/.test(v)) YEAR = parseInt(v, 10);
+    i++; // consume value
+  } else if (!argv[i].startsWith('--')) {
+    positional.push(argv[i]);
   }
 }
 
-const [,, linksFile, dataJsonFile] = process.argv.filter(a => !a.startsWith('--'));
+const linksFile = positional[0];
+const dataJsonFile = positional[1];
 if (!linksFile || !dataJsonFile) {
   console.error('Usage: node batch_extract_all.mjs [--year 2025] <links.json> <data.json>');
   process.exit(1);
@@ -186,7 +192,7 @@ try {
     const article = todo[i];
     totalProcessed++;
     
-    const date = extractDate(article.title);
+    const date = article.date || extractDate(article.title);
     if (!date) {
       log(`[${i+1}/${todo.length}] SKIP — no date: ${article.title.substring(0,50)}`);
       processed.add(article.msgid); saveState();
