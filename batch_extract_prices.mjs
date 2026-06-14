@@ -7,6 +7,7 @@ import fs from 'fs';
 import path from 'path';
 
 // Parse arguments: --year YYYY <links.json> <data.json>
+let YEAR = new Date().getFullYear();
 const argv = process.argv.slice(2);
 const positional = [];
 for (let i = 0; i < argv.length; i++) {
