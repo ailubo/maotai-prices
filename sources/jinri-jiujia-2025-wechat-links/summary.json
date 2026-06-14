@@ -1,0 +1,41 @@
+﻿{
+  "sourceAccount": "今日酒价",
+  "searchKeyword": "批发参考价",
+  "targetYear": 2025,
+  "collectionMethod": "WeChat desktop UI, account-scoped search results only",
+  "acceptedRecords": 214,
+  "missingDates": 151,
+  "duplicateUrls": 0,
+  "missingRetry": {
+    "retried": 151,
+    "recovered": 0,
+    "stillMissing": 151,
+    "reasonCounts": {
+      "no_article_candidate": 139,
+      "validation_failed": 12
+    }
+  },
+  "monthCounts": {
+    "2025-12": 31,
+    "2025-11": 30,
+    "2025-10": 31,
+    "2025-09": 30,
+    "2025-08": 31,
+    "2025-07": 28,
+    "2025-06": 6,
+    "2025-05": 5,
+    "2025-04": 1,
+    "2025-03": 10,
+    "2025-02": 7,
+    "2025-01": 4
+  },
+  "knownChecks": {
+    "2025-01-30": {
+      "status": "rejected",
+      "reason": "The account-scoped WeChat result that looks like January 30 is actually published on 2026-01-30.",
+      "checkedUrl": "https://mp.weixin.qq.com/s/P_fWRq4Jho-7UVNCuqU7FA",
+      "checkedPubDate": "2026-01-30"
+    }
+  },
+  "generatedAt": "2026-06-14T12:08:17+08:00"
+}
