@@ -5,25 +5,29 @@
 import puppeteer from 'puppeteer-core';
 import fs from 'fs';
 
-// Parse arguments: --year YYYY <links.json> <data.json>
+// Parse arguments: [--year YYYY] <links.json> [<data.json>]
+// If --year is set, output auto-named: data-YYYY.json, all_prices-YYYY.jsonl
 const argv = process.argv.slice(2);
-let YEAR = new Date().getFullYear();
+let YEAR = null;
 const positional = [];
 
 for (let i = 0; i < argv.length; i++) {
   if (argv[i] === '--year' && i + 1 < argv.length) {
     const v = argv[i + 1];
     if (v && /^\d{4}$/.test(v)) YEAR = parseInt(v, 10);
-    i++; // consume value
+    i++;
   } else if (!argv[i].startsWith('--')) {
     positional.push(argv[i]);
   }
 }
 
 const linksFile = positional[0];
-const dataJsonFile = positional[1];
-if (!linksFile || !dataJsonFile) {
-  console.error('Usage: node batch_extract_all.mjs [--year 2025] <links.json> <data.json>');
+const suffix = YEAR ? `-${YEAR}` : '';
+const dataJsonFile = positional[1] || `data${suffix}.json`;
+const allPricesFile = `all_prices${suffix}.jsonl`;
+
+if (!linksFile) {
+  console.error('Usage: node batch_extract_all.mjs [--year YYYY] <links.json> [<data.json>]');
   process.exit(1);
 }
 
@@ -35,9 +39,6 @@ const BATCH_SIZE = 12;
 const REST_BETWEEN_BATCHES = 2 * 60 * 1000;
 const ARTICLE_WAIT = 3000;
 const ARTICLE_LOAD_TIMEOUT = 20000;
-
-// Output file for all prices
-const allPricesFile = dataJsonFile.replace('data.json', 'all_prices.jsonl');
 
 // Parse links
 let articles = JSON.parse(fs.readFileSync(linksFile, 'utf8'));
@@ -64,7 +65,7 @@ if (fs.existsSync(allPricesFile)) {
 }
 
 // State for breakpoint resume
-const stateFile = dataJsonFile.replace('.json', '_all_state.json');
+const stateFile = `state${suffix === '' ? '' : suffix}.json`;
 let processed = new Set();
 if (fs.existsSync(stateFile)) {
   processed = new Set(JSON.parse(fs.readFileSync(stateFile, 'utf8')).processed || []);
@@ -77,7 +78,8 @@ function saveState() {
 function extractDate(title) {
   const m = title.match(/(\d{1,2})月(\d{1,2})日/);
   if (!m) return null;
-  return `${YEAR}-${String(m[1]).padStart(2,'0')}-${String(m[2]).padStart(2,'0')}`;
+  const y = YEAR || new Date().getFullYear();
+  return `${y}-${String(m[1]).padStart(2,'0')}-${String(m[2]).padStart(2,'0')}`;
 }
 
 // Extract ALL product prices from article HTML
