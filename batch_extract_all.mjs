@@ -234,9 +234,8 @@ try {
     }
     
     // Extract Maotai prices from the same data
-    const maotaiItems = allProducts.filter(p => p.product.includes('飞天'));
-    let sanping = null, yuanxiang = null;
-    for (const item of maotaiItems) {
+    // Require category to contain "茅台" — filters out "未知" category from 10日 special issues
+    const maotaiItems = allProducts.filter(p => p.category.includes('茅台') && p.product.includes('飞天'));
       if (!item.today) continue;
       if (item.product.includes('散') && !item.product.includes('原')) {
         if (!sanping) sanping = item.today;

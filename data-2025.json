@@ -1465,14 +1465,6 @@
       "yuanxiang": 1960
     },
     {
-      "date": "2025-06-10",
-      "source": "今日酒价",
-      "guide_price": 1499,
-      "sanping": 2020,
-      "signal": "🟢",
-      "yuanxiang": 2080
-    },
-    {
       "date": "2025-06-07",
       "source": "今日酒价",
       "guide_price": 1499,
@@ -1535,14 +1527,6 @@
       "sanping": 1630,
       "signal": "🟡",
       "yuanxiang": 1675
-    },
-    {
-      "date": "2025-04-10",
-      "source": "今日酒价",
-      "guide_price": 1499,
-      "sanping": 2135,
-      "signal": "🟢",
-      "yuanxiang": 2150
     },
     {
       "date": "2025-03-28",
@@ -1687,30 +1671,6 @@
       "sanping": 1520,
       "signal": "🟡",
       "yuanxiang": 1525
-    },
-    {
-      "date": "2025-03-10",
-      "source": "今日酒价",
-      "guide_price": 1499,
-      "sanping": 2210,
-      "signal": "🟢",
-      "yuanxiang": 2245
-    },
-    {
-      "date": "2025-02-10",
-      "source": "今日酒价",
-      "guide_price": 1499,
-      "sanping": 2230,
-      "signal": "🟢",
-      "yuanxiang": 2280
-    },
-    {
-      "date": "2025-01-10",
-      "source": "今日酒价",
-      "guide_price": 1499,
-      "sanping": 2230,
-      "signal": "🟢",
-      "yuanxiang": 2260
     }
   ]
 }
