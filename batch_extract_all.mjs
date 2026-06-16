@@ -4,6 +4,7 @@
 
 import puppeteer from 'puppeteer-core';
 import fs from 'fs';
+import path from 'path';
 
 // Parse arguments: [--year YYYY] <links.json> [<data.json>]
 // If --year is set, output auto-named: data-YYYY.json, all_prices-YYYY.jsonl
@@ -225,6 +226,12 @@ try {
     
     const html = await page.evaluate(() => document.body.innerHTML);
     
+    // Save raw page source for future verification
+    const y = YEAR || new Date().getFullYear();
+    const rawDir = `sources/jinri-jiujia-wechat-links/${y}-articles`;
+    try { fs.mkdirSync(rawDir, { recursive: true }); } catch {}
+    try { fs.writeFileSync(path.join(rawDir, `${date}.html`), html); } catch {}
+    
     // Extract ALL products
     const allProducts = extractAllPrices(html);
     
@@ -239,6 +246,8 @@ try {
     // Extract Maotai prices from the same data
     // Require category to contain "茅台" — filters out "未知" category from 10日 special issues
     const maotaiItems = allProducts.filter(p => p.category.includes('茅台') && p.product.includes('飞天'));
+    let sanping = null, yuanxiang = null;
+    for (const item of maotaiItems) {
       if (!item.today) continue;
       if (item.product.includes('散') && !item.product.includes('原')) {
         if (!sanping) sanping = item.today;
