@@ -5,6 +5,7 @@
 import puppeteer from 'puppeteer-core';
 import fs from 'fs';
 import path from 'path';
+import { execSync } from 'child_process';
 
 // Parse arguments: [--year YYYY] <links.json> [<data.json>]
 // If --year is set, output auto-named: data-YYYY.json, all_prices-YYYY.jsonl
@@ -226,11 +227,20 @@ try {
     
     const html = await page.evaluate(() => document.body.innerHTML);
     
-    // Save raw page source for future verification
+    // Save full markdown via baoyu-fetch for future verification
     const y = YEAR || new Date().getFullYear();
-    const rawDir = `sources/jinri-jiujia-wechat-links/${y}-articles`;
-    try { fs.mkdirSync(rawDir, { recursive: true }); } catch {}
-    try { fs.writeFileSync(path.join(rawDir, `${date}.html`), html); } catch {}
+    const archiveDir = `sources/jinri-jiujia-wechat-links/${y}-articles`;
+    try { fs.mkdirSync(archiveDir, { recursive: true }); } catch {}
+    const mdPath = path.join(archiveDir, `${date}.md`);
+    if (!fs.existsSync(mdPath)) {
+      try {
+        const wsEndpoint = browser.wsEndpoint();
+        const bun = process.env.BUN_PATH || 'C:\\Users\\PC\\.bun\\bin\\bun.exe';
+        const cli = 'C:\\Users\\PC\\.workbuddy\\skills\\baoyu-url-to-markdown\\scripts\\lib\\cli.ts';
+        execSync(`"${bun}" "${cli}" "${article.link}" --output "${mdPath}" --cdp-url "${wsEndpoint}" --timeout 25000`, 
+          { timeout: 60000, stdio: 'pipe', windowsHide: true });
+      } catch(e) { log(`baoyu-fetch: ${(e.message||'').slice(0,80)}`); }
+    }
     
     // Extract ALL products
     const allProducts = extractAllPrices(html);
