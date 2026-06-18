@@ -15,21 +15,21 @@
 
 当前输出文件：
 
-- `data-2025-from-md.json`
-- `all_prices-2025-from-md.jsonl`
+- `data-2025.json`
+- `all_prices-2025.jsonl`
 - `sources/jinri-jiujia-wechat-links/2025-md-summary.json`
 - `sources/jinri-jiujia-wechat-links/2025-md-state.json`
 
 ## 已新增脚本
 
-- `fetch_2025_markdown.mjs`
+- `scripts/2025-backfill/fetch_2025_markdown.mjs`
   - 使用 baoyu-fetch CLI 抓取微信文章为 Markdown。
   - 默认节奏：每篇随机 5-10 秒，每批 8 篇，批间休息 60 秒。
   - 支持断点续跑；已有合格 Markdown 会自动跳过。
   - 支持 `BAOYU_CDP_URL`，可复用一个直连 Chrome。
-- `extract_2025_from_markdown.py`
+- `scripts/2025-backfill/extract_2025_from_markdown.py`
   - 从已保存的 Markdown HTML table 中抽取茅台核心价格和全品类价格。
-  - 输出 `data-2025-from-md.json` 和 `all_prices-2025-from-md.jsonl`。
+  - 输出 `data-2025.json` 和 `all_prices-2025.jsonl`。
 
 ## 重要注意事项
 
@@ -56,7 +56,7 @@ Start-Process -FilePath $chrome -ArgumentList @(
 
 ```powershell
 $env:BAOYU_CDP_URL="http://127.0.0.1:9223"
-node fetch_2025_markdown.mjs --max-fetch 8
+node scripts/2025-backfill/fetch_2025_markdown.mjs --max-fetch 8
 Remove-Item Env:\BAOYU_CDP_URL -ErrorAction SilentlyContinue
 ```
 
@@ -66,7 +66,7 @@ Remove-Item Env:\BAOYU_CDP_URL -ErrorAction SilentlyContinue
 $env:BAOYU_CDP_URL="http://127.0.0.1:9223"
 $env:BAOYU_FETCH_TIMEOUT_MS="240000"
 $env:BAOYU_PAGE_TIMEOUT_MS="60000"
-node fetch_2025_markdown.mjs --max-fetch 1
+node scripts/2025-backfill/fetch_2025_markdown.mjs --max-fetch 1
 Remove-Item Env:\BAOYU_CDP_URL -ErrorAction SilentlyContinue
 Remove-Item Env:\BAOYU_FETCH_TIMEOUT_MS -ErrorAction SilentlyContinue
 Remove-Item Env:\BAOYU_PAGE_TIMEOUT_MS -ErrorAction SilentlyContinue
@@ -84,11 +84,11 @@ Remove-Item Env:\BAOYU_PAGE_TIMEOUT_MS -ErrorAction SilentlyContinue
 2. 确认状态：
 
 ```powershell
-python extract_2025_from_markdown.py
+python scripts/2025-backfill/extract_2025_from_markdown.py
 ```
 
 3. 从 `2025-09-23` 开始继续。
-4. 先继续使用 `fetch_2025_markdown.mjs --max-fetch 8`，每批后跑 `extract_2025_from_markdown.py` 检查：
+4. 先继续使用 `scripts/2025-backfill/fetch_2025_markdown.mjs --max-fetch 8`，每批后跑 `scripts/2025-backfill/extract_2025_from_markdown.py` 检查：
    - `noProductDates` 应为空。
    - `noCoreMaotaiDates` 应为空。
    - `state.failed` 应为空。

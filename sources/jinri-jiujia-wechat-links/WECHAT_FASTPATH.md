@@ -69,7 +69,7 @@ Defaults:
 - completeness check: at least 30 tables and 300 table rows
 - stability check: table count, row count, and text length must stay unchanged for 3 consecutive polls before saving
 
-These quality gates are important. Earlier CDP experiments produced partial pages with only 4-19 tables while a normal complete "今日酒价" price article has about 34-35 tables. Do not accept low-table markdown just because `extract_2025_from_markdown.py` still finds Moutai rows.
+These quality gates are important. Earlier CDP experiments produced partial pages with only 4-19 tables while a normal complete "今日酒价" price article has about 34-35 tables. Do not accept low-table markdown just because `scripts/2025-backfill/extract_2025_from_markdown.py` still finds Moutai rows.
 
 Single date retry:
 
@@ -125,13 +125,13 @@ sources/jinri-jiujia-wechat-links/2025-md-fastpath-state.json
 Run the existing parser:
 
 ```powershell
-python extract_2025_from_markdown.py
+python scripts/2025-backfill/extract_2025_from_markdown.py
 ```
 
 Expected parser outputs:
 
-- `data-2025-from-md.json`
-- `all_prices-2025-from-md.jsonl`
+- `data-2025.json`
+- `all_prices-2025.jsonl`
 - `sources/jinri-jiujia-wechat-links/2025-md-summary.json`
 
 Watch these summary fields:

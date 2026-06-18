@@ -13,12 +13,12 @@ from datetime import datetime, timezone, timedelta
 from html.parser import HTMLParser
 from pathlib import Path
 
-BASE = Path(__file__).resolve().parent
+BASE = Path(__file__).resolve().parents[2]
 SOURCE_DIR = BASE / "sources" / "jinri-jiujia-wechat-links"
 LINKS_CSV = SOURCE_DIR / "2025-links.csv"
 MD_DIR = SOURCE_DIR / "2025-md"
-DATA_OUT = BASE / "data-2025-from-md.json"
-ALL_OUT = BASE / "all_prices-2025-from-md.jsonl"
+DATA_OUT = BASE / "data-2025.json"
+ALL_OUT = BASE / "all_prices-2025.jsonl"
 SUMMARY_OUT = SOURCE_DIR / "2025-md-summary.json"
 
 SOLAR_TERMS = {

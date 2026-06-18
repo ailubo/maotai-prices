@@ -10,9 +10,9 @@
 |------|------|------|---------|
 | `data.json` | JSON | 2026 茅台价格（162点），默认年份 | 每日追加 |
 | `all_prices.jsonl` | JSONL | 2026 全品类酒价（251款×160天，31508行） | 每日追加 |
-| `data-2025.json` | JSON | 2025 茅台价格（~197点） | 批量回填 |
-| `all_prices-2025.jsonl` | JSONL | 2025 全品类酒价 | 批量回填 |
-| `state-2025.json` | JSON | 2025 批处理断点续传状态 | 自动维护 |
+| `data-2025.json` | JSON | 2025 茅台价格（188点） | 批量回填 |
+| `all_prices-2025.jsonl` | JSONL | 2025 全品类酒价（47515行） | 批量回填 |
+| `scripts/2025-backfill/state-2025.json` | JSON | 2025 回填断点续传状态 | 已归档 |
 | `regenerate.py` | Python | 一键重生成所有 MD（data.json → 月报+总览） | 改 data.json 后必跑 |
 
 ### 生成文件（regenerate.py 自动产出）
@@ -27,6 +27,7 @@
 | 文件 | 用途 | 用法 |
 |------|------|------|
 | `batch_extract_all.mjs` | Light 模式批量提取 | `node batch_extract_all.mjs [--year YYYY] <links.json>` |
+| `scripts/2025-backfill/` | 2025 历史回填一次性工具 | 仅审计/重跑 2025 存档时使用 |
 | `archived/batch_extract_prices.mjs` | 旧版（仅茅台），已归档 | 不再使用 |
 
 ### 数据源
@@ -44,6 +45,10 @@
 ```
 
 所有输出文件由 `--year` 参数自动推导，不需要手工指定文件名。
+
+## 2025 数据频率
+
+`今日酒价` 在 2025 年中切换发布频率：1-4 月基本每月 10 日一篇，6 月进入过渡期，7 月 4 日起转为逐日发布。因此 `data-2025.json` 上半年只有月度颗粒度是源头限制，不是抓取漏项；真正接近日频的数据从 2025-07 开始。链接错指 2026 文章的记录见 `sources/jinri-jiujia-wechat-links/2025-wrong-links.md`。
 
 ## 更新流程
 

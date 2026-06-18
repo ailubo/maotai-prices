@@ -29,7 +29,7 @@ Because of that, treat these files as Codex-generated attempts and keep auditing
 
 ## Added scripts
 
-### `fetch_2025_markdown.mjs`
+### `scripts/2025-backfill/fetch_2025_markdown.mjs`
 
 Early batch wrapper around `baoyu-fetch`.
 
@@ -46,7 +46,7 @@ Known issue:
 - It could wait too long or appear stuck around Defuddle / Readability / remote fallback behavior.
 - Do not use this script for further bulk WeChat article capture unless specifically debugging baoyu-fetch.
 
-### `fetch_2025_markdown_cdp.mjs`
+### `scripts/2025-backfill/fetch_2025_markdown_cdp.mjs`
 
 Project-specific Chrome CDP fast path for 2025 links.
 
@@ -83,20 +83,20 @@ Default quality gates:
 
 Verified sample:
 
-- `2025-09-23` succeeded with 35 tables and 428 rows in `2025-md-fastpath-test`
-- `2025-09-22` also exists in `2025-md-fastpath-test` with 35 tables and 428 rows
+- `2025-09-23` succeeded with 35 tables and 428 rows in a temporary fastpath test output
+- `2025-09-22` also succeeded with 35 tables and 428 rows in that temporary fastpath test output
 
 This script is preferred for future retry / continuation work.
 
-### `extract_2025_from_markdown.py`
+### `scripts/2025-backfill/extract_2025_from_markdown.py`
 
 Extractor for saved Markdown snapshots.
 
 Purpose:
 
 - read HTML tables embedded in `sources/jinri-jiujia-wechat-links/2025-md/*.md`
-- extract Moutai core daily records to `data-2025-from-md.json`
-- extract all product rows to `all_prices-2025-from-md.jsonl`
+- extract Moutai core daily records to `data-2025.json`
+- extract all product rows to `all_prices-2025.jsonl`
 - write a summary to `sources/jinri-jiujia-wechat-links/2025-md-summary.json`
 
 Important:
@@ -117,9 +117,9 @@ Current audit at the time this note was written:
 - Lowest row count in formal directory: 376
 - Adapter mix: earlier files may show `generic` or `cdp-js-content`
 
-### `sources/jinri-jiujia-wechat-links/2025-md-fastpath-test/`
+### Temporary fastpath test output
 
-Test output directory for `wechat_mp_fastpath.mjs`.
+Test output directory for `wechat_mp_fastpath.mjs`; this was removed after the validated captures were written to the formal `2025-md` directory.
 
 Current files:
 
@@ -128,11 +128,11 @@ Current files:
 
 Both are test captures and should not be confused with the formal `2025-md` directory.
 
-### `data-2025-from-md.json`
+### `data-2025.json`
 
 Core Moutai records extracted from Markdown snapshots.
 
-### `all_prices-2025-from-md.jsonl`
+### `all_prices-2025.jsonl`
 
 All extracted price rows from Markdown snapshots.
 
@@ -153,7 +153,7 @@ Current summary at the time this note was written:
 
 - `2025-md-state.json`: state for earlier fetch scripts
 - `2025-md-fastpath-state.json`: state for `wechat_mp_fastpath.mjs` when writing formal output
-- `2025-md-fastpath-test-state.json`: state for `wechat_mp_fastpath.mjs` test output
+- temporary fastpath test state: removed after the formal output was validated
 - `2025-md-handoff.md`: operational handoff notes from earlier work
 - `WECHAT_FASTPATH.md`: how to use the defensive fast path
 
@@ -188,7 +188,7 @@ node wechat_mp_fastpath.mjs `
 After each batch:
 
 ```powershell
-python extract_2025_from_markdown.py
+python scripts/2025-backfill/extract_2025_from_markdown.py
 ```
 
 Also audit table counts:
