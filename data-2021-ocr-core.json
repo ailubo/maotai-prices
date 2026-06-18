@@ -1,0 +1,786 @@
+{
+  "prices": [
+    {
+      "date": "2021-03-10",
+      "source": "今日酒价",
+      "source_kind": "image-ocr",
+      "guide_price": 1499,
+      "sanping": 2450,
+      "yuanxiang": 3220,
+      "signal": "🟢",
+      "ocr_manifest": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-03-10/manifest.json",
+      "matched_products": [
+        {
+          "kind": "yuanxiang",
+          "vintage": "21",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2021）",
+          "today": 3220,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-03-10/images/img-4.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/fibMPMbql6sHpiamAaka1fZq8SialCNfM9icDoYicGEzzNwEOdzamP3Z4nn7ryUTPlCTWG9QYw7wu8TQfFE4p5GkyWg/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1",
+          "imageIndex": "4"
+        },
+        {
+          "kind": "sanping",
+          "vintage": "21",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2021）",
+          "today": 2450,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-03-10/images/img-4.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/fibMPMbql6sHpiamAaka1fZq8SialCNfM9icDoYicGEzzNwEOdzamP3Z4nn7ryUTPlCTWG9QYw7wu8TQfFE4p5GkyWg/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1",
+          "imageIndex": "4"
+        },
+        {
+          "kind": "yuanxiang",
+          "vintage": "20",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2020）",
+          "today": 3220,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-03-10/images/img-4.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/fibMPMbql6sHpiamAaka1fZq8SialCNfM9icDoYicGEzzNwEOdzamP3Z4nn7ryUTPlCTWG9QYw7wu8TQfFE4p5GkyWg/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1",
+          "imageIndex": "4"
+        },
+        {
+          "kind": "sanping",
+          "vintage": "20",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2020）",
+          "today": 2460,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-03-10/images/img-4.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/fibMPMbql6sHpiamAaka1fZq8SialCNfM9icDoYicGEzzNwEOdzamP3Z4nn7ryUTPlCTWG9QYw7wu8TQfFE4p5GkyWg/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1",
+          "imageIndex": "4"
+        },
+        {
+          "kind": "yuanxiang",
+          "vintage": "20",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2020）",
+          "today": 970,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-03-10/images/img-4.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/fibMPMbql6sHpiamAaka1fZq8SialCNfM9icDoYicGEzzNwEOdzamP3Z4nn7ryUTPlCTWG9QYw7wu8TQfFE4p5GkyWg/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1",
+          "imageIndex": "4"
+        },
+        {
+          "kind": "sanping",
+          "vintage": "20",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2020）",
+          "today": 930,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-03-10/images/img-4.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/fibMPMbql6sHpiamAaka1fZq8SialCNfM9icDoYicGEzzNwEOdzamP3Z4nn7ryUTPlCTWG9QYw7wu8TQfFE4p5GkyWg/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1",
+          "imageIndex": "4"
+        }
+      ]
+    },
+    {
+      "date": "2021-04-10",
+      "source": "今日酒价",
+      "source_kind": "image-ocr",
+      "guide_price": 1499,
+      "sanping": 2470,
+      "yuanxiang": 3240,
+      "signal": "🟢",
+      "ocr_manifest": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-04-10/manifest.json",
+      "matched_products": [
+        {
+          "kind": "yuanxiang",
+          "vintage": "21",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2021）",
+          "today": 3240,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-04-10/images/img-5.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/fibMPMbql6sGicIFj4ceTVzjKZjOZTGSicQvImricy8XvVUf4wZ7xvxo76pTkHlCB7s5jYjpeH07FCqic4ndvPkrSBQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1",
+          "imageIndex": "5"
+        },
+        {
+          "kind": "sanping",
+          "vintage": "21",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2021）",
+          "today": 2470,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-04-10/images/img-5.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/fibMPMbql6sGicIFj4ceTVzjKZjOZTGSicQvImricy8XvVUf4wZ7xvxo76pTkHlCB7s5jYjpeH07FCqic4ndvPkrSBQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1",
+          "imageIndex": "5"
+        },
+        {
+          "kind": "yuanxiang",
+          "vintage": "20",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2020）",
+          "today": 3240,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-04-10/images/img-5.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/fibMPMbql6sGicIFj4ceTVzjKZjOZTGSicQvImricy8XvVUf4wZ7xvxo76pTkHlCB7s5jYjpeH07FCqic4ndvPkrSBQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1",
+          "imageIndex": "5"
+        },
+        {
+          "kind": "sanping",
+          "vintage": "20",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2020）",
+          "today": 2480,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-04-10/images/img-5.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/fibMPMbql6sGicIFj4ceTVzjKZjOZTGSicQvImricy8XvVUf4wZ7xvxo76pTkHlCB7s5jYjpeH07FCqic4ndvPkrSBQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1",
+          "imageIndex": "5"
+        },
+        {
+          "kind": "yuanxiang",
+          "vintage": "20",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2020）",
+          "today": 970,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-04-10/images/img-5.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/fibMPMbql6sGicIFj4ceTVzjKZjOZTGSicQvImricy8XvVUf4wZ7xvxo76pTkHlCB7s5jYjpeH07FCqic4ndvPkrSBQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1",
+          "imageIndex": "5"
+        },
+        {
+          "kind": "sanping",
+          "vintage": "20",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2020）",
+          "today": 930,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-04-10/images/img-5.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/fibMPMbql6sGicIFj4ceTVzjKZjOZTGSicQvImricy8XvVUf4wZ7xvxo76pTkHlCB7s5jYjpeH07FCqic4ndvPkrSBQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1",
+          "imageIndex": "5"
+        }
+      ]
+    },
+    {
+      "date": "2021-05-10",
+      "source": "今日酒价",
+      "source_kind": "image-ocr",
+      "guide_price": 1499,
+      "sanping": 2600,
+      "yuanxiang": 3250,
+      "signal": "🟢",
+      "ocr_manifest": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-05-10/manifest.json",
+      "matched_products": [
+        {
+          "kind": "yuanxiang",
+          "vintage": "21",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2021）",
+          "today": 3250,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-05-10/images/img-5.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/fibMPMbql6sHFohYicyia2RCbcoelOLw2xvHoRAmZjcVjjNpE066iboCiaFbltEiajL4GjpBsfpYwhQfzSz23ENo5wKQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1",
+          "imageIndex": "5"
+        },
+        {
+          "kind": "sanping",
+          "vintage": "21",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2021）",
+          "today": 2600,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-05-10/images/img-5.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/fibMPMbql6sHFohYicyia2RCbcoelOLw2xvHoRAmZjcVjjNpE066iboCiaFbltEiajL4GjpBsfpYwhQfzSz23ENo5wKQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1",
+          "imageIndex": "5"
+        },
+        {
+          "kind": "yuanxiang",
+          "vintage": "20",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2020）",
+          "today": 3250,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-05-10/images/img-5.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/fibMPMbql6sHFohYicyia2RCbcoelOLw2xvHoRAmZjcVjjNpE066iboCiaFbltEiajL4GjpBsfpYwhQfzSz23ENo5wKQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1",
+          "imageIndex": "5"
+        },
+        {
+          "kind": "sanping",
+          "vintage": "20",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2020）",
+          "today": 2610,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-05-10/images/img-5.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/fibMPMbql6sHFohYicyia2RCbcoelOLw2xvHoRAmZjcVjjNpE066iboCiaFbltEiajL4GjpBsfpYwhQfzSz23ENo5wKQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1",
+          "imageIndex": "5"
+        },
+        {
+          "kind": "yuanxiang",
+          "vintage": "20",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2020）",
+          "today": 970,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-05-10/images/img-5.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/fibMPMbql6sHFohYicyia2RCbcoelOLw2xvHoRAmZjcVjjNpE066iboCiaFbltEiajL4GjpBsfpYwhQfzSz23ENo5wKQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1",
+          "imageIndex": "5"
+        },
+        {
+          "kind": "sanping",
+          "vintage": "20",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2020）",
+          "today": 945,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-05-10/images/img-5.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/fibMPMbql6sHFohYicyia2RCbcoelOLw2xvHoRAmZjcVjjNpE066iboCiaFbltEiajL4GjpBsfpYwhQfzSz23ENo5wKQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1",
+          "imageIndex": "5"
+        }
+      ]
+    },
+    {
+      "date": "2021-06-10",
+      "source": "今日酒价",
+      "source_kind": "image-ocr",
+      "guide_price": 1499,
+      "sanping": 2780,
+      "yuanxiang": 3440,
+      "signal": "🟢",
+      "ocr_manifest": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-06-10/manifest.json",
+      "matched_products": [
+        {
+          "kind": "yuanxiang",
+          "vintage": "21",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2021）",
+          "today": 3440,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-06-10/images/img-5.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/fibMPMbql6sE5x9rSe3wiaYf9CfYKicQicBXXfic5nFLgL6jdiaHyZ5uvIsVhMG59zq5DFhYMCdjsKrqiaUERBz09BWiag/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1",
+          "imageIndex": "5"
+        },
+        {
+          "kind": "sanping",
+          "vintage": "21",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2021）",
+          "today": 2780,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-06-10/images/img-5.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/fibMPMbql6sE5x9rSe3wiaYf9CfYKicQicBXXfic5nFLgL6jdiaHyZ5uvIsVhMG59zq5DFhYMCdjsKrqiaUERBz09BWiag/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1",
+          "imageIndex": "5"
+        },
+        {
+          "kind": "yuanxiang",
+          "vintage": "20",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2020）",
+          "today": 3440,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-06-10/images/img-5.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/fibMPMbql6sE5x9rSe3wiaYf9CfYKicQicBXXfic5nFLgL6jdiaHyZ5uvIsVhMG59zq5DFhYMCdjsKrqiaUERBz09BWiag/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1",
+          "imageIndex": "5"
+        },
+        {
+          "kind": "sanping",
+          "vintage": "20",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2020）",
+          "today": 2790,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-06-10/images/img-5.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/fibMPMbql6sE5x9rSe3wiaYf9CfYKicQicBXXfic5nFLgL6jdiaHyZ5uvIsVhMG59zq5DFhYMCdjsKrqiaUERBz09BWiag/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1",
+          "imageIndex": "5"
+        },
+        {
+          "kind": "yuanxiang",
+          "vintage": "20",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2020）",
+          "today": 980,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-06-10/images/img-5.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/fibMPMbql6sE5x9rSe3wiaYf9CfYKicQicBXXfic5nFLgL6jdiaHyZ5uvIsVhMG59zq5DFhYMCdjsKrqiaUERBz09BWiag/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1",
+          "imageIndex": "5"
+        },
+        {
+          "kind": "sanping",
+          "vintage": "20",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2020）",
+          "today": 955,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-06-10/images/img-5.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/fibMPMbql6sE5x9rSe3wiaYf9CfYKicQicBXXfic5nFLgL6jdiaHyZ5uvIsVhMG59zq5DFhYMCdjsKrqiaUERBz09BWiag/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1",
+          "imageIndex": "5"
+        }
+      ]
+    },
+    {
+      "date": "2021-07-10",
+      "source": "今日酒价",
+      "source_kind": "image-ocr",
+      "guide_price": 1499,
+      "sanping": 2800,
+      "yuanxiang": 3530,
+      "signal": "🟢",
+      "ocr_manifest": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-07-10/manifest.json",
+      "matched_products": [
+        {
+          "kind": "yuanxiang",
+          "vintage": "21",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2021）",
+          "today": 3530,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-07-10/images/img-5.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/WKxBrSFcm45dxibFS2tHFhC22SaewoYmxRfjLL1YzzylLWXghzxJFHKiaibltMicRicd50tCloRicvOCFxo9uqRK1XMA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1",
+          "imageIndex": "5"
+        },
+        {
+          "kind": "sanping",
+          "vintage": "21",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2021）",
+          "today": 2800,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-07-10/images/img-5.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/WKxBrSFcm45dxibFS2tHFhC22SaewoYmxRfjLL1YzzylLWXghzxJFHKiaibltMicRicd50tCloRicvOCFxo9uqRK1XMA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1",
+          "imageIndex": "5"
+        },
+        {
+          "kind": "yuanxiang",
+          "vintage": "20",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2020）",
+          "today": 3530,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-07-10/images/img-5.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/WKxBrSFcm45dxibFS2tHFhC22SaewoYmxRfjLL1YzzylLWXghzxJFHKiaibltMicRicd50tCloRicvOCFxo9uqRK1XMA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1",
+          "imageIndex": "5"
+        },
+        {
+          "kind": "sanping",
+          "vintage": "20",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2020）",
+          "today": 2825,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-07-10/images/img-5.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/WKxBrSFcm45dxibFS2tHFhC22SaewoYmxRfjLL1YzzylLWXghzxJFHKiaibltMicRicd50tCloRicvOCFxo9uqRK1XMA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1",
+          "imageIndex": "5"
+        },
+        {
+          "kind": "yuanxiang",
+          "vintage": "20",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2020）",
+          "today": 960,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-07-10/images/img-5.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/WKxBrSFcm45dxibFS2tHFhC22SaewoYmxRfjLL1YzzylLWXghzxJFHKiaibltMicRicd50tCloRicvOCFxo9uqRK1XMA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1",
+          "imageIndex": "5"
+        },
+        {
+          "kind": "sanping",
+          "vintage": "20",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2020）",
+          "today": 940,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-07-10/images/img-5.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/WKxBrSFcm45dxibFS2tHFhC22SaewoYmxRfjLL1YzzylLWXghzxJFHKiaibltMicRicd50tCloRicvOCFxo9uqRK1XMA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1",
+          "imageIndex": "5"
+        }
+      ]
+    },
+    {
+      "date": "2021-08-10",
+      "source": "今日酒价",
+      "source_kind": "image-ocr",
+      "guide_price": 1499,
+      "sanping": 3010,
+      "yuanxiang": 3820,
+      "signal": "🟢",
+      "ocr_manifest": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-08-10/manifest.json",
+      "matched_products": [
+        {
+          "kind": "yuanxiang",
+          "vintage": "21",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2021）",
+          "today": 3820,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-08-10/images/img-5.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/WKxBrSFcm46kxWicDdTIUJ1jZWYpRRObrGerK01PNPtdgYmlQe6obX60gqnryHVFwnpqUUAN8Sj6z2G8kjN40QA/640?wx_fmt=png",
+          "imageIndex": "5"
+        },
+        {
+          "kind": "sanping",
+          "vintage": "21",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2021）",
+          "today": 3010,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-08-10/images/img-5.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/WKxBrSFcm46kxWicDdTIUJ1jZWYpRRObrGerK01PNPtdgYmlQe6obX60gqnryHVFwnpqUUAN8Sj6z2G8kjN40QA/640?wx_fmt=png",
+          "imageIndex": "5"
+        },
+        {
+          "kind": "yuanxiang",
+          "vintage": "20",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2020）",
+          "today": 3820,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-08-10/images/img-5.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/WKxBrSFcm46kxWicDdTIUJ1jZWYpRRObrGerK01PNPtdgYmlQe6obX60gqnryHVFwnpqUUAN8Sj6z2G8kjN40QA/640?wx_fmt=png",
+          "imageIndex": "5"
+        },
+        {
+          "kind": "sanping",
+          "vintage": "20",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2020）",
+          "today": 3030,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-08-10/images/img-5.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/WKxBrSFcm46kxWicDdTIUJ1jZWYpRRObrGerK01PNPtdgYmlQe6obX60gqnryHVFwnpqUUAN8Sj6z2G8kjN40QA/640?wx_fmt=png",
+          "imageIndex": "5"
+        },
+        {
+          "kind": "yuanxiang",
+          "vintage": "20",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2020）",
+          "today": 970,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-08-10/images/img-5.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/WKxBrSFcm46kxWicDdTIUJ1jZWYpRRObrGerK01PNPtdgYmlQe6obX60gqnryHVFwnpqUUAN8Sj6z2G8kjN40QA/640?wx_fmt=png",
+          "imageIndex": "5"
+        },
+        {
+          "kind": "sanping",
+          "vintage": "20",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2020）",
+          "today": 935,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-08-10/images/img-5.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/WKxBrSFcm46kxWicDdTIUJ1jZWYpRRObrGerK01PNPtdgYmlQe6obX60gqnryHVFwnpqUUAN8Sj6z2G8kjN40QA/640?wx_fmt=png",
+          "imageIndex": "5"
+        }
+      ]
+    },
+    {
+      "date": "2021-09-10",
+      "source": "今日酒价",
+      "source_kind": "image-ocr",
+      "guide_price": 1499,
+      "sanping": 3050,
+      "yuanxiang": 3850,
+      "signal": "🟢",
+      "ocr_manifest": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-09-10/manifest.json",
+      "matched_products": [
+        {
+          "kind": "yuanxiang",
+          "vintage": "21",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2021）",
+          "today": 3850,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-09-10/images/img-7.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/WKxBrSFcm468EiboweUCiax76DQJgVYhiarwKggVyNVeREjWibpU7FIEavv6FLIhsAPpGGs0Jsu273Qz4D4oRyluLw/640?wx_fmt=png",
+          "imageIndex": "7"
+        },
+        {
+          "kind": "sanping",
+          "vintage": "21",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2021）",
+          "today": 3050,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-09-10/images/img-7.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/WKxBrSFcm468EiboweUCiax76DQJgVYhiarwKggVyNVeREjWibpU7FIEavv6FLIhsAPpGGs0Jsu273Qz4D4oRyluLw/640?wx_fmt=png",
+          "imageIndex": "7"
+        },
+        {
+          "kind": "yuanxiang",
+          "vintage": "20",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2020）",
+          "today": 3860,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-09-10/images/img-7.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/WKxBrSFcm468EiboweUCiax76DQJgVYhiarwKggVyNVeREjWibpU7FIEavv6FLIhsAPpGGs0Jsu273Qz4D4oRyluLw/640?wx_fmt=png",
+          "imageIndex": "7"
+        },
+        {
+          "kind": "sanping",
+          "vintage": "20",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2020）",
+          "today": 3060,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-09-10/images/img-7.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/WKxBrSFcm468EiboweUCiax76DQJgVYhiarwKggVyNVeREjWibpU7FIEavv6FLIhsAPpGGs0Jsu273Qz4D4oRyluLw/640?wx_fmt=png",
+          "imageIndex": "7"
+        },
+        {
+          "kind": "yuanxiang",
+          "vintage": "20",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2020）",
+          "today": 970,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-09-10/images/img-7.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/WKxBrSFcm468EiboweUCiax76DQJgVYhiarwKggVyNVeREjWibpU7FIEavv6FLIhsAPpGGs0Jsu273Qz4D4oRyluLw/640?wx_fmt=png",
+          "imageIndex": "7"
+        },
+        {
+          "kind": "sanping",
+          "vintage": "20",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2020）",
+          "today": 935,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-09-10/images/img-7.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/WKxBrSFcm468EiboweUCiax76DQJgVYhiarwKggVyNVeREjWibpU7FIEavv6FLIhsAPpGGs0Jsu273Qz4D4oRyluLw/640?wx_fmt=png",
+          "imageIndex": "7"
+        }
+      ]
+    },
+    {
+      "date": "2021-10-10",
+      "source": "今日酒价",
+      "source_kind": "image-ocr",
+      "guide_price": 1499,
+      "sanping": 2760,
+      "yuanxiang": 3820,
+      "signal": "🟢",
+      "ocr_manifest": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-10-10/manifest.json",
+      "matched_products": [
+        {
+          "kind": "yuanxiang",
+          "vintage": "21",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2021）",
+          "today": 3820,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-10-10/images/img-6.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/WKxBrSFcm440vribX8jw872DIqarhTRLHkQMqIZThkBYLocz0EFTWRm8wlvEAWr4S39voFPYYgcibXYA5FibqD1og/640?wx_fmt=png",
+          "imageIndex": "6"
+        },
+        {
+          "kind": "sanping",
+          "vintage": "21",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2021）",
+          "today": 2760,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-10-10/images/img-6.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/WKxBrSFcm440vribX8jw872DIqarhTRLHkQMqIZThkBYLocz0EFTWRm8wlvEAWr4S39voFPYYgcibXYA5FibqD1og/640?wx_fmt=png",
+          "imageIndex": "6"
+        },
+        {
+          "kind": "yuanxiang",
+          "vintage": "20",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2020）",
+          "today": 3820,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-10-10/images/img-6.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/WKxBrSFcm440vribX8jw872DIqarhTRLHkQMqIZThkBYLocz0EFTWRm8wlvEAWr4S39voFPYYgcibXYA5FibqD1og/640?wx_fmt=png",
+          "imageIndex": "6"
+        },
+        {
+          "kind": "sanping",
+          "vintage": "20",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2020）",
+          "today": 2930,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-10-10/images/img-6.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/WKxBrSFcm440vribX8jw872DIqarhTRLHkQMqIZThkBYLocz0EFTWRm8wlvEAWr4S39voFPYYgcibXYA5FibqD1og/640?wx_fmt=png",
+          "imageIndex": "6"
+        },
+        {
+          "kind": "yuanxiang",
+          "vintage": "20",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2020）",
+          "today": 965,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-10-10/images/img-6.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/WKxBrSFcm440vribX8jw872DIqarhTRLHkQMqIZThkBYLocz0EFTWRm8wlvEAWr4S39voFPYYgcibXYA5FibqD1og/640?wx_fmt=png",
+          "imageIndex": "6"
+        },
+        {
+          "kind": "sanping",
+          "vintage": "20",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2020）",
+          "today": 935,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-10-10/images/img-6.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/WKxBrSFcm440vribX8jw872DIqarhTRLHkQMqIZThkBYLocz0EFTWRm8wlvEAWr4S39voFPYYgcibXYA5FibqD1og/640?wx_fmt=png",
+          "imageIndex": "6"
+        }
+      ]
+    },
+    {
+      "date": "2021-11-10",
+      "source": "今日酒价",
+      "source_kind": "image-ocr",
+      "guide_price": 1499,
+      "sanping": 2680,
+      "yuanxiang": 3430,
+      "signal": "🟢",
+      "ocr_manifest": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-11-10/manifest.json",
+      "matched_products": [
+        {
+          "kind": "yuanxiang",
+          "vintage": "21",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2021）",
+          "today": 3430,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-11-10/images/img-7.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/WKxBrSFcm45g3ZjF3Q2iaMW5F63JSCRHnlgEwTXSwelp3tZxROr84o7wmibG9KFmPUfqTplFTSV5taRdVib5tICYg/640?wx_fmt=png",
+          "imageIndex": "7"
+        },
+        {
+          "kind": "sanping",
+          "vintage": "21",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2021）",
+          "today": 2680,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-11-10/images/img-7.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/WKxBrSFcm45g3ZjF3Q2iaMW5F63JSCRHnlgEwTXSwelp3tZxROr84o7wmibG9KFmPUfqTplFTSV5taRdVib5tICYg/640?wx_fmt=png",
+          "imageIndex": "7"
+        },
+        {
+          "kind": "yuanxiang",
+          "vintage": "20",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2020）",
+          "today": 3450,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-11-10/images/img-7.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/WKxBrSFcm45g3ZjF3Q2iaMW5F63JSCRHnlgEwTXSwelp3tZxROr84o7wmibG9KFmPUfqTplFTSV5taRdVib5tICYg/640?wx_fmt=png",
+          "imageIndex": "7"
+        },
+        {
+          "kind": "sanping",
+          "vintage": "20",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2020）",
+          "today": 2850,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-11-10/images/img-7.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/WKxBrSFcm45g3ZjF3Q2iaMW5F63JSCRHnlgEwTXSwelp3tZxROr84o7wmibG9KFmPUfqTplFTSV5taRdVib5tICYg/640?wx_fmt=png",
+          "imageIndex": "7"
+        },
+        {
+          "kind": "yuanxiang",
+          "vintage": "20",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2020）",
+          "today": 975,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-11-10/images/img-7.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/WKxBrSFcm45g3ZjF3Q2iaMW5F63JSCRHnlgEwTXSwelp3tZxROr84o7wmibG9KFmPUfqTplFTSV5taRdVib5tICYg/640?wx_fmt=png",
+          "imageIndex": "7"
+        },
+        {
+          "kind": "sanping",
+          "vintage": "20",
+          "layout": "ocr-column-price",
+          "productOcr": "飞天（2020）",
+          "today": 935,
+          "yesterday": null,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-11-10/images/img-7.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/WKxBrSFcm45g3ZjF3Q2iaMW5F63JSCRHnlgEwTXSwelp3tZxROr84o7wmibG9KFmPUfqTplFTSV5taRdVib5tICYg/640?wx_fmt=png",
+          "imageIndex": "7"
+        }
+      ]
+    },
+    {
+      "date": "2021-12-10",
+      "source": "今日酒价",
+      "source_kind": "image-ocr",
+      "guide_price": 1499,
+      "sanping": 2700,
+      "yuanxiang": 3550,
+      "signal": "🟢",
+      "ocr_manifest": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-12-10/manifest.json",
+      "matched_products": [
+        {
+          "kind": "yuanxiang",
+          "vintage": "21",
+          "layout": "ocr-row-price",
+          "productOcr": "21年飞天（原）",
+          "today": 3550,
+          "yesterday": 3550,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-12-10/images/img-9.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/WKxBrSFcm47lJrsrcZRbPKQEG9L2Yoe3B0tgAEQpuCiaXxu5cn4wUqJV3S8lFlcQCOL6E3MLYz6d8uydHRwgsjA/640?wx_fmt=png",
+          "imageIndex": "9"
+        },
+        {
+          "kind": "sanping",
+          "vintage": "21",
+          "layout": "ocr-row-price",
+          "productOcr": "21年飞天（散）",
+          "today": 2700,
+          "yesterday": 2660,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-12-10/images/img-9.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/WKxBrSFcm47lJrsrcZRbPKQEG9L2Yoe3B0tgAEQpuCiaXxu5cn4wUqJV3S8lFlcQCOL6E3MLYz6d8uydHRwgsjA/640?wx_fmt=png",
+          "imageIndex": "9"
+        },
+        {
+          "kind": "yuanxiang",
+          "vintage": "20",
+          "layout": "ocr-row-price",
+          "productOcr": "20年飞天（原）",
+          "today": 3550,
+          "yesterday": 3550,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-12-10/images/img-9.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/WKxBrSFcm47lJrsrcZRbPKQEG9L2Yoe3B0tgAEQpuCiaXxu5cn4wUqJV3S8lFlcQCOL6E3MLYz6d8uydHRwgsjA/640?wx_fmt=png",
+          "imageIndex": "9"
+        },
+        {
+          "kind": "sanping",
+          "vintage": "20",
+          "layout": "ocr-row-price",
+          "productOcr": "20年飞天（散）",
+          "today": 2750,
+          "yesterday": 2730,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-12-10/images/img-9.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/WKxBrSFcm47lJrsrcZRbPKQEG9L2Yoe3B0tgAEQpuCiaXxu5cn4wUqJV3S8lFlcQCOL6E3MLYz6d8uydHRwgsjA/640?wx_fmt=png",
+          "imageIndex": "9"
+        },
+        {
+          "kind": "yuanxiang",
+          "vintage": "20",
+          "layout": "ocr-row-price",
+          "productOcr": "20年飞天（原）",
+          "today": 985,
+          "yesterday": 985,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-12-10/images/img-9.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/WKxBrSFcm47lJrsrcZRbPKQEG9L2Yoe3B0tgAEQpuCiaXxu5cn4wUqJV3S8lFlcQCOL6E3MLYz6d8uydHRwgsjA/640?wx_fmt=png",
+          "imageIndex": "9"
+        },
+        {
+          "kind": "sanping",
+          "vintage": "20",
+          "layout": "ocr-row-price",
+          "productOcr": "20年飞天（散）",
+          "today": 945,
+          "yesterday": 945,
+          "image": "sources/jinri-jiujia-wechat-links/2021-ocr/2021-12-10/images/img-9.png",
+          "imageUrl": "https://mmbiz.qpic.cn/mmbiz_png/WKxBrSFcm47lJrsrcZRbPKQEG9L2Yoe3B0tgAEQpuCiaXxu5cn4wUqJV3S8lFlcQCOL6E3MLYz6d8uydHRwgsjA/640?wx_fmt=png",
+          "imageIndex": "9"
+        }
+      ]
+    }
+  ],
+  "note": "Core Moutai prices extracted from image OCR under sources/jinri-jiujia-wechat-links/2021-ocr.",
+  "generated_at": "2026-06-18T22:35:57+08:00"
+}

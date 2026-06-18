@@ -1,0 +1,10 @@
+{
+  "targetYear": 2021,
+  "manifestCount": 10,
+  "coreRecords": 10,
+  "ocrCoreRows": 60,
+  "missingOcrDates": [],
+  "noCoreOcrDates": [],
+  "duplicateCoreDates": [],
+  "generatedAt": "2026-06-18T22:35:57+08:00"
+}

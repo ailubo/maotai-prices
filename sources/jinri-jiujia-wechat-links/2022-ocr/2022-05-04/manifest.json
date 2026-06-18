@@ -1,0 +1,21 @@
+﻿{
+    "date":  "2022-05-04",
+    "sourceMarkdown":  "sources/jinri-jiujia-wechat-links/2022-md/2022-05-04.md",
+    "minHeight":  1000,
+    "language":  "zh-Hans-CN",
+    "images":  [
+                   {
+                       "index":  "7",
+                       "url":  "https://mmbiz.qpic.cn/mmbiz_png/WKxBrSFcm46emf2pDcEJFJrQ4EIgCd8VsPvJxNcAaFFVrEVXRVRU0bYresObPzcQADR8DicnR9PSnHsic5mzXbcw/640?wx_fmt=png",
+                       "declaredHeight":  1409,
+                       "type":  "png",
+                       "image":  "sources/jinri-jiujia-wechat-links/2022-ocr/2022-05-04/images/img-7.png",
+                       "text":  "sources/jinri-jiujia-wechat-links/2022-ocr/2022-05-04/img-7.txt",
+                       "words":  "sources/jinri-jiujia-wechat-links/2022-ocr/2022-05-04/img-7.words.json",
+                       "width":  1038,
+                       "height":  2530,
+                       "textLength":  1102,
+                       "wordCount":  387
+                   }
+               ]
+}

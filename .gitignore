@@ -1,3 +1,5 @@
 .cdp_url
 *-fastpath-test/
 *-fastpath-test-state.json
+tmp-ocr/
+sources/jinri-jiujia-wechat-links/*-ocr/*/images/

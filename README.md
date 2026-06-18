@@ -10,10 +10,12 @@
 |------|------|------|---------|
 | `data.json` | JSON | 2026 茅台价格（162点），默认年份 | 每日追加 |
 | `all_prices.jsonl` | JSONL | 2026 全品类酒价（251款×160天，31508行） | 每日追加 |
-| `data-2021.json` | JSON | 2021 茅台价格（0点；原文为图片型） | 历史回填 |
+| `data-2021.json` | JSON | 2021 茅台价格（10点；OCR核心价） | 历史回填 |
 | `all_prices-2021.jsonl` | JSONL | 2021 全品类酒价（0行；原文为图片型） | 历史回填 |
-| `data-2022.json` | JSON | 2022 茅台价格（4点） | 历史回填 |
+| `core_prices-2021-ocr.jsonl` | JSONL | 2021 OCR 核心飞天行（复核用） | 历史回填 |
+| `data-2022.json` | JSON | 2022 茅台价格（14点；10点OCR+4点HTML） | 历史回填 |
 | `all_prices-2022.jsonl` | JSONL | 2022 全品类酒价（1230行） | 历史回填 |
+| `core_prices-2022-ocr.jsonl` | JSONL | 2022 OCR 核心飞天行（复核用） | 历史回填 |
 | `data-2023.json` | JSON | 2023 茅台价格（12点） | 历史回填 |
 | `all_prices-2023.jsonl` | JSONL | 2023 全品类酒价（3871行） | 历史回填 |
 | `data-2024.json` | JSON | 2024 茅台价格（13点） | 历史回填 |
@@ -60,7 +62,7 @@
 
 ## 2021-2024 历史回填
 
-2021-2024 已使用 `wechat_mp_fastpath.mjs` 存档到 `sources/jinri-jiujia-wechat-links/YYYY-md/`。2021 全年和 2022-01 至 2022-10 的旧文章是图片型正文，没有 HTML 表格，因此只保留 Markdown 原文和远程图片链接，结构化抽取为空；2022-11 起、2023、2024 为 HTML 表格，可抽取到 `data-YYYY.json` 和 `all_prices-YYYY.jsonl`。当前仓库没有 `2020-links.json/csv`。
+2021-2024 已使用 `wechat_mp_fastpath.mjs` 存档到 `sources/jinri-jiujia-wechat-links/YYYY-md/`。2021 全年和 2022-01 至 2022-10 的旧文章是图片型正文，没有 HTML 表格；核心飞天散瓶/原箱价通过 Windows OCR 从长图补入 `data-2021.json` / `data-2022.json`，OCR 中间文件在 `sources/jinri-jiujia-wechat-links/YYYY-ocr/`。2022-11 起、2023、2024 为 HTML 表格，可抽取到 `data-YYYY.json` 和 `all_prices-YYYY.jsonl`。当前仓库没有 `2020-links.json/csv`。
 
 ## 更新流程
 
