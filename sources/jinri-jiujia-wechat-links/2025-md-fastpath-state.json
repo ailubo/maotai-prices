@@ -993,6 +993,20 @@
       "rowCount": 434,
       "imageCount": 51,
       "finalUrl": "https://mp.weixin.qq.com/s/f2Ouun3Xp6Cxq3lJr_w88Q"
+    },
+    "2025-05-10": {
+      "url": "https://mp.weixin.qq.com/s/BSIFLD5EKMuSsrGkcSDrPw",
+      "file": "sources\\jinri-jiujia-wechat-links\\2025-md\\2025-05-10.md",
+      "adapter": "wechat-mp-fastpath",
+      "bytes": 225116,
+      "title": "今日酒价-精品茅台上涨  各大名酒批发参考价 5月10日",
+      "accountName": "今日酒价",
+      "publishDate": "2025-05-10",
+      "publishTime": "2025年5月10日 09:53",
+      "tableCount": 36,
+      "rowCount": 436,
+      "imageCount": 51,
+      "finalUrl": "https://mp.weixin.qq.com/s/BSIFLD5EKMuSsrGkcSDrPw"
     }
   },
   "failed": {
@@ -1037,12 +1051,6 @@
       "file": "sources\\jinri-jiujia-wechat-links\\2025-md\\2025-05-12.md",
       "adapter": "wechat-mp-fastpath",
       "error": "timed out waiting for #js_content: title=今日酒价-飞天茅台继续上涨 各大名酒批发参考价  5月12日 tables=79 rows=279 text=6007 sample=点击蓝字 今日酒价 关注我们 ▪200万酒商的经营参考 ▪ _ 茅台飞天 2026年5月12日 (公众号: 今日酒价) 品名 规格 昨日行情 今日行情 26年飞天(原) 53度/500ml 1680 1685 ⬆ 26年飞天(散) 53度/500ml 1645 1645 25年飞天(原) 53度/500ml 1690 1700 ⬆ 25年飞天(散) 53度/500ml 1650 1660 ⬆ 公斤茅台(原) 53度/1L 3260 3260 43度飞天(原) 43度/500ml 835 835 精品 53度/500ml 2310 2310 十五年 53度/500ml 4260 4260 三十年"
-    },
-    "2025-05-10": {
-      "url": "https://mp.weixin.qq.com/s/kv-jykMVwJbLURbAIZlYZw",
-      "file": "sources\\jinri-jiujia-wechat-links\\2025-md\\2025-05-10.md",
-      "adapter": "wechat-mp-fastpath",
-      "error": "timed out waiting for #js_content: title=今日酒价-茅台价格上涨 各大名酒批发参考价  5月10日 tables=79 rows=279 text=6005 sample=点击蓝字 今日酒价 关注我们 ▪200万酒商的经营参考 ▪ _ 茅台飞天 2026年5月10日 (公众号: 今日酒价) 品名 规格 昨日行情 今日行情 26年飞天(原) 53度/500ml 1665 1675 ⬆ 26年飞天(散) 53度/500ml 1630 1630 25年飞天(原) 53度/500ml 1680 1690 ⬆ 25年飞天(散) 53度/500ml 1650 1650 公斤茅台(原) 53度/1L 3230 3230 43度飞天(原) 43度/500ml 835 835 精品 53度/500ml 2310 2310 十五年 53度/500ml 4240 4260 ⬆ 三十年"
     },
     "2025-03-28": {
       "url": "https://mp.weixin.qq.com/s/0Ly8Npe5YYGJoytXccPIzw",
@@ -1153,5 +1161,5 @@
       "error": "publish date mismatch: expected 2025-01-13, got 2026-01-13"
     }
   },
-  "updatedAt": "2026-06-18T02:01:16.905Z"
+  "updatedAt": "2026-06-18T13:45:57.998Z"
 }

@@ -101,6 +101,31 @@
       ]
     },
     {
+      "date": "2025-05-10",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 2080,
+      "yuanxiang": 2175,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/BSIFLD5EKMuSsrGkcSDrPw",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-05-10.md",
+      "title": "今日酒价-精品茅台上涨  各大名酒批发参考价 5月10日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 2175
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 2080
+        }
+      ]
+    },
+    {
       "date": "2025-06-10",
       "source": "今日酒价",
       "guide_price": 1499,
@@ -4702,5 +4727,5 @@
     }
   ],
   "note": "Extracted from WeChat markdown snapshots under sources/jinri-jiujia-wechat-links/2025-md.",
-  "generated_at": "2026-06-18T21:13:55+08:00"
+  "generated_at": "2026-06-18T21:47:03+08:00"
 }

@@ -40,4 +40,4 @@ These records in `2025-links.json` did not produce Markdown because the current 
 - 2025-05-10 was recovered from account-scoped WeChat search as `https://mp.weixin.qq.com/s/BSIFLD5EKMuSsrGkcSDrPw`; HTML `ct` validates to 2025-05-10.
 - 25 link records still need corrected 2025 URLs.
 - The accepted Markdown files have no low-table/low-row failures; latest audit minimum was `tables=34`, `rows=376`.
-- Latest parser summary after the fastpath run: `coreRecords=188`, `allPriceRows=47515`, `missingMarkdownDates=26`, `noProductDates=0`, `noCoreMaotaiDates=0`.
+- Latest parser summary after the fastpath run: `coreRecords=189`, `allPriceRows=47774`, `missingMarkdownDates=25`, `noProductDates=0`, `noCoreMaotaiDates=0`.

@@ -18,8 +18,8 @@
 | `all_prices-2023.jsonl` | JSONL | 2023 全品类酒价（3871行） | 历史回填 |
 | `data-2024.json` | JSON | 2024 茅台价格（13点） | 历史回填 |
 | `all_prices-2024.jsonl` | JSONL | 2024 全品类酒价（3718行） | 历史回填 |
-| `data-2025.json` | JSON | 2025 茅台价格（188点） | 批量回填 |
-| `all_prices-2025.jsonl` | JSONL | 2025 全品类酒价（47515行） | 批量回填 |
+| `data-2025.json` | JSON | 2025 茅台价格（189点） | 批量回填 |
+| `all_prices-2025.jsonl` | JSONL | 2025 全品类酒价（47774行） | 批量回填 |
 | `scripts/2025-backfill/state-2025.json` | JSON | 2025 回填断点续传状态 | 已归档 |
 | `regenerate.py` | Python | 一键重生成所有 MD（data.json → 月报+总览） | 改 data.json 后必跑 |
 
