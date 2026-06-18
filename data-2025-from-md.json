@@ -1,6 +1,1556 @@
 {
   "prices": [
     {
+      "date": "2025-01-10",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 2230,
+      "yuanxiang": 2260,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/f2Ouun3Xp6Cxq3lJr_w88Q",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-01-10.md",
+      "title": "今日酒价-375巽风飞天下跌  各大名酒批发参考价 1月10日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "24年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 2260
+        },
+        {
+          "category": "茅台飞天",
+          "product": "24年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 2230
+        }
+      ]
+    },
+    {
+      "date": "2025-02-10",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 2230,
+      "yuanxiang": 2280,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/dVDES_TGLLhkLMxi0p2kGQ",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-02-10.md",
+      "title": "今日酒价-43度低度飞天价涨  各大名酒批发参考价 2月10日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 2280
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 2230
+        }
+      ]
+    },
+    {
+      "date": "2025-03-10",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 2210,
+      "yuanxiang": 2245,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/v9LSM4s99TB6qgCvG0KD4g",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-03-10.md",
+      "title": "今日酒价-公斤茅台上涨  各大名酒批发参考价 3月10日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 2245
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 2210
+        }
+      ]
+    },
+    {
+      "date": "2025-04-10",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 2135,
+      "yuanxiang": 2150,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/9rYdzdGEd7mBOzB1M-crjA",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-04-10.md",
+      "title": "今日酒价-飞天茅台再次下跌  各大名酒批发参考价 4月10日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 2150
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 2135
+        }
+      ]
+    },
+    {
+      "date": "2025-06-10",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 2020,
+      "yuanxiang": 2080,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/veuXnsT0LlmagwH-nVxVmw",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-06-10.md",
+      "title": "今日酒价-原箱飞天茅台跌破2100  各大名酒批发参考价 6月10日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 2080
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 2020
+        }
+      ]
+    },
+    {
+      "date": "2025-06-16",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1930,
+      "yuanxiang": 1960,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/zrT3ZbOrKHvrrCEratpFkg",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-06-16.md",
+      "title": "今日酒价-飞天茅台即将1950  各大名酒批发参考价 6月16日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1960
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1930
+        }
+      ]
+    },
+    {
+      "date": "2025-06-25",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1780,
+      "yuanxiang": 1830,
+      "signal": "🟡",
+      "url": "https://mp.weixin.qq.com/s/NbktA71VL_-05XmOuwcuRQ",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-06-25.md",
+      "title": "今日酒价-飞天茅台跌破1800  各大名酒批发参考价 6月25日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1830
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1780
+        }
+      ]
+    },
+    {
+      "date": "2025-07-04",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1850,
+      "yuanxiang": 1935,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/2z-4aOfMsCxzn9Z8-BSm4g",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-07-04.md",
+      "title": "今日酒价-茅台价格回涨  各大名酒批发参考价  7月4日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1935
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1850
+        }
+      ]
+    },
+    {
+      "date": "2025-07-05",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1860,
+      "yuanxiang": 1935,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/KUwQZW9hVLIaizReGG5JgQ",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-07-05.md",
+      "title": "今日酒价-市场疲软，行情暂稳  各大名酒批发参考价 7月5日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1935
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1860
+        }
+      ]
+    },
+    {
+      "date": "2025-07-06",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1860,
+      "yuanxiang": 1950,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/0ze8utrueXODFmVl-3Wlug",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-07-06.md",
+      "title": "今日酒价-原箱茅台价格回升  各大名酒批发参考价 7月6日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1950
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1860
+        }
+      ]
+    },
+    {
+      "date": "2025-07-07",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1880,
+      "yuanxiang": 1950,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/_upbyUPACsJ3MLMD0WYnSQ",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-07-07.md",
+      "title": "今日酒价-茅台连续上涨  各大名酒批发参考价 7月7日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1950
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1880
+        }
+      ]
+    },
+    {
+      "date": "2025-07-08",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1880,
+      "yuanxiang": 1940,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/Xeh2TkUr0JttK-LBGeOZyw",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-07-08.md",
+      "title": "今日酒价-原箱茅台价格1940  各大名酒批发参考价 7月8日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1940
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1880
+        }
+      ]
+    },
+    {
+      "date": "2025-07-09",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1850,
+      "yuanxiang": 1925,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/c7eA4pMVddsqKSoGWJnNiQ",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-07-09.md",
+      "title": "今日酒价-茅台价格1850  各大名酒批发参考价 7月9日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1925
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1850
+        }
+      ]
+    },
+    {
+      "date": "2025-07-10",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1850,
+      "yuanxiang": 1925,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/xeMbj9LFSzM-c_BMeOY_ew",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-07-10.md",
+      "title": "今日酒价-茅台价格较稳  各大名酒批发参考价 7月10日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1925
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1850
+        }
+      ]
+    },
+    {
+      "date": "2025-07-11",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1870,
+      "yuanxiang": 1945,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/O7TwUsAnK8D14jExr3nXUg",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-07-11.md",
+      "title": "今日酒价-飞天茅台上涨  各大名酒批发参考价 7月11日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1945
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1870
+        }
+      ]
+    },
+    {
+      "date": "2025-07-12",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1870,
+      "yuanxiang": 1940,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/ZIRk-LHRtHH704a-Q0Jkow",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-07-12.md",
+      "title": "今日酒价-市场疲软，行情稳定  各大名酒批发参考价 7月12日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1940
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1870
+        }
+      ]
+    },
+    {
+      "date": "2025-07-13",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1870,
+      "yuanxiang": 1930,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/K1hGhnjLPekb9qlOYjNt0g",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-07-13.md",
+      "title": "今日酒价-行情比较稳定  各大名酒批发参考价 7月13日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1930
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1870
+        }
+      ]
+    },
+    {
+      "date": "2025-07-14",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1880,
+      "yuanxiang": 1935,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/_j2_ZGGzlqtqeOVlmlHaGA",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-07-14.md",
+      "title": "今日酒价-飞天茅台1880 各大名酒批发参考价 7月14日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1935
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1880
+        }
+      ]
+    },
+    {
+      "date": "2025-07-15",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1880,
+      "yuanxiang": 1935,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/XPLvIfeX0DiQz_gl9X849A",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-07-15.md",
+      "title": "今日酒价-茅台生肖酒价格调整 各大名酒批发参考价 7月15日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1935
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1880
+        }
+      ]
+    },
+    {
+      "date": "2025-07-16",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1870,
+      "yuanxiang": 1935,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/VfoRjdI-pWYW7_JG4VjbMw",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-07-16.md",
+      "title": "今日酒价-市场行情比较稳 各大名酒批发参考价 7月16日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1935
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1870
+        }
+      ]
+    },
+    {
+      "date": "2025-07-17",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1870,
+      "yuanxiang": 1930,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/l5JK-Rk9cajT10yo1q1d0g",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-07-17.md",
+      "title": "今日酒价-市场疲软，行情暂稳 各大名酒批发参考价 7月17日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1930
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1870
+        }
+      ]
+    },
+    {
+      "date": "2025-07-18",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1870,
+      "yuanxiang": 1930,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/9VdyOp6GGXa-4fUGcNY2tw",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-07-18.md",
+      "title": "今日酒价-茅台生肖酒价格下跌 各大名酒批发参考价 7月18日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1930
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1870
+        }
+      ]
+    },
+    {
+      "date": "2025-07-19",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1870,
+      "yuanxiang": 1940,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/IL6ml2NvvOj1HAjsPqOwxw",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-07-19.md",
+      "title": "今日酒价-茅台生肖蛇2160 各大名酒批发参考价 7月19日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1940
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1870
+        }
+      ]
+    },
+    {
+      "date": "2025-07-20",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1870,
+      "yuanxiang": 1935,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/qV8fjIkPniV7SfEo7P4Vhw",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-07-20.md",
+      "title": "今日酒价-市场行情较稳 各大名酒批发参考价 7月20日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1935
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1870
+        }
+      ]
+    },
+    {
+      "date": "2025-07-21",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1870,
+      "yuanxiang": 1935,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/3zBBrFK0lg15Q5KFC8mVmA",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-07-21.md",
+      "title": "今日酒价-蛇茅价格微涨 各大名酒批发参考价 7月21日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1935
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1870
+        }
+      ]
+    },
+    {
+      "date": "2025-07-22",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1870,
+      "yuanxiang": 1925,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/dXLbZCi2kR_TjTsL9AXSlw",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-07-22.md",
+      "title": "今日酒价-原箱飞天1925价格 各大名酒批发参考价 7月22日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1925
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1870
+        }
+      ]
+    },
+    {
+      "date": "2025-07-23",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1870,
+      "yuanxiang": 1920,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/Q-8DOyM4VYJn_exg0odp0g",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-07-23.md",
+      "title": "今日酒价-茅台价格微涨 各大名酒批发参考价 7月23日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1920
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1870
+        }
+      ]
+    },
+    {
+      "date": "2025-07-24",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1870,
+      "yuanxiang": 1920,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/npV0IR874wel5xF4m3iBog",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-07-24.md",
+      "title": "今日酒价-蛇茅价格逼近2100 各大名酒批发参考价 7月24日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1920
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1870
+        }
+      ]
+    },
+    {
+      "date": "2025-07-25",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1870,
+      "yuanxiang": 1920,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/et-CZjGz6RGItO7MYClumg",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-07-25.md",
+      "title": "今日酒价-公斤1L茅台下跌 各大名酒批发参考价 7月25日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1920
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1870
+        }
+      ]
+    },
+    {
+      "date": "2025-07-26",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1870,
+      "yuanxiang": 1915,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/UKT1XHZwo5Bypo0zY9z7AQ",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-07-26.md",
+      "title": "今日酒价-原箱茅台价格降1915 各大名酒批发参考价 7月26日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1915
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1870
+        }
+      ]
+    },
+    {
+      "date": "2025-07-27",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1870,
+      "yuanxiang": 1915,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/Ha0pGllMIFWKFRwrUvjcfA",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-07-27.md",
+      "title": "今日酒价-蛇茅下跌，价格2050 各大名酒批发参考价 7月27日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1915
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1870
+        }
+      ]
+    },
+    {
+      "date": "2025-07-28",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1870,
+      "yuanxiang": 1900,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/HbGFdTeaosr14ZpOsce3jQ",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-07-28.md",
+      "title": "今日酒价-原箱茅台跌破1900 各大名酒批发参考价 7月28日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1900
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1870
+        }
+      ]
+    },
+    {
+      "date": "2025-07-29",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1870,
+      "yuanxiang": 1900,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/tDh5a1p_x0nF2XbCZ5AaIg",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-07-29.md",
+      "title": "今日酒价-1L公斤茅台降 各大名酒批发参考价 7月29日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1900
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1870
+        }
+      ]
+    },
+    {
+      "date": "2025-07-30",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1870,
+      "yuanxiang": 1910,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/0sQmA11JxQ7pMF12Y5yAIA",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-07-30.md",
+      "title": "今日酒价-蛇茅继续下跌 各大名酒批发参考价 7月30日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1910
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1870
+        }
+      ]
+    },
+    {
+      "date": "2025-07-31",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1870,
+      "yuanxiang": 1910,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/22hr5lWJ8Dxbfb7GNBhB3Q",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-07-31.md",
+      "title": "今日酒价-习酒窖藏1988下跌 各大名酒批发参考价 7月31日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1910
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1870
+        }
+      ]
+    },
+    {
+      "date": "2025-08-01",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1860,
+      "yuanxiang": 1910,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/sIz19bk-Zwwr0QJ12SiJlg",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-08-01.md",
+      "title": "今日酒价-蛇茅价格跌至2000 各大名酒批发参考价 8月1日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1910
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1860
+        }
+      ]
+    },
+    {
+      "date": "2025-08-02",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1860,
+      "yuanxiang": 1905,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/R2i5PKXenqtFGOemFL4KXA",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-08-02.md",
+      "title": "今日酒价-市场疲软，行情阴跌 各大名酒批发参考价 8月2日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1905
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1860
+        }
+      ]
+    },
+    {
+      "date": "2025-08-03",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1860,
+      "yuanxiang": 1905,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/GsEunSSBtziv_WVaAI0YhA",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-08-03.md",
+      "title": "今日酒价-蛇茅价格1995 各大名酒批发参考价 8月3日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1905
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1860
+        }
+      ]
+    },
+    {
+      "date": "2025-08-04",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1860,
+      "yuanxiang": 1905,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/f_eZh_zX0HE-ODY7O396gQ",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-08-04.md",
+      "title": "今日酒价-市场冷淡，行情低迷 各大名酒批发参考价 8月4日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1905
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1860
+        }
+      ]
+    },
+    {
+      "date": "2025-08-05",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1860,
+      "yuanxiang": 1905,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/T6ojTbFXB2v9YFvmtdXv8Q",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-08-05.md",
+      "title": "今日酒价-低度43度茅台下跌 各大名酒批发参考价 8月5日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1905
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1860
+        }
+      ]
+    },
+    {
+      "date": "2025-08-06",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1875,
+      "yuanxiang": 1905,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/dkpx0ea38Slzy-2sfObuWw",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-08-06.md",
+      "title": "今日酒价-市场疲软，行情稳定 各大名酒批发参考价 8月6日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1905
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1875
+        }
+      ]
+    },
+    {
+      "date": "2025-08-07",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1870,
+      "yuanxiang": 1905,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/megIrTenruXB9DPfJ6LxWg",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-08-07.md",
+      "title": "今日酒价- 公斤茅台价格微涨 各大名酒批发参考价 8月7日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1905
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1870
+        }
+      ]
+    },
+    {
+      "date": "2025-08-08",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1875,
+      "yuanxiang": 1910,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/CyoOxHFChHHC2k7rbQu65A",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-08-08.md",
+      "title": "今日酒价- 原箱飞天1910 各大名酒批发参考价 8月8日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1910
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1875
+        }
+      ]
+    },
+    {
+      "date": "2025-08-09",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1875,
+      "yuanxiang": 1910,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/cdZWJwWNl_Hv__I7LIKuVQ",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-08-09.md",
+      "title": "今日酒价- 茅台五星70周年纪念酒7700 各大名酒批发参考价 8月9日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1910
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1875
+        }
+      ]
+    },
+    {
+      "date": "2025-08-10",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1875,
+      "yuanxiang": 1910,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/_c_VmPMu-ReJUji_HPkNBQ",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-08-10.md",
+      "title": "今日酒价- 茅台五星70周年疯涨，超8000 各大名酒批发参考价 8月10日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1910
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1875
+        }
+      ]
+    },
+    {
+      "date": "2025-08-11",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1870,
+      "yuanxiang": 1900,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/4HT28HZ33z5N1cCOIP2TKg",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-08-11.md",
+      "title": "今日酒价- 原箱茅台1900 各大名酒批发参考价 8月11日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1900
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1870
+        }
+      ]
+    },
+    {
+      "date": "2025-08-12",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1860,
+      "yuanxiang": 1885,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/p6yaqf8T1jDmFjd-X62Ktw",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-08-12.md",
+      "title": "今日酒价-茅台价格下跌 各大名酒批发参考价 8月12日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1885
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1860
+        }
+      ]
+    },
+    {
+      "date": "2025-08-13",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1860,
+      "yuanxiang": 1885,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/BW0DjQJfM8e4ny46hNh16w",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-08-13.md",
+      "title": "今日酒价-五星70周年暴涨 各大名酒批发参考价 8月13日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1885
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1860
+        }
+      ]
+    },
+    {
+      "date": "2025-08-14",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1860,
+      "yuanxiang": 1875,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/tZFi0ZIEsp-pViM4tF95aw",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-08-14.md",
+      "title": "今日酒价-原箱飞天价格1875 各大名酒批发参考价 8月14日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1875
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1860
+        }
+      ]
+    },
+    {
+      "date": "2025-08-15",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1850,
+      "yuanxiang": 1865,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/0O77U1u3w6cKWgNAR4L9Yw",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-08-15.md",
+      "title": "今日酒价-茅台价格全线下跌 各大名酒批发参考价 8月15日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1865
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1850
+        }
+      ]
+    },
+    {
+      "date": "2025-08-16",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1850,
+      "yuanxiang": 1860,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/GB28whGWWd660e66EnuJlw",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-08-16.md",
+      "title": "今日酒价-蛇茅跌至1950 各大名酒批发参考价 8月16日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1860
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1850
+        }
+      ]
+    },
+    {
+      "date": "2025-08-17",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1850,
+      "yuanxiang": 1860,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/xZ6V0jhpLcz147lqOTQJlg",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-08-17.md",
+      "title": "今日酒价- 茅台五星70周年纪念酒价涨 各大名酒批发参考价 8月17日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1860
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1850
+        }
+      ]
+    },
+    {
+      "date": "2025-08-18",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1845,
+      "yuanxiang": 1860,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/egbas4dMJbvnCkN3izfGtA",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-08-18.md",
+      "title": "今日酒价- 散飞价格下跌 各大名酒批发参考价 8月18日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1860
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1845
+        }
+      ]
+    },
+    {
+      "date": "2025-08-19",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1840,
+      "yuanxiang": 1855,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/mzKCYd6ZXBA525Zo6u09LA",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-08-19.md",
+      "title": "今日酒价- 茅台持续下跌 各大名酒批发参考价 8月19日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1855
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1840
+        }
+      ]
+    },
+    {
+      "date": "2025-08-20",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1840,
+      "yuanxiang": 1855,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/FJ5VGQpzSxJ7RH9pZ8-2Ug",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-08-20.md",
+      "title": "今日酒价- 五星70周年纪念酒下跌 各大名酒批发参考价 8月20日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1855
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1840
+        }
+      ]
+    },
+    {
+      "date": "2025-08-21",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1820,
+      "yuanxiang": 1855,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/8XxxHjEv8qz-Q_4vFNwjzA",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-08-21.md",
+      "title": "今日酒价- 茅台继续下跌 各大名酒批发参考价 8月21日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1855
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1820
+        }
+      ]
+    },
+    {
+      "date": "2025-08-22",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1820,
+      "yuanxiang": 1845,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/DYkG22tGfuLftE4vwRG5Nw",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-08-22.md",
+      "title": "今日酒价- 飞天茅台价格降 各大名酒批发参考价 8月22日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1845
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1820
+        }
+      ]
+    },
+    {
+      "date": "2025-08-23",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1820,
+      "yuanxiang": 1845,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/ue4oudjrbJwS1m4_9x0TmQ",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-08-23.md",
+      "title": "今日酒价- 蛇茅价格下跌 各大名酒批发参考价 8月23日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1845
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1820
+        }
+      ]
+    },
+    {
+      "date": "2025-08-24",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1820,
+      "yuanxiang": 1845,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/rdwseMCFCqnLHVXstKxo0Q",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-08-24.md",
+      "title": "今日酒价- 茅台十五年下跌 各大名酒批发参考价 8月24日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1845
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1820
+        }
+      ]
+    },
+    {
+      "date": "2025-08-25",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1820,
+      "yuanxiang": 1845,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/jVrTKWQGFRQcXGKeSEvL9A",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-08-25.md",
+      "title": "今日酒价- 五星70周年纪念酒上涨 各大名酒批发参考价 8月25日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1845
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1820
+        }
+      ]
+    },
+    {
+      "date": "2025-08-26",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1810,
+      "yuanxiang": 1835,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/JNhsjjZ-1_TdPONFSpsDGw",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-08-26.md",
+      "title": "今日酒价- 茅台继续下跌 各大名酒批发参考价 8月26日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1835
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1810
+        }
+      ]
+    },
+    {
+      "date": "2025-08-27",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 1810,
+      "yuanxiang": 1835,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/oOo972cS9HM1g2jBKs9r1Q",
+      "markdown": "sources/jinri-jiujia-wechat-links/2025-md/2025-08-27.md",
+      "title": "今日酒价- 低度43度茅台降 各大名酒批发参考价 8月27日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 1835
+        },
+        {
+          "category": "茅台飞天",
+          "product": "25年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 1810
+        }
+      ]
+    },
+    {
       "date": "2025-08-28",
       "source": "今日酒价",
       "guide_price": 1499,
@@ -3152,5 +4702,5 @@
     }
   ],
   "note": "Extracted from baoyu markdown snapshots under sources/jinri-jiujia-wechat-links/2025-md.",
-  "generated_at": "2026-06-18T00:03:09+08:00"
+  "generated_at": "2026-06-18T10:02:21+08:00"
 }
