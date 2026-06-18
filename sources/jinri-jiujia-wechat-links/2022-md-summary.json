@@ -1,0 +1,41 @@
+{
+  "sourceLinks": "sources/jinri-jiujia-wechat-links/2022-links.csv",
+  "markdownDir": "sources/jinri-jiujia-wechat-links/2022-md",
+  "targetYear": 2022,
+  "linkCount": 14,
+  "markdownFiles": 14,
+  "coreRecords": 4,
+  "allPriceRows": 1230,
+  "missingMarkdownDates": [],
+  "noProductDates": [
+    "2022-01-10",
+    "2022-02-10",
+    "2022-03-10",
+    "2022-04-10",
+    "2022-04-11",
+    "2022-05-04",
+    "2022-05-10",
+    "2022-08-10",
+    "2022-09-11",
+    "2022-10-10"
+  ],
+  "noCoreMaotaiDates": [],
+  "duplicateCoreDates": [],
+  "productCounts": {
+    "2022-01-10": 0,
+    "2022-02-10": 0,
+    "2022-03-10": 0,
+    "2022-04-10": 0,
+    "2022-04-11": 0,
+    "2022-05-04": 0,
+    "2022-05-10": 0,
+    "2022-08-10": 0,
+    "2022-09-11": 0,
+    "2022-10-10": 0,
+    "2022-11-05": 299,
+    "2022-11-06": 299,
+    "2022-11-11": 302,
+    "2022-12-10": 330
+  },
+  "generatedAt": "2026-06-18T21:30:07+08:00"
+}

@@ -1,0 +1,138 @@
+{
+  "ok": {
+    "2022-01-10": {
+      "url": "https://mp.weixin.qq.com/s/MP67dSagNnVNjRV5m6vLpA",
+      "file": "sources\\jinri-jiujia-wechat-links\\2022-md\\2022-01-10.md",
+      "skipped": true,
+      "adapter": "wechat-mp-fastpath"
+    },
+    "2022-02-10": {
+      "url": "https://mp.weixin.qq.com/s/uRXNx69Za6TuiFxXw35gcA",
+      "file": "sources\\jinri-jiujia-wechat-links\\2022-md\\2022-02-10.md",
+      "skipped": true,
+      "adapter": "wechat-mp-fastpath"
+    },
+    "2022-03-10": {
+      "url": "https://mp.weixin.qq.com/s/A7GxJQ9RrbyFo-XLerhnFw",
+      "file": "sources\\jinri-jiujia-wechat-links\\2022-md\\2022-03-10.md",
+      "skipped": true,
+      "adapter": "wechat-mp-fastpath"
+    },
+    "2022-04-10": {
+      "url": "https://mp.weixin.qq.com/s/ptnj8pNLtl6P0eun40JPIg",
+      "file": "sources\\jinri-jiujia-wechat-links\\2022-md\\2022-04-10.md",
+      "skipped": true,
+      "adapter": "wechat-mp-fastpath"
+    },
+    "2022-04-11": {
+      "url": "https://mp.weixin.qq.com/s/_DslSUE0yWil2ggrQ1NZ2w",
+      "file": "sources\\jinri-jiujia-wechat-links\\2022-md\\2022-04-11.md",
+      "skipped": true,
+      "adapter": "wechat-mp-fastpath"
+    },
+    "2022-05-04": {
+      "url": "https://mp.weixin.qq.com/s/6aHbzrFDODZW5tirvfU_mQ",
+      "file": "sources\\jinri-jiujia-wechat-links\\2022-md\\2022-05-04.md",
+      "skipped": true,
+      "adapter": "wechat-mp-fastpath"
+    },
+    "2022-05-10": {
+      "url": "https://mp.weixin.qq.com/s/OwGHXSWL9UmpabJc7xCElA",
+      "file": "sources\\jinri-jiujia-wechat-links\\2022-md\\2022-05-10.md",
+      "skipped": true,
+      "adapter": "wechat-mp-fastpath"
+    },
+    "2022-08-10": {
+      "url": "https://mp.weixin.qq.com/s/VdGQOfoYUXb67Vt5wq_pew",
+      "file": "sources\\jinri-jiujia-wechat-links\\2022-md\\2022-08-10.md",
+      "skipped": true,
+      "adapter": "wechat-mp-fastpath"
+    },
+    "2022-09-11": {
+      "url": "https://mp.weixin.qq.com/s/OFQQRuzSzU_KNTBssiIP6w",
+      "file": "sources\\jinri-jiujia-wechat-links\\2022-md\\2022-09-11.md",
+      "adapter": "wechat-mp-fastpath",
+      "bytes": 12869,
+      "title": "今日酒价-茅台价格持续下跌  各大名酒批发参考价 9月11日",
+      "accountName": "今日酒价",
+      "publishDate": "2022-09-11",
+      "publishTime": "2022年9月11日 10:06",
+      "tableCount": 0,
+      "rowCount": 0,
+      "imageCount": 24,
+      "finalUrl": "https://mp.weixin.qq.com/s/OFQQRuzSzU_KNTBssiIP6w"
+    },
+    "2022-10-10": {
+      "url": "https://mp.weixin.qq.com/s/38raSu405zOfag41gq_iYA",
+      "file": "sources\\jinri-jiujia-wechat-links\\2022-md\\2022-10-10.md",
+      "adapter": "wechat-mp-fastpath",
+      "bytes": 14510,
+      "title": "今日酒价-茅台价格下跌  各大名酒批发参考价 10月10日",
+      "accountName": "今日酒价",
+      "publishDate": "2022-10-10",
+      "publishTime": "2022年10月10日 10:11",
+      "tableCount": 0,
+      "rowCount": 0,
+      "imageCount": 25,
+      "finalUrl": "https://mp.weixin.qq.com/s/38raSu405zOfag41gq_iYA"
+    },
+    "2022-11-05": {
+      "url": "https://mp.weixin.qq.com/s/eb7__PM3LKhEW3HngC7GBQ",
+      "file": "sources\\jinri-jiujia-wechat-links\\2022-md\\2022-11-05.md",
+      "adapter": "wechat-mp-fastpath",
+      "bytes": 366177,
+      "title": "今日酒价-茅台连续三天涨价 各大名酒批发参考价 11月5日",
+      "accountName": "今日酒价",
+      "publishDate": "2022-11-05",
+      "publishTime": "2022年11月5日 10:06",
+      "tableCount": 41,
+      "rowCount": 448,
+      "imageCount": 54,
+      "finalUrl": "https://mp.weixin.qq.com/s/eb7__PM3LKhEW3HngC7GBQ"
+    },
+    "2022-11-06": {
+      "url": "https://mp.weixin.qq.com/s/0SnrkgdhOZyf-mrdM7nJ8g",
+      "file": "sources\\jinri-jiujia-wechat-links\\2022-md\\2022-11-06.md",
+      "adapter": "wechat-mp-fastpath",
+      "bytes": 365901,
+      "title": "今日酒价-茅台价格下跌 各大名酒批发参考价 11月6日",
+      "accountName": "今日酒价",
+      "publishDate": "2022-11-06",
+      "publishTime": "2022年11月6日 10:07",
+      "tableCount": 41,
+      "rowCount": 448,
+      "imageCount": 54,
+      "finalUrl": "https://mp.weixin.qq.com/s/0SnrkgdhOZyf-mrdM7nJ8g"
+    },
+    "2022-11-11": {
+      "url": "https://mp.weixin.qq.com/s/ZFRas-uZ01paL0SpeUOSrA",
+      "file": "sources\\jinri-jiujia-wechat-links\\2022-md\\2022-11-11.md",
+      "adapter": "wechat-mp-fastpath",
+      "bytes": 371495,
+      "title": "今日酒价-飞天茅台价涨 各大名酒批发参考价 11月11日",
+      "accountName": "今日酒价",
+      "publishDate": "2022-11-11",
+      "publishTime": "2022年11月11日 10:17",
+      "tableCount": 42,
+      "rowCount": 454,
+      "imageCount": 55,
+      "finalUrl": "https://mp.weixin.qq.com/s/ZFRas-uZ01paL0SpeUOSrA"
+    },
+    "2022-12-10": {
+      "url": "https://mp.weixin.qq.com/s/xIuDABtWwtZp8tkOquGaOg",
+      "file": "sources\\jinri-jiujia-wechat-links\\2022-md\\2022-12-10.md",
+      "adapter": "wechat-mp-fastpath",
+      "bytes": 395527,
+      "title": "今日酒价-五粮液价格微涨 各大名酒批发参考价 12月10日",
+      "accountName": "今日酒价",
+      "publishDate": "2022-12-10",
+      "publishTime": "2022年12月10日 09:54",
+      "tableCount": 43,
+      "rowCount": 485,
+      "imageCount": 55,
+      "finalUrl": "https://mp.weixin.qq.com/s/xIuDABtWwtZp8tkOquGaOg"
+    }
+  },
+  "failed": {},
+  "updatedAt": "2026-06-18T13:29:49.839Z"
+}

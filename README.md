@@ -10,6 +10,14 @@
 |------|------|------|---------|
 | `data.json` | JSON | 2026 茅台价格（162点），默认年份 | 每日追加 |
 | `all_prices.jsonl` | JSONL | 2026 全品类酒价（251款×160天，31508行） | 每日追加 |
+| `data-2021.json` | JSON | 2021 茅台价格（0点；原文为图片型） | 历史回填 |
+| `all_prices-2021.jsonl` | JSONL | 2021 全品类酒价（0行；原文为图片型） | 历史回填 |
+| `data-2022.json` | JSON | 2022 茅台价格（4点） | 历史回填 |
+| `all_prices-2022.jsonl` | JSONL | 2022 全品类酒价（1230行） | 历史回填 |
+| `data-2023.json` | JSON | 2023 茅台价格（12点） | 历史回填 |
+| `all_prices-2023.jsonl` | JSONL | 2023 全品类酒价（3871行） | 历史回填 |
+| `data-2024.json` | JSON | 2024 茅台价格（13点） | 历史回填 |
+| `all_prices-2024.jsonl` | JSONL | 2024 全品类酒价（3718行） | 历史回填 |
 | `data-2025.json` | JSON | 2025 茅台价格（188点） | 批量回填 |
 | `all_prices-2025.jsonl` | JSONL | 2025 全品类酒价（47515行） | 批量回填 |
 | `scripts/2025-backfill/state-2025.json` | JSON | 2025 回填断点续传状态 | 已归档 |
@@ -27,7 +35,7 @@
 | 文件 | 用途 | 用法 |
 |------|------|------|
 | `batch_extract_all.mjs` | Light 模式批量提取 | `node batch_extract_all.mjs [--year YYYY] <links.json>` |
-| `scripts/2025-backfill/` | 2025 历史回填一次性工具 | 仅审计/重跑 2025 存档时使用 |
+| `scripts/2025-backfill/` | 历史回填一次性工具 | 仅审计/重跑 2021-2025 存档时使用 |
 | `archived/batch_extract_prices.mjs` | 旧版（仅茅台），已归档 | 不再使用 |
 
 ### 数据源
@@ -49,6 +57,10 @@
 ## 2025 数据频率
 
 `今日酒价` 在 2025 年中切换发布频率：1-4 月基本每月 10 日一篇，6 月进入过渡期，7 月 4 日起转为逐日发布。因此 `data-2025.json` 上半年只有月度颗粒度是源头限制，不是抓取漏项；真正接近日频的数据从 2025-07 开始。链接错指 2026 文章的记录见 `sources/jinri-jiujia-wechat-links/2025-wrong-links.md`。
+
+## 2021-2024 历史回填
+
+2021-2024 已使用 `wechat_mp_fastpath.mjs` 存档到 `sources/jinri-jiujia-wechat-links/YYYY-md/`。2021 全年和 2022-01 至 2022-10 的旧文章是图片型正文，没有 HTML 表格，因此只保留 Markdown 原文和远程图片链接，结构化抽取为空；2022-11 起、2023、2024 为 HTML 表格，可抽取到 `data-YYYY.json` 和 `all_prices-YYYY.jsonl`。当前仓库没有 `2020-links.json/csv`。
 
 ## 更新流程
 

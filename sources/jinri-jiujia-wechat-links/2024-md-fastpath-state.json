@@ -1,0 +1,116 @@
+{
+  "ok": {
+    "2024-01-10": {
+      "url": "https://mp.weixin.qq.com/s/XAMBduTHjHZXmYzXgG5cnA",
+      "file": "sources\\jinri-jiujia-wechat-links\\2024-md\\2024-01-10.md",
+      "skipped": true,
+      "adapter": "wechat-mp-fastpath"
+    },
+    "2024-02-09": {
+      "url": "https://mp.weixin.qq.com/s/O356IeKP9IWoZ5g66FJJCg",
+      "file": "sources\\jinri-jiujia-wechat-links\\2024-md\\2024-02-09.md",
+      "skipped": true,
+      "adapter": "wechat-mp-fastpath"
+    },
+    "2024-03-10": {
+      "url": "https://mp.weixin.qq.com/s/0amgLgNKzlTbLrZwit-s1A",
+      "file": "sources\\jinri-jiujia-wechat-links\\2024-md\\2024-03-10.md",
+      "skipped": true,
+      "adapter": "wechat-mp-fastpath"
+    },
+    "2024-04-10": {
+      "url": "https://mp.weixin.qq.com/s/6LQW_DNgwQmZ0eTZPRtFbg",
+      "file": "sources\\jinri-jiujia-wechat-links\\2024-md\\2024-04-10.md",
+      "skipped": true,
+      "adapter": "wechat-mp-fastpath"
+    },
+    "2024-05-10": {
+      "url": "https://mp.weixin.qq.com/s/7xsoSELBor7gbKVd51g5hw",
+      "file": "sources\\jinri-jiujia-wechat-links\\2024-md\\2024-05-10.md",
+      "skipped": true,
+      "adapter": "wechat-mp-fastpath"
+    },
+    "2024-06-11": {
+      "url": "https://mp.weixin.qq.com/s/J8cpmvmE6dz_HlcvPukjCA",
+      "file": "sources\\jinri-jiujia-wechat-links\\2024-md\\2024-06-11.md",
+      "skipped": true,
+      "adapter": "wechat-mp-fastpath"
+    },
+    "2024-07-12": {
+      "url": "https://mp.weixin.qq.com/s/Y8JD18fPtzk25ke5O1rcMw",
+      "file": "sources\\jinri-jiujia-wechat-links\\2024-md\\2024-07-12.md",
+      "skipped": true,
+      "adapter": "wechat-mp-fastpath"
+    },
+    "2024-07-31": {
+      "url": "https://mp.weixin.qq.com/s/kqXlu-HxUh2hNijq0Wl5Gw",
+      "file": "sources\\jinri-jiujia-wechat-links\\2024-md\\2024-07-31.md",
+      "skipped": true,
+      "adapter": "wechat-mp-fastpath"
+    },
+    "2024-08-10": {
+      "url": "https://mp.weixin.qq.com/s/-2jGrK5I4PWvJnfhmoraDA",
+      "file": "sources\\jinri-jiujia-wechat-links\\2024-md\\2024-08-10.md",
+      "skipped": true,
+      "adapter": "wechat-mp-fastpath"
+    },
+    "2024-09-10": {
+      "url": "https://mp.weixin.qq.com/s/YRN1lzXivcpzEwPGpcFW3A",
+      "file": "sources\\jinri-jiujia-wechat-links\\2024-md\\2024-09-10.md",
+      "adapter": "wechat-mp-fastpath",
+      "bytes": 330999,
+      "title": "今日酒价-茅台价格上涨  各大名酒批发参考价 9月10日",
+      "accountName": "今日酒价",
+      "publishDate": "2024-09-10",
+      "publishTime": "2024年9月10日 09:56",
+      "tableCount": 38,
+      "rowCount": 448,
+      "imageCount": 51,
+      "finalUrl": "https://mp.weixin.qq.com/s/YRN1lzXivcpzEwPGpcFW3A"
+    },
+    "2024-10-11": {
+      "url": "https://mp.weixin.qq.com/s/BqxKujqYXpn-ScTylhpH-Q",
+      "file": "sources\\jinri-jiujia-wechat-links\\2024-md\\2024-10-11.md",
+      "adapter": "wechat-mp-fastpath",
+      "bytes": 333061,
+      "title": "今日酒价-原箱飞天价格大跌   各大名酒批发参考价 10月11日",
+      "accountName": "今日酒价",
+      "publishDate": "2024-10-11",
+      "publishTime": "2024年10月11日 09:45",
+      "tableCount": 38,
+      "rowCount": 450,
+      "imageCount": 52,
+      "finalUrl": "https://mp.weixin.qq.com/s/BqxKujqYXpn-ScTylhpH-Q"
+    },
+    "2024-11-10": {
+      "url": "https://mp.weixin.qq.com/s/uLdCAtmo8VvPVqZLvosYhA",
+      "file": "sources\\jinri-jiujia-wechat-links\\2024-md\\2024-11-10.md",
+      "adapter": "wechat-mp-fastpath",
+      "bytes": 333653,
+      "title": "今日酒价-飞天价跌   各大名酒批发参考价 11月10日",
+      "accountName": "今日酒价",
+      "publishDate": "2024-11-10",
+      "publishTime": "2024年11月10日 10:01",
+      "tableCount": 38,
+      "rowCount": 450,
+      "imageCount": 53,
+      "finalUrl": "https://mp.weixin.qq.com/s/uLdCAtmo8VvPVqZLvosYhA"
+    },
+    "2024-12-10": {
+      "url": "https://mp.weixin.qq.com/s/SYkXrIWOvuieQZMeZwnbWw",
+      "file": "sources\\jinri-jiujia-wechat-links\\2024-md\\2024-12-10.md",
+      "adapter": "wechat-mp-fastpath",
+      "bytes": 189713,
+      "title": "今日酒价-飞天价格上涨   各大名酒批发参考价 12月10日",
+      "accountName": "今日酒价",
+      "publishDate": "2024-12-10",
+      "publishTime": "2024年12月10日 09:39",
+      "tableCount": 38,
+      "rowCount": 447,
+      "imageCount": 53,
+      "finalUrl": "https://mp.weixin.qq.com/s/SYkXrIWOvuieQZMeZwnbWw"
+    }
+  },
+  "failed": {},
+  "updatedAt": "2026-06-18T13:38:19.722Z"
+}

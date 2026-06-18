@@ -1,0 +1,106 @@
+{
+  "prices": [
+    {
+      "date": "2022-11-05",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 2700,
+      "yuanxiang": 3000,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/eb7__PM3LKhEW3HngC7GBQ",
+      "markdown": "sources/jinri-jiujia-wechat-links/2022-md/2022-11-05.md",
+      "title": "今日酒价-茅台连续三天涨价 各大名酒批发参考价 11月5日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "22年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 3000
+        },
+        {
+          "category": "茅台飞天",
+          "product": "22年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 2700
+        }
+      ]
+    },
+    {
+      "date": "2022-11-06",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 2690,
+      "yuanxiang": 2990,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/0SnrkgdhOZyf-mrdM7nJ8g",
+      "markdown": "sources/jinri-jiujia-wechat-links/2022-md/2022-11-06.md",
+      "title": "今日酒价-茅台价格下跌 各大名酒批发参考价 11月6日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "22年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 2990
+        },
+        {
+          "category": "茅台飞天",
+          "product": "22年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 2690
+        }
+      ]
+    },
+    {
+      "date": "2022-11-11",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 2680,
+      "yuanxiang": 3010,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/ZFRas-uZ01paL0SpeUOSrA",
+      "markdown": "sources/jinri-jiujia-wechat-links/2022-md/2022-11-11.md",
+      "title": "今日酒价-飞天茅台价涨 各大名酒批发参考价 11月11日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "22年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 3010
+        },
+        {
+          "category": "茅台飞天",
+          "product": "22年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 2680
+        }
+      ]
+    },
+    {
+      "date": "2022-12-10",
+      "source": "今日酒价",
+      "guide_price": 1499,
+      "sanping": 2720,
+      "yuanxiang": 2940,
+      "signal": "🟢",
+      "url": "https://mp.weixin.qq.com/s/xIuDABtWwtZp8tkOquGaOg",
+      "markdown": "sources/jinri-jiujia-wechat-links/2022-md/2022-12-10.md",
+      "title": "今日酒价-五粮液价格微涨 各大名酒批发参考价 12月10日",
+      "matched_products": [
+        {
+          "category": "茅台飞天",
+          "product": "22年飞天(原)",
+          "spec": "53度/500ml",
+          "today": 2940
+        },
+        {
+          "category": "茅台飞天",
+          "product": "22年飞天(散)",
+          "spec": "53度/500ml",
+          "today": 2720
+        }
+      ]
+    }
+  ],
+  "note": "Extracted from WeChat markdown snapshots under sources/jinri-jiujia-wechat-links/2022-md.",
+  "generated_at": "2026-06-18T21:30:07+08:00"
+}

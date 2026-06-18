@@ -1,0 +1,74 @@
+{
+  "ok": {
+    "2021-03-10": {
+      "url": "https://mp.weixin.qq.com/s/98piQxmFp0wLECrI9psUUA",
+      "file": "sources\\jinri-jiujia-wechat-links\\2021-md\\2021-03-10.md",
+      "skipped": true,
+      "adapter": "wechat-mp-fastpath"
+    },
+    "2021-04-10": {
+      "url": "https://mp.weixin.qq.com/s/pHPETrfjTMiR3AI5KcrKDg",
+      "file": "sources\\jinri-jiujia-wechat-links\\2021-md\\2021-04-10.md",
+      "skipped": true,
+      "adapter": "wechat-mp-fastpath"
+    },
+    "2021-05-10": {
+      "url": "https://mp.weixin.qq.com/s/Vzk_DJ9fcpcgP1KghHkD8g",
+      "file": "sources\\jinri-jiujia-wechat-links\\2021-md\\2021-05-10.md",
+      "skipped": true,
+      "adapter": "wechat-mp-fastpath"
+    },
+    "2021-06-10": {
+      "url": "https://mp.weixin.qq.com/s/Zk_pUsjYX_dETLnxR10RaA",
+      "file": "sources\\jinri-jiujia-wechat-links\\2021-md\\2021-06-10.md",
+      "skipped": true,
+      "adapter": "wechat-mp-fastpath"
+    },
+    "2021-07-10": {
+      "url": "https://mp.weixin.qq.com/s/3oputgQ19Nz0rjFQY6lXtQ",
+      "file": "sources\\jinri-jiujia-wechat-links\\2021-md\\2021-07-10.md",
+      "skipped": true,
+      "adapter": "wechat-mp-fastpath"
+    },
+    "2021-08-10": {
+      "url": "https://mp.weixin.qq.com/s/oqzcAKkRexOfcqX3PwosdA",
+      "file": "sources\\jinri-jiujia-wechat-links\\2021-md\\2021-08-10.md",
+      "skipped": true,
+      "adapter": "wechat-mp-fastpath"
+    },
+    "2021-09-10": {
+      "url": "https://mp.weixin.qq.com/s/BVNee4uvvamB6dm908mEwg",
+      "file": "sources\\jinri-jiujia-wechat-links\\2021-md\\2021-09-10.md",
+      "skipped": true,
+      "adapter": "wechat-mp-fastpath"
+    },
+    "2021-10-10": {
+      "url": "https://mp.weixin.qq.com/s/QYBBxfHJDSIypCvjP0aIOg",
+      "file": "sources\\jinri-jiujia-wechat-links\\2021-md\\2021-10-10.md",
+      "skipped": true,
+      "adapter": "wechat-mp-fastpath"
+    },
+    "2021-11-10": {
+      "url": "https://mp.weixin.qq.com/s/uH8XJQrnqcTl2wN2QS0w0A",
+      "file": "sources\\jinri-jiujia-wechat-links\\2021-md\\2021-11-10.md",
+      "skipped": true,
+      "adapter": "wechat-mp-fastpath"
+    },
+    "2021-12-10": {
+      "url": "https://mp.weixin.qq.com/s/XtwUjjwHzGZB8fhW5mPnQw",
+      "file": "sources\\jinri-jiujia-wechat-links\\2021-md\\2021-12-10.md",
+      "adapter": "wechat-mp-fastpath",
+      "bytes": 11186,
+      "title": "今日酒价-散飞涨 全国名酒批发报价12月10日",
+      "accountName": "今日酒价",
+      "publishDate": "2021-12-10",
+      "publishTime": "2021年12月10日 10:37",
+      "tableCount": 0,
+      "rowCount": 0,
+      "imageCount": 23,
+      "finalUrl": "https://mp.weixin.qq.com/s/XtwUjjwHzGZB8fhW5mPnQw"
+    }
+  },
+  "failed": {},
+  "updatedAt": "2026-06-18T13:25:44.278Z"
+}

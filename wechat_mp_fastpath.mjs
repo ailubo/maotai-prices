@@ -465,7 +465,9 @@ const EXTRACT_SCRIPT = String.raw`
     document.title ||
     '';
   const accountName = (document.querySelector('#js_name')?.textContent || '').trim() || meta('author');
-  const text = content ? content.innerText.replace(/\s+/g, ' ').trim() : '';
+  const visibleText = content ? content.innerText.replace(/\s+/g, ' ').trim() : '';
+  const rawText = content ? content.textContent.replace(/\s+/g, ' ').trim() : '';
+  const text = visibleText.length >= rawText.length ? visibleText : rawText;
   return {
     readyState: document.readyState,
     url: location.href,
@@ -477,6 +479,7 @@ const EXTRACT_SCRIPT = String.raw`
     contentHtml,
     textLength: text.length,
     textSample: text.slice(0, 300),
+    htmlLength: contentHtml.length,
     tableCount: (contentHtml.match(/<table\b/gi) || []).length,
     rowCount: (contentHtml.match(/<tr\b/gi) || []).length,
     imageCount: (contentHtml.match(/<img\b/gi) || []).length
@@ -491,12 +494,13 @@ async function waitForArticle(page) {
   let lastSignature = '';
   while (Date.now() - started < options.pageTimeoutMs) {
     last = await page.evaluate(EXTRACT_SCRIPT);
-    const hasContent = last?.contentHtml && last.textLength > 100;
+    const htmlLength = Number(last?.htmlLength || last?.contentHtml?.length || 0);
+    const hasContent = last?.contentHtml && (last.textLength > 100 || htmlLength >= options.minBytes);
     const tableCount = Number(last?.tableCount || 0);
     const rowCount = Number(last?.rowCount || 0);
     const hasRequiredTable = !options.requireTable ||
       (tableCount >= options.minTables && rowCount >= options.minRows);
-    const signature = `${tableCount}:${rowCount}:${last?.textLength || 0}`;
+    const signature = `${tableCount}:${rowCount}:${last?.textLength || 0}:${htmlLength}:${last?.imageCount || 0}`;
     if (hasContent && hasRequiredTable && signature === lastSignature) {
       stableCount += 1;
     } else {
@@ -508,7 +512,7 @@ async function waitForArticle(page) {
     }
     await sleep(options.pollIntervalMs);
   }
-  const detail = last ? `title=${last.title || ''} tables=${last.tableCount || 0} rows=${last.rowCount || 0} text=${last.textLength || 0} sample=${last.textSample || ''}` : 'no page data';
+  const detail = last ? `title=${last.title || ''} tables=${last.tableCount || 0} rows=${last.rowCount || 0} text=${last.textLength || 0} html=${last.htmlLength || 0} images=${last.imageCount || 0} sample=${last.textSample || ''}` : 'no page data';
   throw new Error(`timed out waiting for #js_content: ${detail.slice(0, 500)}`);
 }
 

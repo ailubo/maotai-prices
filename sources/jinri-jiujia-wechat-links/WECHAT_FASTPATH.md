@@ -71,6 +71,8 @@ Defaults:
 
 These quality gates are important. Earlier CDP experiments produced partial pages with only 4-19 tables while a normal complete "今日酒价" price article has about 34-35 tables. Do not accept low-table markdown just because `scripts/2025-backfill/extract_2025_from_markdown.py` still finds Moutai rows.
 
+Older 2021 and early 2022 articles can be image-based, with zero HTML tables but complete remote image links inside `#js_content`. For those archive-only pages, use `--allow-no-table --min-tables 0 --min-rows 0`, then rely on the extraction summary to show `noProductDates`.
+
 Single date retry:
 
 ```powershell
@@ -125,7 +127,7 @@ sources/jinri-jiujia-wechat-links/2025-md-fastpath-state.json
 Run the existing parser:
 
 ```powershell
-python scripts/2025-backfill/extract_2025_from_markdown.py
+python scripts/2025-backfill/extract_2025_from_markdown.py --year 2025
 ```
 
 Expected parser outputs:

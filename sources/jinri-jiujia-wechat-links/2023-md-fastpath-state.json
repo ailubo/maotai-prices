@@ -1,0 +1,110 @@
+{
+  "ok": {
+    "2023-01-10": {
+      "url": "https://mp.weixin.qq.com/s/dmd16-NKxgXRyNL382ZjyA",
+      "file": "sources\\jinri-jiujia-wechat-links\\2023-md\\2023-01-10.md",
+      "skipped": true,
+      "adapter": "wechat-mp-fastpath"
+    },
+    "2023-02-10": {
+      "url": "https://mp.weixin.qq.com/s/FCS1fj73sMt59KQD5BG7UA",
+      "file": "sources\\jinri-jiujia-wechat-links\\2023-md\\2023-02-10.md",
+      "skipped": true,
+      "adapter": "wechat-mp-fastpath"
+    },
+    "2023-03-10": {
+      "url": "https://mp.weixin.qq.com/s/OyvQkippVU9kW7L_wL8JgA",
+      "file": "sources\\jinri-jiujia-wechat-links\\2023-md\\2023-03-10.md",
+      "skipped": true,
+      "adapter": "wechat-mp-fastpath"
+    },
+    "2023-04-10": {
+      "url": "https://mp.weixin.qq.com/s/kCag76PTCstodm3Hycv4aw",
+      "file": "sources\\jinri-jiujia-wechat-links\\2023-md\\2023-04-10.md",
+      "skipped": true,
+      "adapter": "wechat-mp-fastpath"
+    },
+    "2023-05-10": {
+      "url": "https://mp.weixin.qq.com/s/fAz4cyfwiKRXD6mviPC6NA",
+      "file": "sources\\jinri-jiujia-wechat-links\\2023-md\\2023-05-10.md",
+      "skipped": true,
+      "adapter": "wechat-mp-fastpath"
+    },
+    "2023-06-10": {
+      "url": "https://mp.weixin.qq.com/s/zrE0-gbo8XFGhm82JNIYRg",
+      "file": "sources\\jinri-jiujia-wechat-links\\2023-md\\2023-06-10.md",
+      "skipped": true,
+      "adapter": "wechat-mp-fastpath"
+    },
+    "2023-07-10": {
+      "url": "https://mp.weixin.qq.com/s/u7c9XRNHisYUIW31qEHJFQ",
+      "file": "sources\\jinri-jiujia-wechat-links\\2023-md\\2023-07-10.md",
+      "skipped": true,
+      "adapter": "wechat-mp-fastpath"
+    },
+    "2023-08-18": {
+      "url": "https://mp.weixin.qq.com/s/ntE8WX8nUFqY_Lqwg6vnMw",
+      "file": "sources\\jinri-jiujia-wechat-links\\2023-md\\2023-08-18.md",
+      "skipped": true,
+      "adapter": "wechat-mp-fastpath"
+    },
+    "2023-09-10": {
+      "url": "https://mp.weixin.qq.com/s/nodCadsZ2ALAKSqfOWutrw",
+      "file": "sources\\jinri-jiujia-wechat-links\\2023-md\\2023-09-10.md",
+      "adapter": "wechat-mp-fastpath",
+      "bytes": 400684,
+      "title": "今日酒价-茅台生肖微降 各大名酒批发参考价 9月10日",
+      "accountName": "今日酒价",
+      "publishDate": "2023-09-10",
+      "publishTime": "2023年9月10日 10:13",
+      "tableCount": 40,
+      "rowCount": 489,
+      "imageCount": 52,
+      "finalUrl": "https://mp.weixin.qq.com/s/nodCadsZ2ALAKSqfOWutrw"
+    },
+    "2023-10-10": {
+      "url": "https://mp.weixin.qq.com/s/LzCLiXay-kie992rJLtYIQ",
+      "file": "sources\\jinri-jiujia-wechat-links\\2023-md\\2023-10-10.md",
+      "adapter": "wechat-mp-fastpath",
+      "bytes": 413414,
+      "title": "今日酒价-散飞跌破2700 各大名酒批发参考价 10月10日",
+      "accountName": "今日酒价",
+      "publishDate": "2023-10-10",
+      "publishTime": "2023年10月10日 09:37",
+      "tableCount": 42,
+      "rowCount": 504,
+      "imageCount": 56,
+      "finalUrl": "https://mp.weixin.qq.com/s/LzCLiXay-kie992rJLtYIQ"
+    },
+    "2023-11-10": {
+      "url": "https://mp.weixin.qq.com/s/lV4J7fDlcm2-ezXp2u2SaA",
+      "file": "sources\\jinri-jiujia-wechat-links\\2023-md\\2023-11-10.md",
+      "adapter": "wechat-mp-fastpath",
+      "bytes": 417035,
+      "title": "今日酒价-兔茅价格上涨  各大名酒批发参考价 11月10日",
+      "accountName": "今日酒价",
+      "publishDate": "2023-11-10",
+      "publishTime": "2023年11月10日 09:51",
+      "tableCount": 42,
+      "rowCount": 508,
+      "imageCount": 57,
+      "finalUrl": "https://mp.weixin.qq.com/s/lV4J7fDlcm2-ezXp2u2SaA"
+    },
+    "2023-12-10": {
+      "url": "https://mp.weixin.qq.com/s/c2OeQDKXwGyfxa-OALOF2A",
+      "file": "sources\\jinri-jiujia-wechat-links\\2023-md\\2023-12-10.md",
+      "adapter": "wechat-mp-fastpath",
+      "bytes": 426272,
+      "title": "今日酒价-兔年茅台价格大涨 各大名酒批发参考价 12月10日",
+      "accountName": "今日酒价",
+      "publishDate": "2023-12-10",
+      "publishTime": "2023年12月10日 09:00",
+      "tableCount": 42,
+      "rowCount": 515,
+      "imageCount": 58,
+      "finalUrl": "https://mp.weixin.qq.com/s/c2OeQDKXwGyfxa-OALOF2A"
+    }
+  },
+  "failed": {},
+  "updatedAt": "2026-06-18T13:34:15.113Z"
+}

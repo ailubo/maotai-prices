@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Extract Maotai core prices and all product prices from saved 2025 markdown."""
+"""Extract Maotai core prices and all product prices from saved markdown."""
 
 from __future__ import annotations
 
+import argparse
 import csv
 import html
 import json
@@ -15,12 +16,6 @@ from pathlib import Path
 
 BASE = Path(__file__).resolve().parents[2]
 SOURCE_DIR = BASE / "sources" / "jinri-jiujia-wechat-links"
-LINKS_CSV = SOURCE_DIR / "2025-links.csv"
-MD_DIR = SOURCE_DIR / "2025-md"
-DATA_OUT = BASE / "data-2025.json"
-ALL_OUT = BASE / "all_prices-2025.jsonl"
-SUMMARY_OUT = SOURCE_DIR / "2025-md-summary.json"
-
 SOLAR_TERMS = {
     "立春", "雨水", "惊蛰", "春分", "清明", "谷雨",
     "立夏", "小满", "芒种", "夏至", "小暑", "大暑",
@@ -218,13 +213,24 @@ def pick_maotai_core(products: list[dict], year: int) -> tuple[int | None, int |
     return sanping, yuanxiang, matched
 
 
-def read_links() -> list[dict[str, str]]:
-    with LINKS_CSV.open("r", encoding="utf-8-sig", newline="") as f:
+def read_links(path: Path) -> list[dict[str, str]]:
+    with path.open("r", encoding="utf-8-sig", newline="") as f:
         return list(csv.DictReader(f))
 
 
 def main() -> None:
-    links = read_links()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--year", type=int, default=2025, help="Target year to extract. Default: 2025")
+    args = parser.parse_args()
+
+    year = args.year
+    links_csv = SOURCE_DIR / f"{year}-links.csv"
+    md_dir = SOURCE_DIR / f"{year}-md"
+    data_out = BASE / f"data-{year}.json"
+    all_out = BASE / f"all_prices-{year}.jsonl"
+    summary_out = SOURCE_DIR / f"{year}-md-summary.json"
+
+    links = read_links(links_csv)
     all_rows: list[dict] = []
     core_prices: list[dict] = []
     missing_md: list[str] = []
@@ -235,7 +241,7 @@ def main() -> None:
     for link in links:
         date = link["date"]
         url = link["url"]
-        md_path = MD_DIR / f"{date}.md"
+        md_path = md_dir / f"{date}.md"
         if not md_path.exists():
             missing_md.append(date)
             continue
@@ -248,7 +254,7 @@ def main() -> None:
             continue
         all_rows.extend(products)
 
-        sanping, yuanxiang, matched = pick_maotai_core(products, 2025)
+        sanping, yuanxiang, matched = pick_maotai_core(products, year)
         if sanping is None and yuanxiang is None:
             no_core.append(date)
             continue
@@ -277,23 +283,23 @@ def main() -> None:
     core_prices.sort(key=lambda p: p["date"])
     all_rows.sort(key=lambda p: (p["date"], p["category"], p["product"], p["spec"]))
 
-    DATA_OUT.write_text(json.dumps({
+    data_out.write_text(json.dumps({
         "prices": core_prices,
-        "note": "Extracted from baoyu markdown snapshots under sources/jinri-jiujia-wechat-links/2025-md.",
+        "note": f"Extracted from WeChat markdown snapshots under sources/jinri-jiujia-wechat-links/{year}-md.",
         "generated_at": datetime.now(timezone(timedelta(hours=8))).isoformat(timespec="seconds"),
     }, ensure_ascii=False, indent=2), encoding="utf-8")
 
-    with ALL_OUT.open("w", encoding="utf-8", newline="\n") as f:
+    with all_out.open("w", encoding="utf-8", newline="\n") as f:
         for row in all_rows:
             f.write(json.dumps(row, ensure_ascii=False) + "\n")
 
     duplicate_dates = [d for d, c in Counter(p["date"] for p in core_prices).items() if c > 1]
     summary = {
-        "sourceLinks": str(LINKS_CSV.relative_to(BASE)).replace(os.sep, "/"),
-        "markdownDir": str(MD_DIR.relative_to(BASE)).replace(os.sep, "/"),
-        "targetYear": 2025,
+        "sourceLinks": str(links_csv.relative_to(BASE)).replace(os.sep, "/"),
+        "markdownDir": str(md_dir.relative_to(BASE)).replace(os.sep, "/"),
+        "targetYear": year,
         "linkCount": len(links),
-        "markdownFiles": len(list(MD_DIR.glob("*.md"))) if MD_DIR.exists() else 0,
+        "markdownFiles": len(list(md_dir.glob("*.md"))) if md_dir.exists() else 0,
         "coreRecords": len(core_prices),
         "allPriceRows": len(all_rows),
         "missingMarkdownDates": missing_md,
@@ -303,14 +309,14 @@ def main() -> None:
         "productCounts": product_counts,
         "generatedAt": datetime.now(timezone(timedelta(hours=8))).isoformat(timespec="seconds"),
     }
-    SUMMARY_OUT.write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
+    summary_out.write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
 
     print(f"coreRecords={len(core_prices)}")
     print(f"allPriceRows={len(all_rows)}")
     print(f"missingMarkdownDates={len(missing_md)}")
     print(f"noProductDates={len(no_products)}")
     print(f"noCoreMaotaiDates={len(no_core)}")
-    print(f"wrote {DATA_OUT.name}, {ALL_OUT.name}, {SUMMARY_OUT.relative_to(BASE)}")
+    print(f"wrote {data_out.name}, {all_out.name}, {summary_out.relative_to(BASE)}")
 
 
 if __name__ == "__main__":
