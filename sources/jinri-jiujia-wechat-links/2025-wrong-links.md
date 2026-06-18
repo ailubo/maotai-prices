@@ -15,7 +15,6 @@ These records in `2025-links.json` did not produce Markdown because the current 
 | 2025-05-17 | https://mp.weixin.qq.com/s/PKsKZNAfAmfb6ESxb-4rWQ | 2026-05-17 | Rejected; page sample shows `2026年5月17日` and rows were below the 2025 quality gate. |
 | 2025-05-13 | https://mp.weixin.qq.com/s/FdIN_uxq9OLe3o7lcfsE8g | 2026-05-13 | Rejected; page sample shows `2026年5月13日` and rows were below the 2025 quality gate. |
 | 2025-05-12 | https://mp.weixin.qq.com/s/-klvdnrwPuyzOO81_8rygg | 2026-05-12 | Rejected; page sample shows `2026年5月12日` and rows were below the 2025 quality gate. |
-| 2025-05-10 | https://mp.weixin.qq.com/s/kv-jykMVwJbLURbAIZlYZw | 2026-05-10 | Rejected; page sample shows `2026年5月10日` and rows were below the 2025 quality gate. |
 | 2025-03-28 | https://mp.weixin.qq.com/s/0Ly8Npe5YYGJoytXccPIzw | 2026-03-28 | Rejected: `publish date mismatch`. |
 | 2025-03-19 | https://mp.weixin.qq.com/s/ZAAon-llFMlFbgYmXovOKQ | 2026-03-19 | Rejected: `publish date mismatch`. |
 | 2025-03-17 | https://mp.weixin.qq.com/s/PYyEpomFpJMoFiF2YGg6CQ | 2026-03-17 | Rejected: `publish date mismatch`. |
@@ -38,6 +37,7 @@ These records in `2025-links.json` did not produce Markdown because the current 
 ## Current Fetch Status
 
 - `2025-md/` contains 188 accepted Markdown files.
-- 26 link records still need corrected 2025 URLs.
+- 2025-05-10 was recovered from account-scoped WeChat search as `https://mp.weixin.qq.com/s/BSIFLD5EKMuSsrGkcSDrPw`; HTML `ct` validates to 2025-05-10.
+- 25 link records still need corrected 2025 URLs.
 - The accepted Markdown files have no low-table/low-row failures; latest audit minimum was `tables=34`, `rows=376`.
 - Latest parser summary after the fastpath run: `coreRecords=188`, `allPriceRows=47515`, `missingMarkdownDates=26`, `noProductDates=0`, `noCoreMaotaiDates=0`.
