@@ -73,12 +73,14 @@ These quality gates are important. Earlier CDP experiments produced partial page
 
 Older 2021 and early 2022 articles can be image-based, with zero HTML tables but complete remote image links inside `#js_content`. For those archive-only pages, use `--allow-no-table --min-tables 0 --min-rows 0`, then rely on the extraction summary to show `noProductDates`.
 
-For image-based pages, OCR the long price-table images and merge the recovered core Moutai records:
+For image-based pages, OCR the long price-table images, then merge the recovered core Moutai records and full product rows:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File scripts/2025-backfill/ocr_wechat_images.ps1 -Year 2022 -Date 2022-10-10 -IncludeUnknownHeightPng
 python scripts/2025-backfill/extract_ocr_core.py --year 2022
 python scripts/2025-backfill/merge_ocr_core.py --year 2022
+python scripts/2025-backfill/extract_ocr_all_prices.py --year 2022
+python scripts/2025-backfill/merge_ocr_all_prices.py --year 2022
 ```
 
 Single date retry:
