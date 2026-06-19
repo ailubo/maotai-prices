@@ -137,3 +137,30 @@ HTML &nbsp;实体在正则提取后不会被自动解码，必须显式过滤
 - Tags: workflow, quality, self-correction
 
 ---
+
+## [LRN-20260618-001] correction
+
+**Logged**: 2026-06-18T13:56:00+08:00
+**Priority**: medium
+**Status**: pending
+**Area**: config
+
+### Summary
+maotai-prices 项目本地分支为 `main`，git push 必须用 `main:main` 而非 `master:main`
+
+### Details
+自动化任务脚本中默认写 `git push origin master:main`，但本项目的本地分支名实际为 `main`。
+错误: `error: src refspec master does not match any`
+修正: `git push origin main:main`
+
+此错误在 6/16 和 6/18 均出现过，属于重复模式。
+
+### Suggested Action
+自动化任务中的 git push 命令统一使用 `main:main` 或 `git push origin HEAD:main`。
+
+### Metadata
+- Source: error
+- Tags: git, push, branch-name
+- Recurrence-Count: 2
+
+---
