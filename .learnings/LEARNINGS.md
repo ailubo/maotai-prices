@@ -6,6 +6,60 @@ Corrections, insights, and knowledge gaps captured during development.
 
 ---
 
+## [LRN-20260619-002] best_practice
+
+**Logged**: 2026-06-19T00:00:00+08:00
+**Priority**: high
+**Status**: active
+**Area**: git-workflow
+
+### Summary
+Long-running data collection should be committed and pushed at meaningful checkpoints, not only at the end.
+
+### Details
+For WeChat/manual data collection, the user expects checkpoint pushes without repeated reminders. Useful checkpoints include: finishing one year, recovering a verified batch of links, fixing a known wrong-link date, or writing a durable learning/rule. This reduces risk from UI state loss, conversation interruption, local workspace drift, or forgotten file updates.
+
+### Suggested Action
+When a task produces durable files and a coherent unit is verified, run `git status`, review the diff, commit with the affected date/range in the message, push to `origin/main`, and confirm the commit hash. Do this proactively for multi-stage tasks.
+
+### Metadata
+- Source: user_feedback
+- Tags: git, checkpoint, push, long-running-task, data-quality
+
+---
+
+## [LRN-20260619-001] best_practice
+
+**Logged**: 2026-06-19T00:00:00+08:00
+**Priority**: high
+**Status**: active
+**Area**: data-collection
+
+### Summary
+WeChat official-account collection must be screenshot-led, account-scoped, and date-validated before writing links.
+
+### Details
+During the Jinri Jiujia WeChat link recovery task, the biggest operational failure was acting from remembered coordinates instead of first inspecting the current screenshot. The search icon, account header, result title, account avatar/name area, browser tabs, and article menu all occupy nearby but different hit zones. A wrong click can switch pages, open the account profile, minimize the window, or leave the search-result context without immediately looking broken.
+
+The reliable workflow is:
+- Capture and inspect the current WeChat window screenshot before each new UI phase.
+- For official-account search, click the magnifying-glass icon inside the account page, not global WeChat search or the top-level "Article" search tab.
+- Search with the exact target date plus keyword, for example `2025年5月10日 批发参考价`.
+- Use only the `今日酒价 发表的文章` result group. Ignore global article results and sticker/image groups.
+- Click the article title text inside the result card, not the account avatar/name area and not surrounding whitespace.
+- After opening a candidate, copy the article URL from the article menu and validate `mp.weixin.qq.com` HTML `ct`/publish time against the target date before updating CSV/JSON.
+- If the visible search-result snippet already shows another year/date, do not accept it without opening and validating; usually it is a false positive from a later-year article.
+
+### Suggested Action
+For future WeChat desktop UI work, use a checkpoint loop: screenshot -> identify exact hit target -> click once -> screenshot verify -> proceed. Never chain coordinate guesses across screens, and never write a link until the article publish date equals the requested date.
+
+### Metadata
+- Source: user_feedback
+- Related Files: sources/jinri-jiujia-wechat-links/2025-links.csv, sources/jinri-jiujia-wechat-links/2025-wrong-links.md
+- Tags: wechat-ui, official-account-search, date-validation, data-quality
+
+---
+
 ## [LRN-20260614-001] correction
 
 **Logged**: 2026-06-14T14:54:00+08:00
