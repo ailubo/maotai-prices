@@ -139,20 +139,60 @@ def append_price_row(
     })
 
 
+def box_bottle_product_and_spec(product: str, spec: str, price_kind: str) -> tuple[str, str]:
+    match = re.fullmatch(r"飞天\((\d{4})\)", product)
+    if not match:
+        return product, f"{spec} {price_kind}"
+
+    year = match.group(1)[-2:]
+    kind = "原" if price_kind == "原箱价" else "散"
+    if "43" in spec:
+        return f"{year}年43度飞天({kind})", spec
+    return f"{year}年飞天({kind})", spec
+
+
+def normalize_feitian_degree_product(product: str, spec: str) -> str:
+    match = re.fullmatch(r"(\d{2})年飞天\((原|散)\)", product)
+    if match and "43" in spec:
+        return f"{match.group(1)}年43度飞天({match.group(2)})"
+    return product
+
+
 def clean_product(text: str) -> str:
     text = normalize(text)
     text = re.sub(r"^[0oO。·'\"《]+", "", text)
     text = re.sub(r"[，,。．、]+$", "", text)
     text = text.replace("精品矛口", "精品茅台").replace("精品茅口", "精品茅台")
-    text = text.replace("迎宾(飞天", "迎宾(飞天)")
+    if text == "迎宾(飞天":
+        text = "迎宾(飞天)"
     text = re.sub(r"^四年飞天", "19年飞天", text)
     return text
 
 
 def clean_spec(text: str) -> str:
     text = normalize(text)
-    text = text.replace("v01", "vol").replace("vo1", "vol").replace("v引", "vol")
-    text = text.replace("m1", "ml")
+    text = text.replace("％", "%")
+    text = text.replace("·", ".")
+    text = re.sub(r"^[，,品)]+", "", text)
+    text = text.rstrip("。《，,．。")
+    text = (
+        text.replace("V01", "vol")
+        .replace("v01", "vol")
+        .replace("vo1", "vol")
+        .replace("voI", "vol")
+        .replace("v引", "vol")
+        .replace("寸ol", "vol")
+    )
+    text = text.replace("m1", "ml").replace("mt", "ml").replace("m]", "ml").replace("mL", "ml")
+    text = re.sub(r"^[币é§]3%", "53%", text)
+    text = re.sub(r"^币2%", "52%", text)
+    text = re.sub(r"^5300vol", "53%vol", text)
+    text = re.sub(r"^5200vol", "52%vol", text)
+    text = text.replace("500/ovol", "50%vol")
+    text = re.sub(r"^(\d{2})%v(\d+ml)$", r"\1%vol\2", text)
+    text = re.sub(r"^(\d{2})%1(500ml)$", r"\1%vol\2", text)
+    text = re.sub(r"^(\d{2})%vol(\d+)$", r"\1%vol\2ml", text)
+    text = re.sub(r"5001$", "500ml", text)
     text = re.sub(r"^3%vol500ml", "53%vol500ml", text)
     return text
 
@@ -234,6 +274,7 @@ def extract_row_price_rows(words: list[dict], date: str, image: dict) -> list[di
 
         product = clean_product(row_text(row, 0, 240))
         spec = clean_spec(row_text(row, 240, 510))
+        product = normalize_feitian_degree_product(product, spec)
         if is_noise_product(product):
             continue
         if not spec:
@@ -243,24 +284,26 @@ def extract_row_price_rows(words: list[dict], date: str, image: dict) -> list[di
         right_price = pick_price(row, 780, 930)
         if layout == "box-bottle":
             if left_price is not None:
+                row_product, row_spec = box_bottle_product_and_spec(product, spec, "原箱价")
                 append_price_row(
                     rows_out,
                     date=date,
                     category=category,
-                    product=product,
-                    spec=f"{spec} 原箱价",
+                    product=row_product,
+                    spec=row_spec,
                     yesterday=None,
                     today=left_price,
                     image=image,
                     layout=layout,
                 )
             if right_price is not None:
+                row_product, row_spec = box_bottle_product_and_spec(product, spec, "散瓶价")
                 append_price_row(
                     rows_out,
                     date=date,
                     category=category,
-                    product=product,
-                    spec=f"{spec} 散瓶价",
+                    product=row_product,
+                    spec=row_spec,
                     yesterday=None,
                     today=right_price,
                     image=image,

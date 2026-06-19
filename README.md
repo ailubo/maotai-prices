@@ -66,6 +66,8 @@
 
 2021-2024 已使用 `wechat_mp_fastpath.mjs` 存档到 `sources/jinri-jiujia-wechat-links/YYYY-md/`。2021 全年和 2022-01 至 2022-10 的旧文章是图片型正文，没有 HTML 表格；核心飞天散瓶/原箱价通过 Windows OCR 从长图补入 `data-2021.json` / `data-2022.json`，全品类 OCR 行已按原文表头区分 `原箱价/散瓶价` 与 `昨日行情/今日行情` 后补入 `all_prices-2021.jsonl` / `all_prices-2022.jsonl`，OCR 中间文件在 `sources/jinri-jiujia-wechat-links/YYYY-ocr/`。2022-11 起、2023、2024 为 HTML 表格，可抽取到 `data-YYYY.json` 和 `all_prices-YYYY.jsonl`。当前仓库没有 `2020-links.json/csv`。
 
+OCR 全品类数据按“尊重原表、最小清洗”处理：2021 图片表中的 `飞天(2019/2020/2021)` 已按表头拆为 `19/20/21年飞天(原/散)`，43 度规格单独命名为 `20年43度飞天(原/散)`，避免与 53 度飞天混在一起。审计重复时不要只按 `date/category/product` 分组；同名下可能有不同规格，少数源表本身还存在同名同规格但不同价格的行，例如 2022 赊店系列 `元青花 52%vol500ml` 同日有 275 和 105 两档，仓库保留原文行，不凭空改名。
+
 ## 更新流程
 
 ### 日常更新（自动化，每天 14:00）
