@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+from collections import Counter
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -98,10 +99,61 @@ def pick_price(row: list[dict], x_min: int, x_max: int) -> int | None:
     return prices[-1][1]
 
 
+def table_layout_from_header(row: list[dict]) -> str | None:
+    text = row_text(row)
+    if "品名" not in text or "规格" not in text:
+        return None
+    if "原箱价" in text and "散瓶价" in text:
+        return "box-bottle"
+    if "昨日" in text and "今日" in text and "行情" in text:
+        return "daily-change"
+    return None
+
+
+def append_price_row(
+    rows_out: list[dict],
+    *,
+    date: str,
+    category: str,
+    product: str,
+    spec: str,
+    yesterday: int | None,
+    today: int,
+    image: dict,
+    layout: str,
+) -> None:
+    rows_out.append({
+        "date": date,
+        "category": category,
+        "product": product,
+        "spec": spec,
+        "yesterday": yesterday,
+        "today": today,
+        "change": today - yesterday if yesterday is not None else None,
+        "url": image.get("articleUrl", ""),
+        "source_kind": "image-ocr",
+        "ocrLayout": layout,
+        "imageIndex": image.get("index", ""),
+        "imageUrl": image.get("url", ""),
+        "ocrWords": image.get("words", ""),
+    })
+
+
 def clean_product(text: str) -> str:
     text = normalize(text)
     text = re.sub(r"^[0oO。·'\"《]+", "", text)
     text = re.sub(r"[，,。．、]+$", "", text)
+    text = text.replace("精品矛口", "精品茅台").replace("精品茅口", "精品茅台")
+    text = text.replace("迎宾(飞天", "迎宾(飞天)")
+    text = re.sub(r"^四年飞天", "19年飞天", text)
+    return text
+
+
+def clean_spec(text: str) -> str:
+    text = normalize(text)
+    text = text.replace("v01", "vol").replace("vo1", "vol").replace("v引", "vol")
+    text = text.replace("m1", "ml")
+    text = re.sub(r"^3%vol500ml", "53%vol500ml", text)
     return text
 
 
@@ -159,92 +211,77 @@ def category_from_row(row: list[dict]) -> str | None:
 def extract_row_price_rows(words: list[dict], date: str, image: dict) -> list[dict]:
     rows_out: list[dict] = []
     category = "未知"
+    layout: str | None = None
     for row in cluster_rows(words):
         detected = category_from_row(row)
         if detected:
             category = detected
+            layout = None
             continue
 
         full = row_text(row)
+        header_layout = table_layout_from_header(row)
+        if header_layout:
+            layout = header_layout
+            continue
+        if re.search(r"\d{4}年\d{1,2}月\d{1,2}日", full):
+            layout = None
+            continue
+        if layout is None:
+            continue
         if "品名" in full and ("行情" in full or "规格" in full):
             continue
 
         product = clean_product(row_text(row, 0, 240))
-        spec = normalize(row_text(row, 240, 510))
-        yesterday = pick_price(row, 520, 760)
-        today = pick_price(row, 780, 1010)
-        if today is None:
-            continue
+        spec = clean_spec(row_text(row, 240, 510))
         if is_noise_product(product):
             continue
         if not spec:
             continue
 
-        rows_out.append({
-            "date": date,
-            "category": category,
-            "product": product,
-            "spec": spec,
-            "yesterday": yesterday,
-            "today": today,
-            "change": today - yesterday if yesterday is not None else None,
-            "url": image.get("articleUrl", ""),
-            "source_kind": "image-ocr",
-            "imageIndex": image.get("index", ""),
-            "imageUrl": image.get("url", ""),
-            "ocrWords": image.get("words", ""),
-        })
-    return rows_out
-
-
-def extract_column_price_rows(words: list[dict], date: str, image: dict) -> list[dict]:
-    rows_out: list[dict] = []
-    category = ""
-    for row in cluster_rows(words):
-        detected = category_from_row(row)
-        if detected:
-            category = detected
+        left_price = pick_price(row, 520, 760)
+        right_price = pick_price(row, 780, 930)
+        if layout == "box-bottle":
+            if left_price is not None:
+                append_price_row(
+                    rows_out,
+                    date=date,
+                    category=category,
+                    product=product,
+                    spec=f"{spec} 原箱价",
+                    yesterday=None,
+                    today=left_price,
+                    image=image,
+                    layout=layout,
+                )
+            if right_price is not None:
+                append_price_row(
+                    rows_out,
+                    date=date,
+                    category=category,
+                    product=product,
+                    spec=f"{spec} 散瓶价",
+                    yesterday=None,
+                    today=right_price,
+                    image=image,
+                    layout=layout,
+                )
             continue
-        full = row_text(row)
-        if not ("飞天" in full and ("原" in full or "散" in full)):
-            continue
 
-        product = clean_product(row_text(row, 0, 240))
-        spec = normalize(row_text(row, 240, 510))
-        yuanxiang = pick_price(row, 560, 730)
-        sanping = pick_price(row, 820, 980)
-        if is_noise_product(product) or not spec:
-            continue
-        if yuanxiang is not None:
-            rows_out.append({
-                "date": date,
-                "category": category or "茅台飞天系列",
-                "product": product,
-                "spec": f"{spec} 原箱价",
-                "yesterday": None,
-                "today": yuanxiang,
-                "change": None,
-                "url": image.get("articleUrl", ""),
-                "source_kind": "image-ocr",
-                "imageIndex": image.get("index", ""),
-                "imageUrl": image.get("url", ""),
-                "ocrWords": image.get("words", ""),
-            })
-        if sanping is not None:
-            rows_out.append({
-                "date": date,
-                "category": category or "茅台飞天系列",
-                "product": product,
-                "spec": f"{spec} 散瓶价",
-                "yesterday": None,
-                "today": sanping,
-                "change": None,
-                "url": image.get("articleUrl", ""),
-                "source_kind": "image-ocr",
-                "imageIndex": image.get("index", ""),
-                "imageUrl": image.get("url", ""),
-                "ocrWords": image.get("words", ""),
-            })
+        if layout == "daily-change" and right_price is not None:
+            if left_price is not None and right_price == left_price * 10:
+                right_price = left_price
+            append_price_row(
+                rows_out,
+                date=date,
+                category=category,
+                product=product,
+                spec=spec,
+                yesterday=left_price,
+                today=right_price,
+                image=image,
+                layout=layout,
+            )
     return rows_out
 
 
@@ -252,7 +289,15 @@ def dedupe(rows: list[dict]) -> list[dict]:
     seen: set[tuple] = set()
     out: list[dict] = []
     for row in rows:
-        key = (row["date"], row["category"], row["product"], row["spec"], row["today"])
+        key = (
+            row["date"],
+            row["category"],
+            row["product"],
+            row["spec"],
+            row.get("yesterday"),
+            row["today"],
+            row.get("ocrLayout", ""),
+        )
         if key in seen:
             continue
         seen.add(key)
@@ -299,7 +344,6 @@ def main() -> None:
             words_path = BASE / image["words"]
             words = json.loads(words_path.read_text(encoding="utf-8-sig"))
             date_rows.extend(extract_row_price_rows(words, date, image))
-            date_rows.extend(extract_column_price_rows(words, date, image))
         date_rows = dedupe(date_rows)
         image_counts[date] = len(date_rows)
         all_rows.extend(date_rows)
@@ -319,6 +363,7 @@ def main() -> None:
         "ocrAllPriceRows": len(all_rows),
         "missingOcrDates": missing,
         "rowCounts": image_counts,
+        "layoutCounts": dict(Counter(row.get("ocrLayout", "") for row in all_rows)),
         "generatedAt": datetime.now(timezone(timedelta(hours=8))).isoformat(timespec="seconds"),
     }, ensure_ascii=False, indent=2), encoding="utf-8")
 

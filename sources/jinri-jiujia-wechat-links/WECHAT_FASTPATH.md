@@ -73,7 +73,7 @@ These quality gates are important. Earlier CDP experiments produced partial page
 
 Older 2021 and early 2022 articles can be image-based, with zero HTML tables but complete remote image links inside `#js_content`. For those archive-only pages, use `--allow-no-table --min-tables 0 --min-rows 0`, then rely on the extraction summary to show `noProductDates`.
 
-For image-based pages, OCR the long price-table images, then merge the recovered core Moutai records and full product rows:
+For image-based pages, OCR the long price-table images, then merge the recovered core Moutai records and full product rows. The full-product OCR parser is layout-aware: `原箱价/散瓶价` tables are split into separate price-type rows, while `昨日行情/今日行情` tables keep yesterday/today fields.
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File scripts/2025-backfill/ocr_wechat_images.ps1 -Year 2022 -Date 2022-10-10 -IncludeUnknownHeightPng

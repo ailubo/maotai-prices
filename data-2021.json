@@ -781,6 +781,6 @@
       ]
     }
   ],
-  "note": "Merged from HTML table extraction and image-OCR core extraction for 2021. Full product rows remain limited to HTML table sources.",
+  "note": "Merged from HTML table extraction and image-OCR core extraction for 2021. Full product rows are available in all_prices-2021.jsonl from layout-aware image OCR.",
   "generated_at": "2026-06-18T22:35:01+08:00"
 }
