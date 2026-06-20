@@ -138,7 +138,53 @@ HTML &nbsp;实体在正则提取后不会被自动解码，必须显式过滤
 
 ---
 
-## [LRN-20260618-001] correction
+## [LRN-20260619-003] correction
+
+**Logged**: 2026-06-19T13:55:00+08:00
+**Priority**: medium
+**Status**: pending
+**Area**: config
+
+### Summary
+agent-browser eval 不支持裸 `return` 语句，必须用 IIFE 包裹
+
+### Details
+`agent-browser eval "const x = 1; return x;"` → `SyntaxError: Illegal return statement`
+正确写法: `agent-browser eval "(function(){ const x = 1; return x; })()"`
+另外 `agent-browser eval` 的代码内部访问 DOM 元素的 `.href` 属性前需判空（`linkEl ? linkEl.href : ''`），否则 `TypeError: Cannot read properties of null`。
+
+### Suggested Action
+所有 agent-browser eval 命令统一用 `(function(){ ... })()` 包裹。
+
+### Metadata
+- Source: error
+- Tags: agent-browser, eval, iife, javascript
+
+---
+
+## [LRN-20260619-004] correction
+
+**Logged**: 2026-06-19T13:55:00+08:00
+**Priority**: low
+**Status**: pending
+**Area**: config
+
+### Summary
+微信专辑页"倒序"按钮需点击 span.album-sort__word 直接元素，parentElement.click() 不生效
+
+### Details
+此前任务中使用 `el.parentElement.click()` 点击包含"倒序"文本的父元素，但实际未触发排序。
+改用 `document.createTreeWalker` 找到文本节点，取其 `parentElement`（即 span.album-sort__word），直接 `.click()` 才生效。
+
+### Suggested Action
+自动化脚本中倒序点击改为: find text node "倒序" → node.parentElement.click()
+
+### Metadata
+- Source: error
+- Tags: wechat, album-page, ui-interaction, agent-browser
+
+---
+
 
 **Logged**: 2026-06-18T13:56:00+08:00
 **Priority**: medium
