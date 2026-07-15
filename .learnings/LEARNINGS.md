@@ -138,6 +138,32 @@ HTML &nbsp;实体在正则提取后不会被自动解码，必须显式过滤
 
 ---
 
+## [LRN-20260714-001] knowledge_gap
+
+**Logged**: 2026-07-14T13:55:00+08:00
+**Priority**: medium
+**Status**: pending
+**Area**: data-collection
+
+### Summary
+微信定时发布文章：专辑页有占位链接（data-title=今天），但打开后 WeChat 重定向到前一天文章
+
+### Details
+7月14日日常更新时，agent-browser 在专辑页 `album__list-item` 中找到 data-title="7月14日" 的条目。
+但用 baoyu-fetch 抓取该链接后，返回的是 7月13日文章内容（url 字段的 chksm 参数已变化，说明发生了重定向）。
+parse_daily.py 正确把数据识别为 7/13 且已存在于 data.json。
+
+结论：data-title 为今天不等于文章已发布。需检查获取到的实际内容日期，而非仅依赖专辑页 data-title。
+
+### Suggested Action
+自动化流程中增加二次校验：parse_daily.py 提取的 ARTICLE_DATE 必须等于当天日期，否则判定为"文章未发布"，跳过数据更新。
+
+### Metadata
+- Source: error
+- Tags: wechat, scheduled-publishing, redirect, data-validation
+
+---
+
 ## [LRN-20260619-003] correction
 
 **Logged**: 2026-06-19T13:55:00+08:00
