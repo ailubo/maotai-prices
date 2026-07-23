@@ -110,5 +110,5 @@ git add -A && git commit -m "更新: YYYY-MM-DD" && git push origin main
 - **改 data.json 后必须跑 `python regenerate.py`**
 - **`batch_extract_all.mjs` 需要 `puppeteer-core`**（`bun install`）
 - **Chrome 路径**：默认 `C:/Program Files/Google/Chrome/Application/chrome.exe`，可通过 `CHROME_PATH` 环境变量覆盖
-- **Chrome Profile**：默认 `C:/Users/PC/AppData/Roaming/baoyu-skills/chrome-profile`
+- **Chrome Profile**：Mac 默认 `~/Library/Application Support/baoyu-skills/chrome-profile`，Windows 默认 `C:/Users/PC/AppData/Roaming/baoyu-skills/chrome-profile`
 - **state 文件**：自动创建，用于断点续传，不要手动删除（除非想重新全量抓取）

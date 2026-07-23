@@ -167,7 +167,7 @@ function extractAllPrices(html) {
 // Launch Chrome
 log('Launching Chrome...');
 const CHROME_PATH = process.env.CHROME_PATH || 'C:/Program Files/Google/Chrome/Application/chrome.exe';
-const CHROME_PROFILE = process.env.CHROME_PROFILE_DIR || 'C:/Users/PC/AppData/Roaming/baoyu-skills/chrome-profile';
+const CHROME_PROFILE = process.env.CHROME_PROFILE_DIR || (process.platform === 'darwin' ? `${process.env.HOME}/Library/Application Support/baoyu-skills/chrome-profile` : 'C:/Users/PC/AppData/Roaming/baoyu-skills/chrome-profile');
 const browser = await puppeteer.launch({
   executablePath: CHROME_PATH,
   userDataDir: CHROME_PROFILE,
