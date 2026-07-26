@@ -10,7 +10,12 @@
 - 主来源：今日酒价微信公众号专辑页 (agent-browser + baoyu-fetch)
 - 备用来源：金价查询网、酱酒界、热贵网、茅酒顾问
 
-## 文件结构
-- `data.json`: 飞天茅台散瓶/原箱价格序列
-- `all_prices.jsonl`: 全品类每日行情 (174条/天)
-- `regenerate.py`: 重新生成月度MD + 总览
+## 文件结构与格式
+- `data.json`: **dict结构** `{prices: [{date, yuanxiang, sanping, source, note, signal, guide_price}, ...], note, last_updated}` — 非纯数组，操作前需检查
+- `all_prices.jsonl`: 全品类每日行情 (~174条/天)，存在两种格式(嵌套products和扁平per-row)，待统一
+- `regenerate.py`: 重新生成月度MD + 总览，依赖data.json的prices数组
+
+## 自动化注意事项
+- data.json 操作：先 `isinstance(data, dict)` 检查 → 有 `prices` key → 用 `data['prices']`
+- all_prices.jsonl 格式不统一，读取时需兼容两种格式
+- 追加数据后必须更新 `last_updated` 字段

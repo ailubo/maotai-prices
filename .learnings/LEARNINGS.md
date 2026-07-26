@@ -236,3 +236,67 @@ maotai-prices 项目本地分支为 `main`，git push 必须用 `main:main` 而�
 - Recurrence-Count: 2
 
 ---
+
+## [LRN-20260725-001] correction
+
+**Logged**: 2026-07-25T13:55:00+08:00
+**Priority**: high
+**Status**: pending
+**Area**: config
+
+### Summary
+data.json 实际是 dict 结构 `{prices: [...], note: ..., last_updated: ...}`，不是直接的数组，自动化脚本必须先读取结构再操作
+
+### Details
+7/25 自动化任务中，脚本假设 data.json 是纯数组 `[{date, san, yuan}, ...]`，直接做 `json.load()` 后遍历。
+但实际文件结构是 `{"prices": [...], "note": "...", "last_updated": "..."}`。
+这导致：
+1. 脚本将 dict 的 4 个 key 误当成 4 条数据
+2. `isinstance(d, dict)` 过滤后只剩 1 条（新追加的）
+3. 保存后 data.json 只剩 1 条数据，丢失了全部历史
+4. 需要 `git checkout HEAD -- data.json` 恢复
+
+### Suggested Action
+自动化脚本中：
+1. 先检查 `isinstance(data, dict)` → 如果有 `prices` key → 使用 `data['prices']`
+2. 如果已是 list 则直接使用
+3. 操作 prices 数组后，更新 `last_updated` 字段
+4. 回写时必须保持原始外层结构（dict/list）
+
+### Metadata
+- Source: error
+- Tags: data-format, json-structure, automation, data-loss
+- Severity: caused data loss, required git recovery
+
+---
+## [LRN-20260725-002] knowledge_gap
+
+**Logged**: 2026-07-25T13:55:00+08:00
+**Priority**: medium
+**Status**: pending
+**Area**: data-collection
+
+### Summary
+all_prices.jsonl 存在两种不同的存储格式：嵌套 products 数组 (7/24) 和扁平单产品行 (7/25)
+
+### Details
+7/24 的数据通过 parse_daily.py 自动生成，格式为：
+```json
+{"date": "2026-07-24", "source": "今日酒价", "product_count": 173, "products": [{"name": "...", ...}, ...]}
+```
+7/25 的数据通过本文本中 Python 脚本生成，格式为：
+```json
+{"date": "2026-07-25", "source": "今日酒价", "category": "茅台飞天", "name": "26年飞天(原)", ...}
+{"date": "2026-07-25", "source": "今日酒价", "category": "茅台飞天", "name": "26年飞天(散)", ...}
+```
+
+两种格式不兼容，导致价格变动对比脚本失败。
+
+### Suggested Action
+决定一种统一格式后，所有自动化脚本统一使用该格式。推荐扁平格式（每个产品一行），因为更易处理。
+
+### Metadata
+- Source: error
+- Tags: jsonl-format, data-inconsistency
+
+---
