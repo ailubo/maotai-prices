@@ -8,7 +8,10 @@
 
 ## 数据来源
 - 主来源：今日酒价微信公众号专辑页 (agent-browser + baoyu-fetch)
-- 备用来源：金价查询网、酱酒界、热贵网、茅酒顾问
+- 备用来源：金价查询网(huangjinjiage.cn)、酱酒界、热贵网、茅酒顾问
+- ⚠️ 2026-08-06起WeChat文章页反爬升级, CDP/agent-browser/curl均被拦截(返回"参数错误")
+- 金价查询网提供单日快照数据(飞天/五星/精品/生肖全品类, 散瓶+原件双列)
+- 金价查询网数据为单日快照(无昨日/变化), all_prices.jsonl中yesterday/change字段设null
 
 ## 文件结构与格式
 - `data.json`: **dict结构** `{prices: [{date, yuanxiang, sanping, source, note, signal, guide_price}, ...], note, last_updated}` — 非纯数组，操作前需检查
