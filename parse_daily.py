@@ -1,230 +1,293 @@
 #!/usr/bin/env python3
-"""Parse baoyu-fetch markdown output and extract all product prices for today."""
+"""Parse baoyu-fetch markdown output and extract all product prices for a date.
 
-import json, re, sys, os
+Hardening (2026-08-12, per codex audit P0-4/P0-5):
+- Article date must be exact & explicit: NEVER fall back to "today".
+- Core prices (26年飞天散/原) must be integers in a sane range.
+- Product count must meet a recent baseline; known core products must exist.
+- data.json + all_prices.jsonl updated atomically (temp file + os.replace).
+- Exit codes: 0 = written, 1 = validation failed (nothing written), 2 = article date mismatch.
+"""
+
+import json
+import os
+import re
+import sys
+import tempfile
 from html.parser import HTMLParser
 from datetime import date
 
 BASE = os.path.dirname(os.path.abspath(__file__))
-MD_PATH = os.path.join(os.environ.get('TEMP', '/tmp'), 'baoyu_today.md')
-TODAY = date.today().isoformat()  # YYYY-MM-DD
+MD_PATH = os.environ.get('MAOTAI_MD_PATH', os.path.join('/tmp', 'baoyu_today.md'))
+# Expected article date; if unset, we require the article itself to carry a valid 2026 date.
+EXPECT_DATE = os.environ.get('MAOTAI_EXPECT_DATE', '')
+SANITY_RANGE = (1000, 6000)      # core price sanity band (元/瓶)
+MIN_PRODUCTS = 50                # minimum product rows per article (baseline)
+REQUIRED_PRODUCTS = ['26年飞天(散)', '26年飞天(原)']
+GUIDE_PRICE = 1539
 
-# Read markdown
-with open(MD_PATH, 'r', encoding='utf-8') as f:
-    md = f.read()
+# --- HTML table parsing (td-level, brand header in first row) ---
+KNOWN_BRANDS = [
+    '个性茅台', '茅台酱香', '五粮液', '茅台', '习酒', '汾酒', '洋河', '水井坊',
+    '泸州老窖', '古井贡', '西凤', '茅台集团', '珍酒', '仰韶', '杜康', '潭酒',
+    '郎酒', '酒鬼', '宝丰', '丹泉', '剑南春', '舍得', '国台', '安酒',
+    '同茂兴', '金沙', '董酒',
+]
 
-# Extract date from content
-date_match = re.search(r'(\d{4})年(\d{1,2})月(\d{1,2})日', md)
-if date_match:
-    y, m, d = date_match.groups()
-    ARTICLE_DATE = f"{y}-{m.zfill(2)}-{d.zfill(2)}"
-else:
-    ARTICLE_DATE = TODAY
-print(f"Article date: {ARTICLE_DATE}")
-
-# Extract all HTML tables
-tables = re.findall(r'<table[^>]*>.*?</table>', md, re.DOTALL)
 
 class TableParser(HTMLParser):
     def __init__(self):
         super().__init__()
         self.in_td = False
-        self.current_td_texts = []
-        self.current_row = []
+        self.cur_td = []
+        self.cur_row = []
         self.rows = []
-        self.current_tag_stack = []
-        self.current_span_texts = []
-        self.in_span = False
 
     def handle_starttag(self, tag, attrs):
         if tag == 'td':
             self.in_td = True
-            self.current_span_texts = []
-            self.in_span = False
-        elif tag == 'span':
-            self.in_span = True
+            self.cur_td = []
 
     def handle_endtag(self, tag):
         if tag == 'td' and self.in_td:
             self.in_td = False
-            # Flush: combine all span texts in this td
-            td_text = ''.join(self.current_span_texts).strip()
-            # Clean nbsp and arrows
-            td_text = re.sub(r'&nbsp;|\u00a0|[⬆⬇➡]', '', td_text).strip()
-            self.current_row.append(td_text)
-        elif tag == 'span' and self.in_span:
-            self.in_span = False
-        elif tag == 'tr' and self.current_row:
-            self.rows.append(list(self.current_row))
-            self.current_row = []
+            text = ''.join(self.cur_td)
+            text = re.sub(r'&nbsp;|\u00a0|[⬆⬇➡]', '', text).strip()
+            self.cur_row.append(text)
+        elif tag == 'tr' and self.cur_row:
+            self.rows.append(list(self.cur_row))
+            self.cur_row = []
 
     def handle_data(self, data):
         if self.in_td:
-            if self.in_span:
-                self.current_span_texts.append(data)
-            else:
-                # Data directly in td (not in span) - add anyway for robustness
-                self.current_span_texts.append(data)
+            self.cur_td.append(data)
 
-def parse_table(html):
-    parser = TableParser()
-    parser.feed(html)
-    return parser.rows
 
-all_products = []
-seen_products = set()
+def parse_tables(md_path):
+    with open(md_path, 'r', encoding='utf-8') as f:
+        content = f.read()
+    tables = re.findall(r'<table[^>]*>.*?</table>', content, re.DOTALL)
+    parsed = []
+    for th in tables:
+        p = TableParser()
+        p.feed(th)
+        parsed.append(p.rows)
+    return parsed
 
-for table_html in tables:
-    rows = parse_table(table_html)
-    
-    # Find header row (contains 品名)
+
+def detect_brand(header_row):
+    for cell in header_row:
+        text = cell.strip()
+        if not text or text in ('品名', '规格', '昨日行情', '今日行情', '产品参数', '单瓶价'):
+            continue
+        if re.match(r'^\d{4}年\d{1,2}月\d{1,2}日', text):
+            continue
+        if '公众号' in text or '今日酒价' in text:
+            continue
+        for b in KNOWN_BRANDS:
+            if b in text:
+                return b
+        if not re.match(r'^[\d\s]+$', text):
+            return text
+    return None
+
+
+def extract_products(rows):
+    if not rows:
+        return None, []
+    brand = detect_brand(rows[0])
     header_idx = -1
     for i, row in enumerate(rows):
-        if any('品名' in cell for cell in row):
+        if any('品名' in c for c in row):
             header_idx = i
             break
-    
     if header_idx < 0:
-        continue
-    
-    # Determine number of columns
+        return brand, []
+
     header = rows[header_idx]
     ncols = len(header)
-    
-    # Find column indices
-    name_col = 0
-    spec_col = 1
-    yesterday_col = None
-    today_col = None
-    
-    for j, cell in enumerate(header):
-        if '昨日' in cell:
-            yesterday_col = j
-        if '今日' in cell:
-            today_col = j
-    
-    if yesterday_col is None or today_col is None:
-        # Try 3-column format (品名/规格/行情)
-        if ncols == 3:
-            # year/wine/shengxiao/old_wine tables: 品名/规格/行情
-            price_col = 2
-            for row in rows[header_idx+1:]:
-                if len(row) >= 3:
-                    name = row[0].strip()
-                    spec = row[1].strip()
-                    price = row[2].strip()
-                    if name and name != '品名' and spec:
-                        key = f"{name}|{spec}"
-                        if key not in seen_products:
-                            seen_products.add(key)
-                            # For 3-col tables we cannot distinguish yesterday/today
-                            # Just record the single price
-                            all_products.append({
-                                'name': name,
-                                'spec': spec,
-                                'yesterday': '',
-                                'today': price
-                            })
-        continue
-    
-    # 4-column format: 品名/规格/昨日/今日
-    for row in rows[header_idx+1:]:
-        if len(row) < max(yesterday_col, today_col) + 1:
+    has_yesterday = any('昨日' in c for c in header)
+    has_today = any('今日' in c for c in header)
+
+    products = []
+    for row in rows[header_idx + 1:]:
+        if len(row) < 2:
             continue
-        name = row[name_col].strip() if name_col < len(row) else ''
-        spec = row[spec_col].strip() if spec_col < len(row) else ''
-        yesterday = row[yesterday_col].strip() if yesterday_col < len(row) else ''
-        today = row[today_col].strip() if today_col < len(row) else ''
-        
-        # Skip header rows and empty rows
-        if not name or name in ('品名', '品牌', ''):
+        name = row[0].strip()
+        if not name or name in ('品名', '品牌'):
             continue
+        spec = row[1].strip() if len(row) > 1 else ''
         if not spec:
             continue
-        # Skip if it looks like a section header
-        if not yesterday and not today:
+        if has_yesterday and has_today:
+            y_col = next((j for j, c in enumerate(header) if '昨日' in c), 2)
+            t_col = next((j for j, c in enumerate(header) if '今日' in c), 3)
+            yesterday = row[y_col].strip() if y_col < len(row) else ''
+            today = row[t_col].strip() if t_col < len(row) else ''
+            if not yesterday and not today:
+                continue
+        elif ncols >= 3 and not has_yesterday:
+            price = row[2].strip() if len(row) > 2 else ''
+            if not price:
+                continue
+            yesterday = ''
+            today = price
+        else:
             continue
-        # Skip rows where prices are just styling
-        if name in ('昨日行情', '今日行情'):
-            continue
-            
-        key = f"{name}|{spec}"
-        if key not in seen_products:
-            seen_products.add(key)
-            all_products.append({
-                'name': name,
-                'spec': spec,
-                'yesterday': yesterday,
-                'today': today
-            })
+        products.append({'name': name, 'spec': spec, 'yesterday': yesterday, 'today': today})
+    return brand, products
 
-print(f"Parsed {len(all_products)} products")
 
-# Extract key prices for data.json
-sanping_price = None
-yuanxiang_price = None
+def to_int(v):
+    m = re.match(r'^\s*(\d+(?:\.\d+)?)', str(v))
+    return int(float(m.group(1))) if m else None
 
-for p in all_products:
-    nm = p['name']
-    if '26年飞天(散)' in nm:
-        try:
-            sanping_price = int(p['today'])
-        except ValueError:
-            sanping_price = p['today']
-    if '26年飞天(原)' in nm:
-        try:
-            yuanxiang_price = int(p['today'])
-        except ValueError:
-            yuanxiang_price = p['today']
 
-print(f"散瓶: {sanping_price}, 原箱: {yuanxiang_price}")
+def article_date(md_path):
+    """Extract the article's own date. Returns None if not found."""
+    with open(md_path, 'r', encoding='utf-8') as f:
+        content = f.read()
+    m = re.search(r'(\d{4})年(\d{1,2})月(\d{1,2})日', content)
+    if not m:
+        return None
+    y, mo, d = m.groups()
+    return f"{y}-{mo.zfill(2)}-{d.zfill(2)}"
 
-# === Update data.json ===
-with open(f'{BASE}/data.json', 'r', encoding='utf-8') as f:
-    data = json.load(f)
 
-existing_dates = {p['date'] for p in data['prices']}
-print(f"Existing dates in data.json: {len(existing_dates)}")
+def main():
+    if not os.path.isfile(MD_PATH):
+        print(f'FAIL: 正文文件不存在: {MD_PATH}', file=sys.stderr)
+        sys.exit(1)
 
-if ARTICLE_DATE in existing_dates:
-    print(f"Date {ARTICLE_DATE} already exists in data.json, skipping")
-else:
+    # 1. Date validation: article date must be present and (if expected) exact match
+    adate = article_date(MD_PATH)
+    if adate is None:
+        print('FAIL: 正文中找不到发布日期 (4位年份+月+日)，禁止落盘', file=sys.stderr)
+        sys.exit(1)
+    if not adate.startswith('2026-'):
+        print(f'FAIL: 正文日期非2026年: {adate}，禁止落盘', file=sys.stderr)
+        sys.exit(1)
+    if EXPECT_DATE and adate != EXPECT_DATE:
+        print(f'FAIL: 正文日期 {adate} != 期望日期 {EXPECT_DATE}，禁止落盘', file=sys.stderr)
+        sys.exit(2)
+    print(f'Article date: {adate}')
+
+    # 2. Parse all tables
+    all_products = []
+    seen = set()
+    for rows in parse_tables(MD_PATH):
+        brand, products = extract_products(rows)
+        for p in products:
+            key = (brand or '其他', p['name'], p['spec'])
+            if key not in seen:
+                seen.add(key)
+                all_products.append({**p, 'brand': brand or '其他'})
+
+    print(f'Parsed {len(all_products)} products')
+
+    # 3. Core price validation (hard gate)
+    sanping = None
+    yuanxiang = None
+    for p in all_products:
+        if p['name'] == '26年飞天(散)':
+            sanping = to_int(p['today'])
+        if p['name'] == '26年飞天(原)':
+            yuanxiang = to_int(p['today'])
+
+    errors = []
+    if sanping is None:
+        errors.append('核心产品缺失: 26年飞天(散)')
+    elif not (SANITY_RANGE[0] <= sanping <= SANITY_RANGE[1]):
+        errors.append(f'散瓶价格越界: {sanping} 不在 {SANITY_RANGE} 区间')
+    if yuanxiang is None:
+        errors.append('核心产品缺失: 26年飞天(原)')
+    elif not (SANITY_RANGE[0] <= yuanxiang <= SANITY_RANGE[1]):
+        errors.append(f'原箱价格越界: {yuanxiang} 不在 {SANITY_RANGE} 区间')
+
+    for req in REQUIRED_PRODUCTS:
+        if not any(p['name'] == req for p in all_products):
+            errors.append(f'已知核心产品缺失: {req}')
+
+    if len(all_products) < MIN_PRODUCTS:
+        errors.append(f'产品数过少: {len(all_products)} < 基线 {MIN_PRODUCTS}')
+
+    if errors:
+        print('FAIL: ' + '; '.join(errors), file=sys.stderr)
+        sys.exit(1)
+
+    print(f'散瓶: {sanping}, 原箱: {yuanxiang}, 产品数: {len(all_products)}')
+
+    # 4. Load data.json (dict structure), build in-memory candidates
+    data_path = f'{BASE}/data.json'
+    with open(data_path, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+    assert isinstance(data, dict) and 'prices' in data, 'data.json 结构异常'
+
+    existing_dates = {p['date'] for p in data['prices']}
+    if adate in existing_dates:
+        print(f'Date {adate} already exists in data.json, skipping')
+        sys.exit(0)
+
+    signal = '🔴' if sanping < GUIDE_PRICE else ('🟡' if sanping <= 1800 else '🟢')
     entry = {
-        "date": ARTICLE_DATE,
-        "yuanxiang": yuanxiang_price,
-        "sanping": sanping_price,
-        "source": "今日酒价"
-    }
-    data['prices'].append(entry)
-    with open(f'{BASE}/data.json', 'w', encoding='utf-8') as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
-    print(f"Added {ARTICLE_DATE} to data.json")
-
-# === Update all_prices.jsonl ===
-jl_path = f'{BASE}/all_prices.jsonl'
-existing_jl_dates = set()
-if os.path.isfile(jl_path):
-    with open(jl_path, 'r', encoding='utf-8') as f:
-        for line in f:
-            line = line.strip()
-            if line:
-                try:
-                    obj = json.loads(line)
-                    existing_jl_dates.add(obj.get('date', ''))
-                except:
-                    pass
-
-if ARTICLE_DATE in existing_jl_dates:
-    print(f"Date {ARTICLE_DATE} already exists in all_prices.jsonl, skipping")
-else:
-    jl_entry = {
-        'date': ARTICLE_DATE,
+        'date': adate,
+        'yuanxiang': yuanxiang,
+        'sanping': sanping,
         'source': '今日酒价',
-        'product_count': len(all_products),
-        'products': all_products
+        'guide_price': GUIDE_PRICE,
+        'signal': signal,
+        'note': '',
     }
-    with open(jl_path, 'a', encoding='utf-8') as f:
-        f.write(json.dumps(jl_entry, ensure_ascii=False) + '\n')
-    print(f"Added {ARTICLE_DATE} to all_prices.jsonl with {len(all_products)} products")
+    new_prices = sorted(data['prices'] + [entry], key=lambda p: p['date'])
+    new_data = dict(data)
+    new_data['prices'] = new_prices
+    new_data['last_updated'] = adate
 
-print("Done!")
+    # 5. Build jsonl candidates (flat per-row)
+    jl_path = f'{BASE}/all_prices.jsonl'
+    new_lines = []
+    for p in all_products:
+        new_lines.append(json.dumps({
+            'date': adate,
+            'brand': p['brand'],
+            'name': p['name'],
+            'spec': p['spec'],
+            'yesterday': p['yesterday'],
+            'today': p['today'],
+        }, ensure_ascii=False))
+
+    # 6. Atomic writes: temp file + os.replace, jsonl first then data.json
+    fd, tmp = tempfile.mkstemp(dir=BASE, suffix='.tmp')
+    try:
+        with os.fdopen(fd, 'a', encoding='utf-8') as tf:
+            # append existing jsonl content + new lines
+            with open(jl_path, 'r', encoding='utf-8') as jf:
+                tf.write(jf.read())
+            for line in new_lines:
+                tf.write(line + '\n')
+        os.replace(tmp, jl_path)
+    except Exception:
+        try:
+            os.unlink(tmp)
+        except OSError:
+            pass
+        raise
+
+    fd2, tmp2 = tempfile.mkstemp(dir=BASE, suffix='.tmp')
+    try:
+        with os.fdopen(fd2, 'w', encoding='utf-8') as tf:
+            json.dump(new_data, tf, ensure_ascii=False, indent=2)
+        os.replace(tmp2, data_path)
+    except Exception:
+        try:
+            os.unlink(tmp2)
+        except OSError:
+            pass
+        raise
+
+    print(f'Written {adate} (散={sanping} 原={yuanxiang} {signal}) to data.json + all_prices.jsonl ({len(new_lines)} rows)')
+    sys.exit(0)
+
+
+if __name__ == '__main__':
+    main()

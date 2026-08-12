@@ -1,6 +1,6 @@
 # maotai-prices — 飞天茅台散瓶批价追踪
 
-> AI agent 操作手册。2026 年 162 数据点 + 2025 年历史数据，来源今日酒价公众号。
+> AI agent 操作手册。2026 年 219 数据点 + 2025 年历史数据，来源今日酒价公众号（截至 2026-08-12）。数据统计以 `scripts/verify_data.py` 实测为准，勿手填。
 
 ## 文件结构
 
@@ -8,8 +8,8 @@
 
 | 文件 | 格式 | 用途 | 何时修改 |
 |------|------|------|---------|
-| `data.json` | JSON | 2026 茅台价格（162点），默认年份 | 每日追加 |
-| `all_prices.jsonl` | JSONL | 2026 全品类酒价（251款×160天，31508行） | 每日追加 |
+| `data.json` | JSON | 2026 茅台价格（219点），默认年份 | 每日追加 |
+| `all_prices.jsonl` | JSONL | 2026 全品类酒价（34785行） | 每日追加 |
 | `data-2021.json` | JSON | 2021 茅台价格（10点；OCR核心价） | 历史回填 |
 | `all_prices-2021.jsonl` | JSONL | 2021 全品类酒价（1880行；布局感知OCR补入） | 历史回填 |
 | `core_prices-2021-ocr.jsonl` | JSONL | 2021 OCR 核心飞天行（复核用） | 历史回填 |
@@ -38,6 +38,13 @@
 
 | 文件 | 用途 | 用法 |
 |------|------|------|
+| `scripts/daily_update.sh` | **每日更新顶层 runner**（推荐入口） | `bash scripts/daily_update.sh [--expect-date YYYY-MM-DD] [--skip-push]` |
+| `scripts/fetch_latest_wechat_album_item.sh` | 抓专辑最新文章 title+link（Playwright） | 由 runner 调用 |
+| `scripts/fetch_latest_playwright.cjs` | Playwright 取最新1篇（倒序校验+锁） | 由 runner 调用 |
+| `scripts/fetch_recent_articles.cjs` | 滚动加载取最近 N 篇（含 date） | `node fetch_recent_articles.cjs <N>` |
+| `scripts/fetch_article_playwright.cjs` | 单篇正文直抓（baoyu-fetch 兜底） | `node fetch_article_playwright.cjs <url> <out.md>` |
+| `scripts/verify_data.py` | 数据缺口核验（日历 vs data.json vs jsonl） | `python scripts/verify_data.py [--quiet] [--date YYYY-MM-DD]` |
+| `parse_daily.py` | 解析文章→硬校验→原子落盘 | 由 runner 调用（env: MAOTAI_MD_PATH/MAOTAI_EXPECT_DATE） |
 | `batch_extract_all.mjs` | Light 模式批量提取 | `node batch_extract_all.mjs [--year YYYY] <links.json>` |
 | `scripts/2025-backfill/` | 历史回填一次性工具 | 仅审计/重跑 2021-2025 存档时使用 |
 | `archived/batch_extract_prices.mjs` | 旧版（仅茅台），已归档 | 不再使用 |
@@ -48,6 +55,7 @@
 |------|------|
 | `sources/jinri-jiujia-wechat-links/` | 今日酒价公众号链接采集 |
 | `sources/jinri-jiujia-wechat-links/2025-links.csv` | 2025 年已验证链接（214篇） |
+| `sources/停更例外.md` | 公众号停更日清单（已全量核验，勿随手添加） |
 
 ## 命名约定
 
@@ -70,15 +78,37 @@ OCR 全品类数据按“尊重原表、最小清洗”处理：2021 图片表�
 
 ## 更新流程
 
-### 日常更新（自动化，每天 14:00）
+### 日常更新（自动化，每天 14:00 首检 + 20:30 补检）
 
-**优先源**：用户提供今日酒价公众号文章链接 → baoyu-fetch 直抓
+**统一入口**：`scripts/daily_update.sh`（确定性状态机，机器可判）：
+
 ```bash
-bun cli.ts "https://mp.weixin.qq.com/s/xxx" --output result.md
-# 从 markdown 提取 26年飞天(散)/(原) 价格
+bash scripts/daily_update.sh
+# 输出 STATUS=<state>，state ∈ {
+#   SUCCESS                  完整更新并推送成功
+#   VERIFIED_NOT_PUBLISHED   专辑可达且倒序成功，但今天文章尚未发布（正常跳过，不写数据）
+#   STALE_NO_PUBLISH         最新文章落后 ≥2 天（异常，需人工核查）
+#   DISCOVERY_FAILED         专辑页/文章抓取失败（基础设施故障，需告警）
+#   FETCH_FAILED / PARSE_FAILED / COMMIT_FAILED / PUSH_FAILED
+#   ALREADY_EXISTS           当天数据已存在（幂等）
+# }
 ```
 
-**兜底搜索**：`WebSearch "今日酒价 飞天茅台散瓶"` + `site:cls.cn "飞天茅台" "批价"`
+- 只有 `SUCCESS` 与 `VERIFIED_NOT_PUBLISHED` 属正常结果；其余均为失败，须告警/人工介入
+- 14:00 首检：文章通常 19-20 点发布 → 大概率返回 `VERIFIED_NOT_PUBLISHED`（正常）
+- 20:30 补检：文章已发布 → 抓取→解析→重建→推送
+- 补录历史日期：`bash scripts/daily_update.sh --expect-date=2026-08-10`（正文日期必须精确匹配才落盘）
+
+**手动单步（不推荐，仅排障）**：
+```bash
+bash scripts/fetch_latest_wechat_album_item.sh          # 1. 拿最新文章 title+link
+MAOTAI_MD_PATH=/tmp/baoyu_today.md MAOTAI_EXPECT_DATE=$(date +%F) \
+  python parse_daily.py                                  # 2. 解析+硬校验+原子落盘
+python regenerate.py                                     # 3. 重建报告
+python scripts/verify_data.py --quiet                    # 4. 缺口核查（0=无缺口）
+```
+
+**兜底搜索**：`WebSearch "今日酒价 飞天茅台散瓶"` + `site:cls.cn "飞天茅台" "批价"`（仅当抓取通道全挂时）
 
 ### 批量回填（按需，light 模式）
 
@@ -92,12 +122,26 @@ node batch_extract_all.mjs --year 2025 sources/.../2025-links.json
 # 输出自动命名：data-2025.json + all_prices-2025.jsonl
 ```
 
-### 善后
+### 善后（精确暂存，勿用 git add -A）
 
 ```bash
 python regenerate.py
-git add -A && git commit -m "更新: YYYY-MM-DD" && git push origin main
+git add data.json all_prices.jsonl "2026/2026-$(date +%m).md" "2026总览.md" sources/
+git commit -m "更新: YYYY-MM-DD"
+git push origin main
+git fetch origin main && git rev-parse HEAD && git rev-parse origin/main  # 两 SHA 必须一致
 ```
+
+## 防静默失败防线（2026-08-12 事故后建立）
+
+| 防线 | 工具 | 说明 |
+|------|------|------|
+| CDP about:blank 探测 | `fetch_latest_playwright.cjs` | 打开后校验 URL host=mp.weixin.qq.com，否则判失败 |
+| 倒序真伪校验 | 同上 | 点击前后比较首篇 data-link，前3篇必须严格倒序 |
+| 解析硬校验 | `parse_daily.py` | 正文日期精确匹配期望日、核心两价在 1000~6000、产品数 ≥50、核心产品必在；不满足不落盘 |
+| 原子写入 | 同上 | 临时文件 + os.replace，崩溃不产生半完成态 |
+| 缺口自动检测 | `scripts/verify_data.py` | 日历 vs data.json vs jsonl 三向对比；停更例外见 `sources/停更例外.md` |
+| 资源清理 | 三个 fetch 脚本 | 锁带 PID 陈旧检测；异常/信号均释放浏览器+锁 |
 
 ## 信号规则
 
