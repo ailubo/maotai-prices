@@ -1742,10 +1742,37 @@
       "guide_price": 1539,
       "signal": "🟡",
       "note": "原箱涨20 散瓶涨15"
+    },
+    {
+      "date": "2026-08-10",
+      "yuanxiang": 1730,
+      "sanping": 1710,
+      "source": "今日酒价",
+      "guide_price": 1539,
+      "signal": "🟡",
+      "note": "原箱持平 散瓶持平 (1730/1710)"
+    },
+    {
+      "date": "2026-08-11",
+      "yuanxiang": 1720,
+      "sanping": 1710,
+      "source": "今日酒价",
+      "guide_price": 1539,
+      "signal": "🟡",
+      "note": "原箱跌10 散瓶持平 (1720/1710)"
+    },
+    {
+      "date": "2026-08-12",
+      "yuanxiang": 1720,
+      "sanping": 1705,
+      "source": "今日酒价",
+      "guide_price": 1539,
+      "signal": "🟡",
+      "note": "原箱持平 散瓶跌5 (1720/1705)"
     }
   ],
   "note": "🔴=低于当期指导价(1499→3/31→1539) | 🟡=指导价~1800 | 🟢=>1800",
-  "last_updated": "2026-08-10T14:19:42+08:00",
+  "last_updated": "2026-08-12T14:24:17+08:00",
   "guide_price_history": [
     {
       "valid_from": "2026-01-01",
