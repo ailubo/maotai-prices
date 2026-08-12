@@ -50,6 +50,25 @@ async function main() {
 
     await page.waitForTimeout(3000);
 
+    // Scroll to load more articles until we have N or no more load
+    let lastCount = 0;
+    for (let round = 0; round < 30; round++) {
+      const count = await page.evaluate(() => document.querySelectorAll('.album__list-item').length);
+      if (count >= N) break;
+      if (count === lastCount) {
+        // No progress; try scroll a bit more then stop if still stuck
+        await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+        await page.waitForTimeout(1500);
+        const count2 = await page.evaluate(() => document.querySelectorAll('.album__list-item').length);
+        if (count2 === count) break;
+        lastCount = count2;
+        continue;
+      }
+      lastCount = count;
+      await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+      await page.waitForTimeout(1500);
+    }
+
     // Extract first N articles (reverse order => newest first)
     const articles = await page.evaluate((n) => {
       const items = document.querySelectorAll('.album__list-item');
