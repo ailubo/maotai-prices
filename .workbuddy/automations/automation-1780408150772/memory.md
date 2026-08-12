@@ -1,6 +1,25 @@
 # 每日茅台批价更新 - 执行记忆
 
-## 最近执行: 2026-08-12 14:26 (三次执行，全量缺口核验+补录)
+## 最近执行: 2026-08-12 14:48 (codex 审查 + 全面加固)
+
+### 结果
+- ✅ **Codex 只读审查完成**（8m18s, gpt-5.6-sol）：指出 5 P0 + 8 P1 + 2 P2，核心= "数据已恢复但防静默失败门禁未建立"
+- ✅ **P0/P1 修复已落地并推送**（0963dc6）：
+  1. `scripts/daily_update.sh` — 确定性状态机 runner（SUCCESS/VERIFIED_NOT_PUBLISHED/STALE_NO_PUBLISH/DISCOVERY_FAILED/FETCH_FAILED/PARSE_FAILED/COMMIT_FAILED/PUSH_FAILED/ALREADY_EXISTS），含 CDP about:blank 探测、精确 git add、SHA 验证
+  2. 三个 Playwright 脚本 — 倒序失败必抛错（不再假成功）、process.exitCode 替代 try/catch 内 exit（finally 必执行）、锁带 PID 陈旧检测、URL host 校验、排序真伪校验
+  3. `parse_daily.py` — 硬校验（正文日期精确匹配、核心价 1000~6000、产品数≥50、核心产品必在）+ 原子写入（临时文件+os.replace）
+  4. `scripts/verify_data.py` — 日历 vs data.json vs jsonl 三向缺口检测（停更例外读 sources/停更例外.md）
+  5. `sources/停更例外.md` — 5 天停更清单（1/11、2/16-19）
+  6. README 全面更新
+- ✅ **自动化配置更新**：14:00 任务提示词改为状态机分支；新增 20:30 晚间补检任务（automation-1786517311073，因 Claw 工作区限制 cwds 为系统分配目录，prompt 内绝对路径 cd 覆盖）
+- ✅ 数据完整性: verify_data.py --quiet → OK (219 点, 无缺口, 5 例外)
+- ⚠️ 已知残留(非本次范围): all_prices.jsonl 三种历史格式并存、31 处跨文件来源冲突（均为非今日酒价来源日期）、README 统计改为运行 verify 取数
+
+### 事故根因（codex 确认）
+- agent-browser "命令成功"≠"页面可读"（CDP about:blank）；"未发布"与"无法观测"未分状态；无独立缺口探针；无晚间补偿
+
+---
+## 上次执行: 2026-08-12 14:26 (三次执行，全量缺口核验+补录)
 
 ### 结果
 - ✅ **全量核验**: 用 Playwright 滚动加载拉取专辑全部 218 篇文章，逐日比对 data.json

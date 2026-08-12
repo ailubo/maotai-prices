@@ -27,5 +27,10 @@
 
 ## 自动化注意事项
 - data.json 操作：先 `isinstance(data, dict)` 检查 → 有 `prices` key → 用 `data['prices']`
-- all_prices.jsonl 格式不统一，读取时需兼容两种格式
+- all_prices.jsonl 格式不统一，读取时需兼容两种格式（嵌套products/扁平per-row）
 - 追加数据后必须更新 `last_updated` 字段
+- ✅ 2026-08-12 起每日更新统一走 `scripts/daily_update.sh` 状态机 runner（SUCCESS/VERIFIED_NOT_PUBLISHED/STALE_NO_PUBLISH/DISCOVERY_FAILED/...）
+  - 双检: 14:00 首检 + 20:30 补检（晚间补检 automation-1786517311073）
+  - 缺口检测: `scripts/verify_data.py --quiet`（日历 vs data.json vs jsonl；停更例外读 sources/停更例外.md）
+  - 防静默失败铁律: 只有 SUCCESS 与 VERIFIED_NOT_PUBLISHED 是正常结果；失败类状态必须告警，禁止用 WebSearch 编造数据
+  - 禁止 git add -A（精确暂存 data.json/all_prices.jsonl/2026/*.md/2026总览.md/sources/）；推送后校验 HEAD==origin/main
