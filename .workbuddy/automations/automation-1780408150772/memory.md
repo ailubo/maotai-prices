@@ -1,13 +1,16 @@
 # 每日茅台批价更新 - 执行记忆
 
-## 最近执行: 2026-08-12 15:05 (通知通道核查)
+## 最近执行: 2026-08-12 15:06 (agentmail 已开通, 通道验证通过)
 
-### ⚠️ 关键发现
-- **agentmail 邮箱未开通**（GetMe 返回 status=not_bound）：connector 显示 connected 但服务端未绑定
-- 两个自动化已配 connectorIds=["agent-mail"] 且提示词含告警邮件逻辑，**但邮件目前发不出去**
-- **待用户开通**: 客户端「上方开通面板」或「更多-我的邮箱」完成 agentmail 开通后，告警邮件通道才真正可用
-- 开通后可查看位置: WorkBuddy 客户端 agentmail 收件箱（「更多-我的邮箱」入口）
-- 若用户不打算开通 agentmail，需移除自动化中的告警邮件逻辑或改走其他通道（如飞书桥）
+### 结果
+- ✅ **agentmail 已开通**: hqxe5231@agent.qq.com（主别名 alias_juUjBl9U9bj1_Zmuu2uOyckTH_aswKvugg）
+  - 权限: mail:send/read/delete + alias:read；日发送配额 50（实测剩 49）
+  - **测试邮件已发送成功**（queued=true），主题「茅台批价告警通道测试 2026-08-12」
+- ✅ **告警通道正式就绪**: 两个自动化(14:00 + 20:30)已配 connectorIds=["agent-mail"]，失败类状态/GAPS/异常晚发将自动发邮件至 hqxe5231@agent.qq.com（用户在此收件箱查看）
+- 配置回顾: 平台 push_to_wechat/push_to_wecom_bot 工具不落盘不可用；agentmail 为现役告警通道
+
+## 上次执行: 2026-08-12 15:05 (通知通道核查)
+- ⚠️ 当时发现 agentmail not_bound（未开通）→ 用户已开通，见上
 
 ## 上次执行: 2026-08-12 15:02 (通知通道配置)
 
