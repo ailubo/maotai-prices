@@ -7,15 +7,18 @@
 - **校验**：解析后检查 today>0 和已知product无缺失
 
 ## 数据来源
-- 主来源：今日酒价微信公众号专辑页 (agent-browser + baoyu-fetch)
+- 主来源：今日酒价微信公众号专辑页 (Playwright 方案, 2026-08-12起)
 - 备用来源：金价查询网(huangjinjiage.cn)、酱酒界、热贵网、茅酒顾问
 - 镜像来源: mffb.com.cn (淘酒帮), 163.com 白酒经销商学院 (《33款名酒全年走势+批零价差》系列)
 - ⚠️ 2026-08-06起WeChat文章页反爬升级, CDP/agent-browser/curl均被拦截(返回"参数错误")
-- 2026-08-10: agent-browser 严重异常：open 报成功但 eval/snapshot 始终 about:blank，即使 example.com 也复现
-- 2026-08-10: baoyu-fetch 仍可用但只能拿专辑页前20条（按时间正序）
+- 🔴 2026-08-10起 agent-browser CDP 故障：open 报成功但 eval/snapshot 始终 about:blank（非WeChat变化，是agent-browser自身bug）
+- ✅ 2026-08-12 修复：改用 Playwright 直接连 Chrome（baoyu-fetch 同引擎），绕开 agent-browser
+  - 脚本: `scripts/fetch_latest_playwright.cjs`（取最新1篇）+ `scripts/fetch_recent_articles.cjs <N>`（取最近N篇，倒序）
+  - 依赖: NODE_PATH=/Users/ailubo/.workbuddy/binaries/node/workspace/node_modules，系统Chrome executablePath，baoyu-skills Chrome profile，代理127.0.0.1:7897
+  - 主脚本 fetch_latest_wechat_album_item.sh 已改写为 Playwright 方案
+- ⚠️ 163.com 镜像自 2026-08-10 起为纯图片(走势曲线图)，无文本表格，不可作 fallback
 - 金价查询网提供单日快照数据(飞天/五星/精品/生肖全品类, 散瓶+原件双列)
 - 金价查询网数据为单日快照(无昨日/变化), all_prices.jsonl中yesterday/change字段设null
-- mffb.com.cn 163.com 镜像含完整173款名酒批价表(可作主源fallback)
 
 ## 文件结构与格式
 - `data.json`: **dict结构** `{prices: [{date, yuanxiang, sanping, source, note, signal, guide_price}, ...], note, last_updated}` — 非纯数组，操作前需检查

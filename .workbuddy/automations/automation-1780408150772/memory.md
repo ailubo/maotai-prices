@@ -1,10 +1,33 @@
 # 每日茅台批价更新 - 执行记忆
 
-## 最近执行: 2026-08-12 13:55
+## 最近执行: 2026-08-12 14:20 (二次执行，修复后补录成功)
+
+### 结果
+- ✅ **重大修复**: agent-browser CDP 故障(about:blank)已绕开，改用 Playwright 方案
+  - 根因确认: agent-browser open 报成功但页面停在 about:blank，eval/snapshot 全失效（非 WeChat DOM 变化）
+  - 新脚本: scripts/fetch_latest_playwright.cjs (Playwright + baoyu-skills Chrome profile + 代理)
+  - 主脚本 fetch_latest_wechat_album_item.sh 已改写为调用 Playwright 方案，实测可用
+- ✅ **补录成功**: 8/10、8/11 数据补齐 + 8/12 新增
+  - 8/10: 散=1710, 原=1730 (持平8/9)
+  - 8/11: 散=1710, 原=1720 (原箱跌10)
+  - 8/12: 散=1705⬇5, 原=1720 (散瓶跌5) 🟡
+  - all_prices.jsonl 追加 3天×175条=525条
+  - regenerate.py 成功: 213数据点 (4🔴 207🟡 0🟢)
+- ✅ git push: 0712286 (数据) + 149bee5 (修复脚本)
+- ✅ 浏览器会话清理成功(无活跃会话)
+
+### 经验
+- Playwright 可用: NODE_PATH=node/workspace/node_modules, 用系统 Chrome (executablePath)
+- 抓多篇: scripts/fetch_recent_articles.cjs <N> (倒序取最近N篇)
+- 文章为 HTML table 格式，parse_daily.py 的 td级解析可复用；品牌头在每表首行
+- 备用: fetch_recent_articles.cjs 可一次拉最近8篇标题+链接
+
+---
+## 首次执行: 2026-08-12 13:55
 
 ### 结果
 - ⏭️ 跳过: 8/12 今日酒价公众号文章尚未发布(14:00前)，按规则跳过数据写入
-- ❌ agent-browser 脚本持续失败: "找不到倒序按钮"（第4天，WeChat 专辑页 DOM 变化）
+- ❌ agent-browser 脚本持续失败: "找不到倒序按钮"（第4天，实为 CDP about:blank 故障）
 - ⚠️ 163.com 镜像 8/10、8/11 两篇均已发布（L3VDEC4L、L41VVON9），但均为纯图片(走势曲线图)，无文本表格，无法直接提取批价
 - ✅ 浏览器会话清理成功(maotai-daily 已关闭，无活跃会话)
 
@@ -15,15 +38,14 @@
 - 8/11 批价(中国商报): 回落到1720（未注明散/原）
 - 8/12 终端零售(酒价内参): 飞天=1789(+8), 精品=2454(+22)
 
-### 数据缺口
-- **8/10**: 今日酒价数据未收录（文章存在但不可达）
-- **8/11**: 今日酒价数据未收录（文章存在但不可达）
-- **8/12**: 今日酒价文章未发布（预计19-20点）
+### 数据缺口 (已补录，无缺口)
+- ~~8/10~~ ✅ 已补: 散=1710, 原=1730
+- ~~8/11~~ ✅ 已补: 散=1710, 原=1720
+- ~~8/12~~ ✅ 已收: 散=1705, 原=1720
 
 ### 待解决
-- 🔴 agent-browser CDP 连续4天不可用，需排障。脚本 eval 无法找到 "倒序" 按钮，WeChat 专辑页可能已重构
-- 建议：修改 fetch_latest_wechat_album_item.sh，去掉倒序点击步骤，改为直接读取默认排序的最新文章
-- 163.com 镜像自8/10起改为纯图表格式，无法作为 fallback
+- ✅ 已修复: agent-browser CDP 故障已绕开（Playwright 方案），连续4天问题终结
+- 后续: 观察 Playwright 方案在多日运行中的稳定性；163.com 镜像自8/10起为纯图表格式，已不可作 fallback
 
 ---
 ## 上次执行: 2026-08-11 13:55
