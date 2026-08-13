@@ -137,8 +137,9 @@ if grep -q "already exists" /tmp/daily_parse_out; then
   exit 0
 fi
 
-OUT_SANPING="$(grep -oP '散瓶: \K\d+' /tmp/daily_parse_out || true)"
-OUT_YUANXIANG="$(grep -oP '原箱: \K\d+' /tmp/daily_parse_out || true)"
+# macOS 原生 grep 不支持 -P（Perl 正则），改用 sed -E 提取散瓶/原箱数值
+OUT_SANPING="$(sed -nE 's/.*散瓶: ([0-9]+).*/\1/p' /tmp/daily_parse_out | head -1)"
+OUT_YUANXIANG="$(sed -nE 's/.*原箱: ([0-9]+).*/\1/p' /tmp/daily_parse_out | head -1)"
 
 # ---------- 4. 重建报告 ----------
 cd "$BASE" || fail VALIDATION_FAILED "无法进入项目目录"
@@ -155,8 +156,9 @@ if [[ $VERIFY_EXIT -ne 0 ]]; then
 fi
 
 # ---------- 6. 精确提交 + 推送 ----------
-MONTH_MD="2026/2026-$(date -j -f %Y-%m-%d "$EXPECT_DATE" +%m).md"
-git add data.json all_prices.jsonl "$MONTH_MD" "2026总览.md" sources/ 2>/tmp/daily_git_err
+# regenerate.py 会重写全部月度 md（每个文件的"数据截止"行都更新），须暂存 2026/*.md 全部，
+# 否则每月会残留 7 个未提交的月度文件（仅暂存当月会漏）。
+git add data.json all_prices.jsonl 2026/*.md "2026总览.md" sources/ 2>/tmp/daily_git_err
 if [[ $? -ne 0 ]]; then
   fail COMMIT_FAILED "git add 失败: $(tail -2 /tmp/daily_git_err)"
 fi
