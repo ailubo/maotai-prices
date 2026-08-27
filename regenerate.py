@@ -23,7 +23,8 @@ for p in data['prices']:
 # 指导价历史（数据驱动；下次指导价再变只加一行，不改下面的计算逻辑）
 GUIDE_PRICE_HISTORY = [
     {'valid_from': '2026-01-01', 'valid_until': '2026-03-30', 'price': 1499},
-    {'valid_from': '2026-03-31', 'valid_until': None,         'price': 1539},
+    {'valid_from': '2026-03-31', 'valid_until': '2026-07-17', 'price': 1539},
+    {'valid_from': '2026-07-18', 'valid_until': None,         'price': 1639},
 ]
 
 def guide_price_for(d):
@@ -72,7 +73,7 @@ for p in data['prices']:
     else:
         p['signal'] = '🟡'
 
-data['note'] = '🔴=低于当期指导价(1499→3/31→1539) | 🟡=指导价~1800 | 🟢=>1800'
+data['note'] = '🔴=低于当期指导价(1499→3/31→1539→7/18→1639) | 🟡=指导价~1800 | 🟢=>1800'
 data['last_updated'] = datetime.now(timezone(timedelta(hours=8))).isoformat(timespec='seconds')
 data['guide_price_history'] = GUIDE_PRICE_HISTORY
 

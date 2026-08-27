@@ -24,7 +24,7 @@ EXPECT_DATE = os.environ.get('MAOTAI_EXPECT_DATE', '')
 SANITY_RANGE = (1000, 6000)      # core price sanity band (元/瓶)
 MIN_PRODUCTS = 50                # minimum product rows per article (baseline)
 REQUIRED_PRODUCTS = ['26年飞天(散)', '26年飞天(原)']
-GUIDE_PRICE = 1539
+GUIDE_PRICE = 1639  # 2026-07-18 起官方零售指导价上调至 1639（i茅台线上价口径），红线并轨
 
 # --- HTML table parsing (td-level, brand header in first row) ---
 KNOWN_BRANDS = [
