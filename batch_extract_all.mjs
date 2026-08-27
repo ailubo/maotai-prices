@@ -267,7 +267,7 @@ try {
     }
     
     if ((sanping || yuanxiang) && !existingDates.has(date)) {
-      const guidePrice = (YEAR === 2026 && date >= '2026-03-31') ? 1539 : 1499;
+      const guidePrice = (YEAR === 2026 && date >= '2026-07-18') ? 1639 : (YEAR === 2026 && date >= '2026-03-31') ? 1539 : 1499;
       const entry = {
         date,
         source: '今日酒价',
