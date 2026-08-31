@@ -12,7 +12,7 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-NODE_BIN="${NODE_BIN:-/Users/ailubo/.workbuddy/binaries/node/versions/22.22.2/bin/node}"
+NODE_BIN="${NODE_BIN:-/Users/ailubo/.workbuddy/binaries/node/versions/22.22.2-2/bin/node}"
 NODE_PATH="${NODE_PATH:-/Users/ailubo/.workbuddy/binaries/node/workspace/node_modules}"
 PW_SCRIPT="${PW_SCRIPT:-$SCRIPT_DIR/fetch_latest_playwright.cjs}"
 TASK_LOCK_DIR="${TASK_LOCK_DIR:-${TMPDIR:-/tmp}/maotai-daily-playwright.lock}"

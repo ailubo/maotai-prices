@@ -23,7 +23,7 @@ set -u
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 BASE="$(dirname "$SCRIPT_DIR")"
-NODE_BIN="${NODE_BIN:-/Users/ailubo/.workbuddy/binaries/node/versions/22.22.2/bin/node}"
+NODE_BIN="${NODE_BIN:-/Users/ailubo/.workbuddy/binaries/node/versions/22.22.2-2/bin/node}"
 NODE_PATH="${NODE_PATH:-/Users/ailubo/.workbuddy/binaries/node/workspace/node_modules}"
 BUN_BIN="/opt/homebrew/bin/bun"
 BAOYU_CLI="/Users/ailubo/.workbuddy/skills/baoyu-url-to-markdown/scripts/lib/cli.ts"
