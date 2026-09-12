@@ -120,7 +120,7 @@ if [[ "$ARTICLE_DAY" < "$EXPECT_DATE" ]]; then
   exit 0
 fi
 if [[ "$ARTICLE_DAY" > "$EXPECT_DATE" ]]; then
-  fail DISCOVERY_FAILED "最新文章日期 $ARTICLE_DAY 晚于期望 $EXPECT_DATE（异常，疑似抓错或时区问题）"
+  fail DISCOVERY_FAILED "最新文章日期 $ARTICLE_DAY 晚于期望 ${EXPECT_DATE}（异常，疑似抓错或时区问题）"
 fi
 
 # ---------- 2. 抓正文 ----------
