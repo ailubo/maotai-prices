@@ -49,7 +49,10 @@ resolve_node_bin() {
     #       防止多行内容被拼接成别的版本名，也堵住 `../` 越界（审视 P2，2026-09-12）
     if [[ -z "$cand" && -f "$base/current" ]]; then
       local ver=""
-      IFS= read -r ver <"$base/current" 2>/dev/null || ver=""
+      # 🔴 必须用 `|| true` 而非 `|| ver=""`：read 在「读到内容但遇 EOF 无换行」时
+      #    仍会赋值，但返回非零。用 `|| ver=""` 会把**已读到的合法版本号清空**，
+      #    使本层对外失效——本机 versions/current 恰为 9 字节无末尾换行（审视第2轮 P2，2026-09-12）
+      IFS= read -r ver <"$base/current" 2>/dev/null || true
       ver="${ver#"${ver%%[![:space:]]*}"}"   # ltrim（纯 bash 内建，兼容 3.2）
       ver="${ver%"${ver##*[![:space:]]}"}"   # rtrim
       if [[ "$ver" =~ ^[A-Za-z0-9][A-Za-z0-9._-]*$ && -x "$base/$ver/bin/node" ]]; then
