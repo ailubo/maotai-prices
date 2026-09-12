@@ -21,40 +21,55 @@
 
 # 允许测试时用 MAOTAI_NODE_VERSIONS_DIR 指向假目录
 resolve_node_bin() {
-  local base="${MAOTAI_NODE_VERSIONS_DIR:-$HOME/.workbuddy/binaries/node/versions}"
+  # HOME 未定义时（调用方可能开了 set -u）不得中断：只是推不出默认目录，直接落到 PATH 兜底
+  local base="${MAOTAI_NODE_VERSIONS_DIR:-}"
+  if [[ -z "$base" && -n "${HOME:-}" ]]; then
+    base="$HOME/.workbuddy/binaries/node/versions"
+  fi
   local cand=""
 
-  # (2.1) versions/current 为软链
-  if [[ -L "$base/current" ]]; then
-    local target=""
-    target="$(cd "$base" 2>/dev/null && readlink current 2>/dev/null)" || target=""
-    if [[ -n "$target" && "$target" != /* ]]; then
-      target="$base/$target"
-    fi
-    if [[ -n "$target" && -x "$target/bin/node" ]]; then
-      cand="$target/bin/node"
-    fi
-  fi
-
-  # (2.2) versions/current 为普通文件（内含版本号）
-  if [[ -z "$cand" && -f "$base/current" ]]; then
-    local ver=""
-    ver="$(tr -d '[:space:]' <"$base/current" 2>/dev/null)" || ver=""
-    if [[ -n "$ver" && -x "$base/$ver/bin/node" ]]; then
-      cand="$base/$ver/bin/node"
-    fi
-  fi
-
-  # (3) versions/ 下按 mtime 取最新的可用 node（ls -dt 最新在最前）
-  if [[ -z "$cand" && -d "$base" ]]; then
-    local d=""
-    while IFS= read -r d; do
-      d="${d%/}"   # ls -dt 输出带结尾斜杠，去掉以免产生 // 双斜杠路径
-      if [[ -n "$d" && -x "$d/bin/node" ]]; then
-        cand="$d/bin/node"
+  if [[ -n "$base" ]]; then
+    # (2.1) versions/current 为软链。拒绝含 `..` 的目标，避免越出版本目录
+    if [[ -L "$base/current" ]]; then
+      local target=""
+      target="$(cd "$base" 2>/dev/null && readlink current 2>/dev/null)" || target=""
+      case "/$target/" in
+        *"/../"*) target="" ;;
+      esac
+      if [[ -n "$target" && "$target" != /* ]]; then
+        target="$base/$target"
       fi
-      break
-    done < <(ls -dt "$base"/*/ 2>/dev/null)
+      if [[ -n "$target" && -x "$target/bin/node" ]]; then
+        cand="$target/bin/node"
+      fi
+    fi
+
+    # (2.2) versions/current 为普通文件（内含版本号）。
+    #       只取首行 + 去首尾空白 + 限定字符集（[A-Za-z0-9._-]）——
+    #       防止多行内容被拼接成别的版本名，也堵住 `../` 越界（审视 P2，2026-09-12）
+    if [[ -z "$cand" && -f "$base/current" ]]; then
+      local ver=""
+      IFS= read -r ver <"$base/current" 2>/dev/null || ver=""
+      ver="${ver#"${ver%%[![:space:]]*}"}"   # ltrim（纯 bash 内建，兼容 3.2）
+      ver="${ver%"${ver##*[![:space:]]}"}"   # rtrim
+      if [[ "$ver" =~ ^[A-Za-z0-9][A-Za-z0-9._-]*$ && -x "$base/$ver/bin/node" ]]; then
+        cand="$base/$ver/bin/node"
+      fi
+    fi
+
+    # (3) versions/ 下按 mtime 取最新者（ls -dt 最新在最前）。
+    #     🔴 break 必须放在「已命中可执行 node」之后：否则 mtime 最新的目录
+    #     若没有 bin/node，就会整层放弃、漏掉次新可用目录（审视 P2，2026-09-12）
+    if [[ -z "$cand" && -d "$base" ]]; then
+      local d=""
+      while IFS= read -r d; do
+        d="${d%/}"   # ls -dt 输出带结尾斜杠，去掉以免产生 // 双斜杠路径
+        if [[ -n "$d" && -x "$d/bin/node" ]]; then
+          cand="$d/bin/node"
+          break
+        fi
+      done < <(ls -dt "$base"/*/ 2>/dev/null)
+    fi
   fi
 
   # (4) PATH 兜底

@@ -166,7 +166,7 @@ git fetch origin main && git rev-parse HEAD && git rev-parse origin/main  # 两 
 ## 注意事项
 
 - **改 data.json 后必须跑 `python regenerate.py`**
-- **Node 运行时（2026-09-12 起改为动态解析）**：托管 node 位于 `~/.workbuddy/binaries/node/versions/<ver>`，**宿主会重新版本化该目录**（如 2026-09-11 由 `22.22.2-2` → `22.22.2-3`）。脚本统一通过 `scripts/lib_resolve_node.sh` 的 `resolve_node_bin` 解析，优先级：`NODE_BIN` 环境变量 → `versions/current`（软链或内含版本号的普通文件）→ `versions/` 下 mtime 最新目录 → PATH 的 `node`。**禁止在脚本/文档中硬编码版本号**，否则宿主升级运行时即断链（exit 127 → `DISCOVERY_FAILED`）
+- **Node 运行时（2026-09-12 起改为动态解析）**：托管 node 位于 `~/.workbuddy/binaries/node/versions/<ver>`，**宿主会重新版本化该目录**（如 2026-09-11 由 `22.22.2-2` → `22.22.2-3`）。脚本统一通过 `scripts/lib_resolve_node.sh` 的 `resolve_node_bin` 解析，优先级：`NODE_BIN` 环境变量 → `versions/current`（软链或内含版本号的普通文件）→ `versions/` 下 mtime 最新目录 → PATH 的 `node`。`versions/current` 的内容只取首行、去首尾空白并限定 `[A-Za-z0-9._-]` 字符集（拒绝 `../` 越界）；第 3 层会逐个目录找可执行 node，不会因最新目录不可用就整层放弃。**禁止在脚本/文档中硬编码版本号**，否则宿主升级运行时即断链（exit 127 → `DISCOVERY_FAILED`）
 - **`batch_extract_all.mjs` 需要 `puppeteer-core`**（`bun install`）
 - **Chrome 路径**：默认 `C:/Program Files/Google/Chrome/Application/chrome.exe`，可通过 `CHROME_PATH` 环境变量覆盖
 - **Chrome Profile**：Mac 默认 `~/Library/Application Support/baoyu-skills/chrome-profile`，Windows 默认 `C:/Users/PC/AppData/Roaming/baoyu-skills/chrome-profile`
