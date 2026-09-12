@@ -29,7 +29,9 @@ resolve_node_bin() {
   local cand=""
 
   if [[ -n "$base" ]]; then
-    # (2.1) versions/current 为软链。拒绝含 `..` 的目标，避免越出版本目录
+    # (2.1) versions/current 为软链。拒绝含 `..` 的目标。
+    #       ⚠️ 这是输入规范化，不是完整的目录越界防护：绝对外部目标仍会被接受（见 39-43 行），
+    #          且第 3 层 `versions/*/` 也可能枚举到软链。勿把它当安全边界（审视第3轮挂账，2026-09-12）
     if [[ -L "$base/current" ]]; then
       local target=""
       target="$(cd "$base" 2>/dev/null && readlink current 2>/dev/null)" || target=""
@@ -45,8 +47,8 @@ resolve_node_bin() {
     fi
 
     # (2.2) versions/current 为普通文件（内含版本号）。
-    #       只取首行 + 去首尾空白 + 限定字符集（[A-Za-z0-9._-]）——
-    #       防止多行内容被拼接成别的版本名，也堵住 `../` 越界（审视 P2，2026-09-12）
+    #       只取首行 + 去首尾空白 + 限定字符集（[A-Za-z0-9._-]）——防止多行内容被拼接成别的版本名；
+    #       白名单本身即排除含 `/` 或 `..` 的值。⚠️ 同样属输入规范化，非安全边界（审视 P2，2026-09-12）
     if [[ -z "$cand" && -f "$base/current" ]]; then
       local ver=""
       # 🔴 必须用 `|| true` 而非 `|| ver=""`：read 在「读到内容但遇 EOF 无换行」时
