@@ -40,6 +40,7 @@
 |------|------|------|
 | `scripts/daily_update.sh` | **每日更新顶层 runner**（推荐入口） | `bash scripts/daily_update.sh [--expect-date YYYY-MM-DD] [--skip-push]` |
 | `scripts/lib_resolve_node.sh` | 托管 Node 运行时**动态解析**（勿硬编码版本号） | 由上面两个脚本 `source`，无需手动调用 |
+| `scripts/test_resolve_node.sh` | 上者的**回归测试**（19 例，含判别用例） | `bash scripts/test_resolve_node.sh`（期望 ALL PASS） |
 | `scripts/fetch_latest_wechat_album_item.sh` | 抓专辑最新文章 title+link（Playwright） | 由 runner 调用 |
 | `scripts/fetch_latest_playwright.cjs` | Playwright 取最新1篇（倒序校验+锁） | 由 runner 调用 |
 | `scripts/fetch_recent_articles.cjs` | 滚动加载取最近 N 篇（含 date） | `node fetch_recent_articles.cjs <N>` |
@@ -166,7 +167,8 @@ git fetch origin main && git rev-parse HEAD && git rev-parse origin/main  # 两 
 ## 注意事项
 
 - **改 data.json 后必须跑 `python regenerate.py`**
-- **Node 运行时（2026-09-12 起改为动态解析）**：托管 node 位于 `~/.workbuddy/binaries/node/versions/<ver>`，**宿主会重新版本化该目录**（如 2026-09-11 由 `22.22.2-2` → `22.22.2-3`）。脚本统一通过 `scripts/lib_resolve_node.sh` 的 `resolve_node_bin` 解析，优先级：`NODE_BIN` 环境变量 → `versions/current`（软链或内含版本号的普通文件）→ `versions/` 下 mtime 最新目录 → PATH 的 `node`。`versions/current` 的内容只取首行、去首尾空白并限定 `[A-Za-z0-9._-]` 字符集，软链分支拒绝含 `..` 的目标（⚠️ 这属输入规范化，**不是完整的目录越界防护**，勿当作安全边界）；第 3 层会逐个目录找可执行 node，不会因最新目录不可用就整层放弃。**禁止在脚本/文档中硬编码版本号**，否则宿主升级运行时即断链（exit 127 → `DISCOVERY_FAILED`）
+- **Node 运行时（2026-09-12 起改为动态解析）**：托管 node 位于 `~/.workbuddy/binaries/node/versions/<ver>`，**宿主会重新版本化该目录**（如 2026-09-11 由 `22.22.2-2` → `22.22.2-3`）。脚本统一通过 `scripts/lib_resolve_node.sh` 的 `resolve_node_bin` 解析，优先级：`NODE_BIN` 环境变量 → `versions/current`（软链或内含版本号的普通文件）→ `versions/` 下 mtime 最新目录 → PATH 的 `node`。`versions/current` 的内容只取首行、去首尾空白并限定 `[A-Za-z0-9._-]` 字符集，软链分支拒绝含 `..` 的目标（⚠️ 这属输入规范化，**不是完整的目录越界防护**，勿当作安全边界）；第 3 层会逐个目录找可执行 node，不会因最新目录不可用就整层放弃；第 3 层**排除 `current` 自身**（否则指向 versions 之外的软链 `current` 会被重新枚举回来、绕过上面的 `..` 拒绝），读 `current` 内容的第 2 层则**只认普通文件、不跟随软链**（防同一个软链跨层被接受）。改动解析器后必须跑 `bash scripts/test_resolve_node.sh`。**禁止在脚本/文档中硬编码版本号**，否则宿主升级运行时即断链（exit 127 → `DISCOVERY_FAILED`）
+- 🔴 **`$VAR` 后面紧跟中文标点/汉字必须写 `${VAR}`**（2026-09-12 实测）：本机 bash 3.2.57 会把多字节字节**并进变量名**，`set -u` 下直接 `unbound variable` 当场致命、无 `set -u` 则**静默吞掉变量值与后一个字符（退出码仍 0）**。自查命令：`grep -nE '\$[A-Za-z_][A-Za-z0-9_]*[^ -~]' scripts/*.sh`（期望零命中；注释行不算），扫描时须排除注释
 - **`batch_extract_all.mjs` 需要 `puppeteer-core`**（`bun install`）
 - **Chrome 路径**：默认 `C:/Program Files/Google/Chrome/Application/chrome.exe`，可通过 `CHROME_PATH` 环境变量覆盖
 - **Chrome Profile**：Mac 默认 `~/Library/Application Support/baoyu-skills/chrome-profile`，Windows 默认 `C:/Users/PC/AppData/Roaming/baoyu-skills/chrome-profile`
