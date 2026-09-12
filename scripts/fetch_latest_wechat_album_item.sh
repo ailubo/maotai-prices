@@ -12,7 +12,14 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-NODE_BIN="${NODE_BIN:-/Users/ailubo/.workbuddy/binaries/node/versions/22.22.2-2/bin/node}"
+# Node 运行时动态解析（2026-09-12）: 不硬编码版本号（宿主会重新版本化 versions/<ver>）
+if [[ ! -r "$SCRIPT_DIR/lib_resolve_node.sh" ]]; then
+  echo "缺少动态解析库：$SCRIPT_DIR/lib_resolve_node.sh" >&2
+  exit 1
+fi
+# shellcheck source=lib_resolve_node.sh
+source "$SCRIPT_DIR/lib_resolve_node.sh"
+NODE_BIN="${NODE_BIN:-$(resolve_node_bin)}"
 NODE_PATH="${NODE_PATH:-/Users/ailubo/.workbuddy/binaries/node/workspace/node_modules}"
 PW_SCRIPT="${PW_SCRIPT:-$SCRIPT_DIR/fetch_latest_playwright.cjs}"
 TASK_LOCK_DIR="${TASK_LOCK_DIR:-${TMPDIR:-/tmp}/maotai-daily-playwright.lock}"
@@ -99,4 +106,12 @@ if [[ ! -f "$PW_SCRIPT" ]]; then
   exit 1
 fi
 
-NODE_PATH="$NODE_PATH" "$NODE_BIN" "$PW_SCRIPT" 2>&1
+if [[ -z "$NODE_BIN" || ! -x "$NODE_BIN" ]]; then
+  echo "无法定位可用的 node 可执行文件 (NODE_BIN='${NODE_BIN}')" >&2
+  exit 1
+fi
+
+# 注意: 此处不得用 2>&1。Playwright 脚本的 JSON 只走 stdout、错误走 stderr；
+# 若合并，错误文本会混入 stdout 被上层 DISCOVERY_JSON 吞掉，导致 daily_update.sh
+# 捕获的 stderr 为空 —— 故障静默、告警无正文（2026-09-12 事故的次生问题）。
+NODE_PATH="$NODE_PATH" "$NODE_BIN" "$PW_SCRIPT"

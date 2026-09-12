@@ -23,7 +23,12 @@ set -u
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 BASE="$(dirname "$SCRIPT_DIR")"
-NODE_BIN="${NODE_BIN:-/Users/ailubo/.workbuddy/binaries/node/versions/22.22.2-2/bin/node}"
+# Node 运行时动态解析（2026-09-12）: 不硬编码版本号。
+# 宿主会重新版本化 ~/.workbuddy/binaries/node/versions/<ver>，硬编码会导致
+# node 调用 exit 127 → DISCOVERY_FAILED（2026-09-12 事故根因）。
+# shellcheck source=lib_resolve_node.sh
+source "$SCRIPT_DIR/lib_resolve_node.sh" 2>/dev/null || true
+NODE_BIN="${NODE_BIN:-$(resolve_node_bin 2>/dev/null || printf '')}"
 NODE_PATH="${NODE_PATH:-/Users/ailubo/.workbuddy/binaries/node/workspace/node_modules}"
 BUN_BIN="/opt/homebrew/bin/bun"
 BAOYU_CLI="/Users/ailubo/.workbuddy/skills/baoyu-url-to-markdown/scripts/lib/cli.ts"
@@ -60,6 +65,15 @@ fail() {  # fail <STATUS> <message>
   emit
   exit 1
 }
+
+# ---------- 0. 运行时前置校验（2026-09-12）----------
+# 缺 node 时给明确报错，不让故障以空 stderr 的形式静默下沉到 DISCOVERY_FAILED
+if ! declare -F resolve_node_bin >/dev/null 2>&1; then
+  fail DISCOVERY_FAILED "缺少动态解析库: $SCRIPT_DIR/lib_resolve_node.sh"
+fi
+if [[ -z "$NODE_BIN" || ! -x "$NODE_BIN" ]]; then
+  fail DISCOVERY_FAILED "无法定位可用的 node 可执行文件 (NODE_BIN='${NODE_BIN}')"
+fi
 
 # ---------- 1. 发现: 专辑页最新文章 ----------
 DISCOVERY_JSON="$(bash "$SCRIPT_DIR/fetch_latest_wechat_album_item.sh" 2>/tmp/daily_disc_err)"

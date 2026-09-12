@@ -39,6 +39,7 @@
 | 文件 | 用途 | 用法 |
 |------|------|------|
 | `scripts/daily_update.sh` | **每日更新顶层 runner**（推荐入口） | `bash scripts/daily_update.sh [--expect-date YYYY-MM-DD] [--skip-push]` |
+| `scripts/lib_resolve_node.sh` | 托管 Node 运行时**动态解析**（勿硬编码版本号） | 由上面两个脚本 `source`，无需手动调用 |
 | `scripts/fetch_latest_wechat_album_item.sh` | 抓专辑最新文章 title+link（Playwright） | 由 runner 调用 |
 | `scripts/fetch_latest_playwright.cjs` | Playwright 取最新1篇（倒序校验+锁） | 由 runner 调用 |
 | `scripts/fetch_recent_articles.cjs` | 滚动加载取最近 N 篇（含 date） | `node fetch_recent_articles.cjs <N>` |
@@ -142,6 +143,19 @@ git fetch origin main && git rev-parse HEAD && git rev-parse origin/main  # 两 
 | 原子写入 | 同上 | 临时文件 + os.replace，崩溃不产生半完成态 |
 | 缺口自动检测 | `scripts/verify_data.py` | 日历 vs data.json vs jsonl 三向对比；停更例外见 `sources/停更例外.md` |
 | 资源清理 | 三个 fetch 脚本 | 锁带 PID 陈旧检测；异常/信号均释放浏览器+锁 |
+| 运行时前置校验 | `daily_update.sh` / `fetch_latest_wechat_album_item.sh` | 启动即校验 node 可执行；缺失给明确报错，不再以空 stderr 静默下沉（2026-09-12 事故后加） |
+
+### 2026-09-12 事故：运行时版本漂移（已修复）
+
+- **现象**：默认入口连续两次 `STATUS=DISCOVERY_FAILED`，且错误摘要为空（静默失败）
+- **根因**：宿主于 2026-09-11 17:09 将托管 Node 由 `22.22.2-2` 重新版本化为 `22.22.2-3`，
+  而 `daily_update.sh` 与 `fetch_latest_wechat_album_item.sh` 硬编码了旧版本路径 →
+  node 调用 exit 127；又因 `fetch_latest_wechat_album_item.sh` 末尾写了 `2>&1`，
+  错误文本混入 stdout 被 `DISCOVERY_JSON` 吞掉，上层 stderr 为空 → 告警无正文
+- **修复**：① 抽出 `scripts/lib_resolve_node.sh` 做动态解析；② 两处默认值改为调用解析函数；
+  ③ 移除 `2>&1` 使错误回到 stderr；④ 两个脚本加 node 可执行前置校验
+- **教训**：脚本中**不得硬编码宿主托管运行时的版本号**；子脚本的 stderr 必须透传，
+  否则上层无法区分"未发布"与"无法观测"
 
 ## 信号规则
 
@@ -152,6 +166,7 @@ git fetch origin main && git rev-parse HEAD && git rev-parse origin/main  # 两 
 ## 注意事项
 
 - **改 data.json 后必须跑 `python regenerate.py`**
+- **Node 运行时（2026-09-12 起改为动态解析）**：托管 node 位于 `~/.workbuddy/binaries/node/versions/<ver>`，**宿主会重新版本化该目录**（如 2026-09-11 由 `22.22.2-2` → `22.22.2-3`）。脚本统一通过 `scripts/lib_resolve_node.sh` 的 `resolve_node_bin` 解析，优先级：`NODE_BIN` 环境变量 → `versions/current`（软链或内含版本号的普通文件）→ `versions/` 下 mtime 最新目录 → PATH 的 `node`。**禁止在脚本/文档中硬编码版本号**，否则宿主升级运行时即断链（exit 127 → `DISCOVERY_FAILED`）
 - **`batch_extract_all.mjs` 需要 `puppeteer-core`**（`bun install`）
 - **Chrome 路径**：默认 `C:/Program Files/Google/Chrome/Application/chrome.exe`，可通过 `CHROME_PATH` 环境变量覆盖
 - **Chrome Profile**：Mac 默认 `~/Library/Application Support/baoyu-skills/chrome-profile`，Windows 默认 `C:/Users/PC/AppData/Roaming/baoyu-skills/chrome-profile`
