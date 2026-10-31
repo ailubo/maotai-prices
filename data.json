@@ -2239,6 +2239,19 @@
       "note": ""
     },
     {
+      "date": "2026-09-28",
+      "yuanxiang": 1720,
+      "sanping": 1700,
+      "source": "今日酒价",
+      "guide_price": 1639,
+      "signal": "🟡",
+      "note": "表头9/27疑笔误；按9/28发布日补录",
+      "source_url": "https://mp.weixin.qq.com/s?__biz=Mzk0NzI1MjY4Ng==&mid=2247675465&idx=1&sn=9bb2c7b1eac1fd566c89f0dc692cac57&chksm=c375d2e8f4025bfecfeae3ac9acb5f035fb410e4f2a7d6e665b3d0f78b24bc28382494dda0e4#rd",
+      "source_published_at": "2026-09-28T09:53+08:00",
+      "source_table_date": "2026-09-27",
+      "date_basis": "publication_date; header_typo_supported_by_145_adjacent_pairs_each_side"
+    },
+    {
       "date": "2026-09-29",
       "yuanxiang": 1720,
       "sanping": 1690,
@@ -2528,7 +2541,7 @@
     }
   ],
   "note": "🔴=低于当期指导价(1499→3/31→1539→7/18→1639) | 🟡=指导价~1800 | 🟢=>1800",
-  "last_updated": "2026-10-30T14:07:55+08:00",
+  "last_updated": "2026-10-31T09:13:58+08:00",
   "guide_price_history": [
     {
       "valid_from": "2026-01-01",

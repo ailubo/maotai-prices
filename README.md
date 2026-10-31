@@ -2,6 +2,8 @@
 
 > AI agent 操作手册。2026 年 219 数据点 + 2025 年历史数据，来源今日酒价公众号（截至 2026-08-12）。数据统计以 `scripts/verify_data.py` 实测为准，勿手填。
 
+> **2026-10-31 修复**：9 月 28 日已按公众号原文及前后日全品类连续性核实补齐，保留原表头 9 月 27 日与发布日归属依据。旧 LRN-20260928-001 的“待裁决”是当时状态，最新处置见[原文核验与修复记录](sources/2026-09-28-review/README.md)。例行缺口核查默认截至北京时间昨天；今天未收录输出 `pending_today=1`，不触发历史缺口 GAPS。晚检未发布、抓取或解析失败的既有告警继续执行。
+
 ## 文件结构
 
 ### 数据文件
@@ -45,7 +47,8 @@
 | `scripts/fetch_latest_playwright.cjs` | Playwright 取最新1篇（倒序校验+锁） | 由 runner 调用 |
 | `scripts/fetch_recent_articles.cjs` | 滚动加载取最近 N 篇（含 date） | `node fetch_recent_articles.cjs <N>` |
 | `scripts/fetch_article_playwright.cjs` | 单篇正文直抓（baoyu-fetch 兜底） | `node fetch_article_playwright.cjs <url> <out.md>` |
-| `scripts/verify_data.py` | 数据缺口核验（日历 vs data.json vs jsonl） | `python scripts/verify_data.py [--quiet] [--date YYYY-MM-DD]` |
+| `scripts/verify_data.py` | 数据缺口核验（日历默认截至北京时间昨天；两文件一致性仍检查今日） | `python scripts/verify_data.py [--quiet] [--date YYYY-MM-DD]`，显式日期含当日 |
+| `scripts/test_verify_data.py` | 缺口与当天待采集的回归检查 | `python -m unittest discover -s scripts -p test_verify_data.py -v` |
 | `parse_daily.py` | 解析文章→硬校验→原子落盘 | 由 runner 调用（env: MAOTAI_MD_PATH/MAOTAI_EXPECT_DATE） |
 | `batch_extract_all.mjs` | Light 模式批量提取 | `node batch_extract_all.mjs [--year YYYY] <links.json>` |
 | `scripts/2025-backfill/` | 历史回填一次性工具 | 仅审计/重跑 2021-2025 存档时使用 |
@@ -100,6 +103,10 @@ bash scripts/daily_update.sh
 - 14:00 首检：文章通常 19-20 点发布 → 大概率返回 `VERIFIED_NOT_PUBLISHED`（正常）
 - 20:30 补检：文章已发布 → 抓取→解析→重建→推送
 - 补录历史日期：`bash scripts/daily_update.sh --expect-date=2026-08-10`（正文日期必须精确匹配才落盘）
+
+**缺口口径（2026-10-31）**：不带 `--date` 的例行核查只把昨天及更早、未列停更例外的缺失日期计入 `missing`；今天未收录只标为待发布/待采集，`pending_today=1` 不是停更豁免。今日已有核心数据但全品类缺失仍报 `JSONL_GAP`。runner 在解析成功后显式传入 `--date "$EXPECT_DATE"`，继续严格检查该日；20:30 的 `VERIFIED_NOT_PUBLISHED` 及失败状态仍沿现行任务书告警。不要为了消掉 GAPS 把真实缺口加入停更例外。
+
+**历史补录限制**：runner 的 `--expect-date=...` 只约束所抓文章的日期，发现阶段仍只找最新文章，并不会搜索历史日期。不能用它直接找回 9 月 28 日，也不能把标题/表头日期冲突普遍放行；历史补录先定位原文并核身份，冲突须定点核验和留痕。
 
 **手动单步（不推荐，仅排障）**：
 ```bash

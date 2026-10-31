@@ -2,8 +2,8 @@
 """Verify data coverage: calendar vs data.json vs all_prices.jsonl.
 
 Usage:
-  verify_data.py                 # full check 2026-01-01..today
-  verify_data.py --date 2026-08-12   # check up to a specific date
+  verify_data.py                 # calendar check 2026-01-01..yesterday (Beijing)
+  verify_data.py --date 2026-08-12   # inclusive cutoff (can include today)
   verify_data.py --quiet         # machine-readable one-liner (for automation)
 
 Exit codes:
@@ -19,7 +19,7 @@ import json
 import os
 import re
 import sys
-from datetime import date, timedelta
+from datetime import date, datetime, timezone, timedelta
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # project root
 DATA_JSON = os.path.join(BASE, 'data.json')
@@ -87,11 +87,18 @@ def main():
 
     exceptions = load_exceptions()
 
+    # A daily article may not be published yet. The routine calendar audit
+    # must not turn today's absence into a new historical-gap email every day.
+    # The runner explicitly supplies --date after a successful daily parse;
+    # the evening task separately alerts on VERIFIED_NOT_PUBLISHED/failures.
+    today = datetime.now(timezone(timedelta(hours=8))).date()
     if end_arg:
         end = date.fromisoformat(end_arg)
     else:
-        end = date.today()
-    end = min(end, date.today())
+        end = today - timedelta(days=1)
+    end = min(end, today)
+    pending_today = int(not end_arg and today.isoformat() not in data_dates
+                        and today.isoformat() not in exceptions)
 
     cur = DEFAULT_START
     calendar = []
@@ -99,7 +106,7 @@ def main():
         calendar.append(cur.isoformat())
         cur += timedelta(days=1)
 
-    missing_with_article = []   # calendar day missing from data.json but NOT excused
+    missing_with_article = []   # due calendar day missing, publishing status unverified
     missing_excused = []        # calendar day missing and listed as 停更例外
     jsonl_gaps = []             # date in data.json but absent from all_prices.jsonl
     jsonl_extra = []            # date in all_prices.jsonl but absent from data.json
@@ -128,12 +135,17 @@ def main():
         status = 'OK' if not (missing_with_article or jsonl_gaps) else 'GAPS'
         print(f'{status} data_max={max_data} jsonl_max={max_jsonl} '
               f'missing={len(missing_with_article)} jsonl_gaps={len(jsonl_gaps)} '
-              f'excused={len(missing_excused)}')
+              f'excused={len(missing_excused)} '
+              f'checked_through={end.isoformat()} pending_today={pending_today}')
     else:
         print(f'data.json: {len(data_dates)} dates, max={max_data}')
         print(f'all_prices.jsonl: {len(jsonl_dates)} dates, max={max_jsonl}')
         print(f'停更例外(已核验无文章): {len(missing_excused)} {missing_excused}')
-        print(f'待补缺口(有文章但未收录): {len(missing_with_article)}')
+        print(f'日历核查截至: {end.isoformat()} (北京时间)')
+        if pending_today:
+            print(f'  PENDING_TODAY {today.isoformat()} 待发布/待采集，不计历史缺口；'
+                  '晚检未发布及抓取/解析失败仍按任务书告警')
+        print(f'待核缺口(已到期未收录，是否停更需核实): {len(missing_with_article)}')
         for ds in missing_with_article:
             print(f'  MISSING {ds}')
         print(f'data有但jsonl缺: {len(jsonl_gaps)}')
