@@ -41,12 +41,10 @@
 | 文件 | 用途 | 用法 |
 |------|------|------|
 | `scripts/daily_update.sh` | **每日更新顶层 runner**（推荐入口） | `bash scripts/daily_update.sh [--expect-date YYYY-MM-DD] [--skip-push]` |
-| `scripts/lib_resolve_node.sh` | 托管 Node 运行时**动态解析**（勿硬编码版本号） | 由上面两个脚本 `source`，无需手动调用 |
+| `scripts/lib_resolve_node.sh` | 旧工具的托管 Node 运行时动态解析 | 供仍使用 Node 的工具调用 |
 | `scripts/test_resolve_node.sh` | 上者的**回归测试**（19 例，含判别用例） | `bash scripts/test_resolve_node.sh`（期望 ALL PASS） |
-| `scripts/fetch_latest_wechat_album_item.sh` | 抓专辑最新文章 title+link（Playwright） | 由 runner 调用 |
-| `scripts/fetch_latest_playwright.cjs` | Playwright 取最新1篇（倒序校验+锁） | 由 runner 调用 |
-| `scripts/fetch_recent_articles.cjs` | 滚动加载取最近 N 篇（含 date） | `node fetch_recent_articles.cjs <N>` |
-| `scripts/fetch_article_playwright.cjs` | 单篇正文直抓（baoyu-fetch 兜底） | `node fetch_article_playwright.cjs <url> <out.md>` |
+| `scripts/fetch_latest_wechat_album_item.sh` | Ego 读取公开专辑并核实倒序 | 无参数返回最新一篇，传入 1–10 返回相应篇数 |
+| `../wechat-article-fetcher/scripts/fetch_wechat_ego.py` | Ego 读取公开文章并交回正文原始 HTML | 每日 runner 调用，需保留同级采集器和本机 Ego CLI |
 | `scripts/verify_data.py` | 数据缺口核验（日历默认截至北京时间昨天；两文件一致性仍检查今日） | `python scripts/verify_data.py [--quiet] [--date YYYY-MM-DD]`，显式日期含当日 |
 | `scripts/test_verify_data.py` | 缺口与当天待采集的回归检查 | `python -m unittest discover -s scripts -p test_verify_data.py -v` |
 | `parse_daily.py` | 解析文章→硬校验→原子落盘 | 由 runner 调用（env: MAOTAI_MD_PATH/MAOTAI_EXPECT_DATE） |
@@ -154,6 +152,8 @@ git fetch origin main && git rev-parse HEAD && git rev-parse origin/main  # 两 
 | 运行时前置校验 | `daily_update.sh` / `fetch_latest_wechat_album_item.sh` | 启动即校验 node 可执行；缺失给明确报错，不再以空 stderr 静默下沉（2026-09-12 事故后加） |
 
 ### 2026-09-12 事故：运行时版本漂移（已修复）
+
+以下是旧 Playwright 链路的历史记录。自 2026-11-25 起，14:00 和 20:30 任务的专辑发现、正文抓取和异常核查均用 Ego。原有 Playwright 脚本仅供历史回溯。
 
 - **现象**：默认入口连续两次 `STATUS=DISCOVERY_FAILED`，且错误摘要为空（静默失败）
 - **根因**：宿主于 2026-09-11 17:09 将托管 Node 由 `22.22.2-2` 重新版本化为 `22.22.2-3`，

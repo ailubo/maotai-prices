@@ -23,15 +23,7 @@ set -u
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 BASE="$(dirname "$SCRIPT_DIR")"
-# Node 运行时动态解析（2026-09-12）: 不硬编码版本号。
-# 宿主会重新版本化 ~/.workbuddy/binaries/node/versions/<ver>，硬编码会导致
-# node 调用 exit 127 → DISCOVERY_FAILED（2026-09-12 事故根因）。
-# shellcheck source=lib_resolve_node.sh
-source "$SCRIPT_DIR/lib_resolve_node.sh" 2>/dev/null || true
-NODE_BIN="${NODE_BIN:-$(resolve_node_bin 2>/dev/null || printf '')}"
-NODE_PATH="${NODE_PATH:-/Users/ailubo/.workbuddy/binaries/node/workspace/node_modules}"
-BUN_BIN="/opt/homebrew/bin/bun"
-BAOYU_CLI="/Users/ailubo/.workbuddy/skills/baoyu-url-to-markdown/scripts/lib/cli.ts"
+WECHAT_FETCH="$BASE/../wechat-article-fetcher/scripts/fetch_wechat_ego.py"
 PY_BIN="${PY_BIN:-/Users/ailubo/.workbuddy/binaries/python/versions/3.13.12/bin/python3}"
 
 EXPECT_DATE="$(date +%F)"
@@ -66,19 +58,14 @@ fail() {  # fail <STATUS> <message>
   exit 1
 }
 
-# ---------- 0. 运行时前置校验（2026-09-12）----------
-# 缺 node 时给明确报错，不让故障以空 stderr 的形式静默下沉到 DISCOVERY_FAILED
-if ! declare -F resolve_node_bin >/dev/null 2>&1; then
-  fail DISCOVERY_FAILED "缺少动态解析库: $SCRIPT_DIR/lib_resolve_node.sh"
-fi
-if [[ -z "$NODE_BIN" || ! -x "$NODE_BIN" ]]; then
-  fail DISCOVERY_FAILED "无法定位可用的 node 可执行文件 (NODE_BIN='${NODE_BIN}')"
-fi
+RUN_DIR="$(mktemp -d "${TMPDIR:-/tmp}/maotai-daily.XXXXXXXX")" ||
+  fail DISCOVERY_FAILED "无法创建本轮临时目录"
+trap 'rm -rf "$RUN_DIR"' EXIT
 
 # ---------- 1. 发现: 专辑页最新文章 ----------
-DISCOVERY_JSON="$(bash "$SCRIPT_DIR/fetch_latest_wechat_album_item.sh" 2>/tmp/daily_disc_err)"
+DISCOVERY_JSON="$(bash "$SCRIPT_DIR/fetch_latest_wechat_album_item.sh" 2>"$RUN_DIR/discovery.err")"
 if [[ $? -ne 0 ]]; then
-  fail DISCOVERY_FAILED "专辑页抓取失败: $(head -3 /tmp/daily_disc_err)"
+  fail DISCOVERY_FAILED "专辑页抓取失败: $(head -3 "$RUN_DIR/discovery.err")"
 fi
 
 OUT_TITLE="$(echo "$DISCOVERY_JSON" | "$PY_BIN" -c 'import json,sys; print(json.load(sys.stdin).get("title",""))')"
@@ -124,14 +111,12 @@ if [[ "$ARTICLE_DAY" > "$EXPECT_DATE" ]]; then
 fi
 
 # ---------- 2. 抓正文 ----------
-MD_PATH="/tmp/baoyu_daily_${EXPECT_DATE}.md"
-"$BUN_BIN" "$BAOYU_CLI" "$OUT_LINK" --output "$MD_PATH" >/dev/null 2>/tmp/daily_fetch_err
+# 保留原始 HTML 表格，日期及商品数据继续由原解析器校验。
+MD_PATH="$RUN_DIR/article.html"
+/usr/bin/python3 "$WECHAT_FETCH" article "$OUT_LINK" --format html --output "$MD_PATH" \
+  >/dev/null 2>"$RUN_DIR/article.err"
 if [[ $? -ne 0 || ! -s "$MD_PATH" ]]; then
-  # Playwright 兜底直抓
-  NODE_PATH="$NODE_PATH" "$NODE_BIN" "$SCRIPT_DIR/fetch_article_playwright.cjs" "$OUT_LINK" "$MD_PATH" >/dev/null 2>>/tmp/daily_fetch_err
-  if [[ $? -ne 0 || ! -s "$MD_PATH" ]]; then
-    fail FETCH_FAILED "正文抓取失败: $(tail -3 /tmp/daily_fetch_err)"
-  fi
+  fail FETCH_FAILED "正文抓取失败: $(head -3 "$RUN_DIR/article.err")"
 fi
 
 # ---------- 3. 解析+硬校验 ----------
