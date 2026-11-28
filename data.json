@@ -2790,10 +2790,19 @@
       "guide_price": 1639,
       "signal": "🟡",
       "note": ""
+    },
+    {
+      "date": "2026-11-28",
+      "yuanxiang": 1670,
+      "sanping": 1665,
+      "source": "今日酒价",
+      "guide_price": 1639,
+      "signal": "🟡",
+      "note": ""
     }
   ],
   "note": "🔴=低于当期指导价(1499→3/31→1539→7/18→1639) | 🟡=指导价~1800 | 🟢=>1800",
-  "last_updated": "2026-11-27T14:06:14+08:00",
+  "last_updated": "2026-11-28T14:19:39+08:00",
   "guide_price_history": [
     {
       "valid_from": "2026-01-01",
